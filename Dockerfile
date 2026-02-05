@@ -16,7 +16,7 @@ FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
 # Copiar JAR do build anterior
-COPY --from=builder /app/target/Site-MK-Tech-1.0-SNAPSHOT.jar app.jar
+COPY --from=builder /app/target/*.jar app.jar
 
 # Expor porta
 EXPOSE 8080
