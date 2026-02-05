@@ -8,7 +8,7 @@ COPY pom.xml .
 COPY src ./src
 
 # Build da aplicação
-RUN mvn clean package -DskipTests
+RUN mvn clean package -DskipTests && ls -la target/
 
 # Stage 2: Runtime
 FROM eclipse-temurin:21-jre-alpine
@@ -16,7 +16,7 @@ FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
 # Copiar JAR do build anterior
-COPY --from=builder /app/target/*.jar app.jar
+COPY --from=builder /app/target/app.jar ./app.jar
 
 # Expor porta
 EXPOSE 8080
