@@ -1,5 +1,5 @@
 # Dockerfile para Railway
-FROM maven:3.8-openjdk-21 AS builder
+FROM maven:3.9.5-eclipse-temurin-21-alpine AS builder
 
 WORKDIR /app
 
@@ -11,7 +11,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Stage 2: Runtime
-FROM openjdk:21-slim
+FROM eclipse-temurin:21-jre-alpine
 
 WORKDIR /app
 
