@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MK Tech - Automação Residencial Inteligente | Casa Inteligente</title>
+    <meta name="description" content="Transforme sua casa em um lar inteligente com a MK Tech. Automação residencial com segurança, economia e conforto.">
+    <meta name="keywords" content="automação residencial, casa inteligente, smart home, segurança, economia">
+    <meta property="og:title" content="MK Tech - Automação Residencial Inteligente">
+    <meta property="og:description" content="Transforme sua casa em um lar inteligente">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>🏠</text></svg>">
+    <!-- Link externo para CSS (quando rodando no Spring Boot) -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- ==========================================
+         NAVEGAÇÃO
+         ========================================== -->
+    <nav>
+        <div class="logo">🏠 MK Tech</div>
+        <ul class="nav-links">
+            <li><a href="#problemas">Desafios</a></li>
+            <li><a href="#funcionalidades">Serviços</a></li>
+            <li><a href="#pacotes">Pacotes</a></li>
+            <li><a href="#cta">Contato</a></li>
+        </ul>
+    </nav>
+
+    <!-- ==========================================
+         HERO SECTION
+         ========================================== -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🏠 Sua Casa Inteligente Começa Aqui</h1>
+            <p class="subtitle">Automação residencial que traz segurança, economia e conforto para sua família</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary" onclick="document.querySelector('#pacotes').scrollIntoView({behavior: 'smooth'});">
+                    Ver Pacotes
+                </button>
+                <button class="btn btn-secondary" onclick="document.querySelector('#cta').scrollIntoView({behavior: 'smooth'});">
+                    Saber Mais
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SEÇÃO DE PROBLEMAS/DORES
+         ========================================== -->
+    <section id="problemas" class="problems-section">
+        <div class="container">
+            <h2>❌ Cansado de Problemas no Dia a Dia?</h2>
+            <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem; color: #666;">
+                Nós entendemos suas frustrações. A MK Tech resolve TODOS esses problemas!
+            </p>
+
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="icon">😰</div>
+                    <h3>Esqueceu a Luz Acesa?</h3>
+                    <p>Aquela sensação ruim de sair de casa e não lembrar se apagou todas as luzes. Energia desperdiçada e conta cara!</p>
+                </div>
+
+                <div class="problem-card">
+                    <div class="icon">🔑</div>
+                    <h3>Segurança Limitada?</h3>
+                    <p>Depender de chaves físicas e se preocupar com segurança quando não está em casa. Sem controle, sem paz!</p>
+                </div>
+
+                <div class="problem-card">
+                    <div class="icon">💰</div>
+                    <h3>Conta de Luz Cara?</h3>
+                    <p>Ar-condicionado ligado o dia todo. Sem controle inteligente de temperatura e energia desperdiçada constantemente.</p>
+                </div>
+
+                <div class="problem-card">
+                    <div class="icon">👀</div>
+                    <h3>Sem Monitoramento?</h3>
+                    <p>Viaja e fica com aquela preocupação. Será que está tudo bem em casa? Sem paz de espírito!</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: white; border-radius: 15px;">
+                <h3 style="color: #667eea; margin-bottom: 1rem;">✅ A MK Tech Resolve Tudo Isso!</h3>
+                <p style="font-size: 1.1rem; color: #666;">
+                    Automação residencial inteligente que traz economia, segurança e conforto para sua família. <br>
+                    Controle sua casa do seu smartphone, em qualquer lugar do mundo.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SEÇÃO DE FUNCIONALIDADES/SERVIÇOS
+         ========================================== -->
+    <section id="funcionalidades" class="features-section">
+        <div class="container">
+            <h2>🔧 Funcionalidades Disponíveis</h2>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="service-icon">💡</div>
+                    <h3>Iluminação Inteligente</h3>
+                    <p>Controle total das luzes via smartphone. Programação automática, economia de energia e cenários personalizados.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="service-icon">🔐</div>
+                    <h3>Segurança Avançada</h3>
+                    <p>Fechaduras inteligentes, câmeras de monitoramento 24/7 e alertas em tempo real para sua tranquilidade.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="service-icon">🌡️</div>
+                    <h3>Controle de Temperatura</h3>
+                    <p>Termostato inteligente que aprende seus hábitos. Economia de até 30% na conta de energia.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="service-icon">🔊</div>
+                    <h3>Sistema de Som</h3>
+                    <p>Áudio ambiente distribuído por toda a casa. Controle via smartphone ou voz com compatibilidade Alexa/Google.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="service-icon">🪟</div>
+                    <h3>Cortinas Automáticas</h3>
+                    <p>Cortinas que abrem e fecham automaticamente. Integração com horário de nascer/pôr do sol e cenários personalizados.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Tomadas Inteligentes</h3>
+                    <p>Controle de consumo de energia de cada equipamento. Programa desligamentos automáticos e monitoramento em tempo real.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SEÇÃO DE PACOTES
+         ========================================== -->
+    <section id="pacotes" class="packages-section">
+        <div class="container">
+            <h2>💎 Escolha Seu Plano de Automação</h2>
+
+            <div class="packages-grid">
+                <!-- PACOTE DINÂMICO -->
+                <div class="package-card" th:each="pkg : ${packages}">
+                    <div class="package-header">
+                        <div class="package-icon" th:text="${pkg.icon}">💎</div>
+                        <h3 class="package-name" th:text="${pkg.name}">Pacote</h3>
+                        <p class="package-description" th:text="${pkg.description}">Descrição</p>
+                    </div>
+
+                    <div class="package-price">
+                        <span th:if="${pkg.price}" th:text="${'R$ ' + pkg.price}">R$ 0</span>
+                        <span th:unless="${pkg.price}">Sob Demanda</span>
+                    </div>
+
+                    <ul class="services-list">
+                        <li th:each="service : ${pkg.services}">
+                            <div class="service-name">
+                                <span class="service-icon-small" th:text="${service.icon}">✓</span>
+                                <span th:text="${service.name}">Serviço</span>
+                            </div>
+                            <div class="service-description" th:text="${service.details}">Descrição</div>
+                        </li>
+                    </ul>
+
+                    <button class="contact-btn" th:attr="data-package=${pkg.level}">
+                        📱 Solicitar Orçamento
+                    </button>
+                </div>
+            </div>
+
+            <!-- PACOTES ESTÁTICOS (Se não houver pacotes dinâmicos) -->
+            <div class="packages-grid" th:if="${packages == null or packages.isEmpty()}">
+                <!-- PACOTE PRATA -->
+                <div class="package-card">
+                    <div class="package-header">
+                        <div class="package-icon">💎</div>
+                        <h3 class="package-name">Pacote Prata</h3>
+                        <p class="package-description">Ideal para começar sua jornada na automação</p>
+                    </div>
+
+                    <div class="package-price">A partir de R$ 1.500</div>
+
+                    <ul class="services-list">
+                        <li>
+                            <div class="service-name"><span class="service-icon-small">💡</span> Iluminação Inteligente</div>
+                            <div class="service-description">Controle de até 10 lâmpadas</div>
+                        </li>
+                        <li>
+                            <div class="service-name"><span class="service-icon-small">🔐</span> Fechadura Inteligente</div>
+                            <div class="service-description">Porta principal com acesso remoto</div>
+                        </li>
+                        <li>
+                            <div class="service-name"><span class="service-icon-small">🌡️</span> Termostato Básico</div>
+                            <div class="service-description">Controle de temperatura simples</div>
+                        </li>
+                    </ul>
+
+                    <button class="contact-btn" data-package="SILVER">
+                        📱 Solicitar Orçamento
+                    </button>
+                </div>
+
+                <!-- PACOTE OURO -->
+                <div class="package-card featured">
+                    <div class="badge">⭐ MAIS POPULAR</div>
+                    <div class="package-header">
+                        <div class="package-icon">🏆</div>
+                        <h3 class="package-name">Pacote Ouro</h3>
+                        <p class="package-description">O mais completo e procurado</p>
+                    </div>
+
+                    <div class="package-price">A partir de R$ 3.500</div>
+
+                    <ul class="services-list">
+                        <li>
+                            <div class="service-name"><span class="service-icon-small">💡</span> Iluminação Completa</div>
+                            <div class="service-description">Controle de até 30 lâmpadas</div>
+                        </li>
+                        <li>
+                            <div class="service-name"><span class="service-icon-small">🔐</span> Sistema de Segurança</div>
+                            <div class="service-description">Fechadura + Câmeras inteligentes</div>
+                        </li>
+                        <li>
+                            <div class="service-name"><span class="service-icon-small">🌡️</span> Termostato Avançado</div>
+                            <div class="service-description">Aprendizado automático de hábitos</div>
+                        </li>
+                        <li>
+                            <div class="service-name"><span class="service-icon-small">🪟</span> Cortinas Automáticas</div>
+                            <div class="service-description">Abertura/fechamento inteligente</div>
+                        </li>
+                        <li>
+                            <div class="service-name"><span class="service-icon-small">⚡</span> Monitoramento de Energia</div>
+                            <div class="service-description">Acompanhamento em tempo real</div>
+                        </li>
+                    </ul>
+
+                    <button class="contact-btn" data-package="GOLD">
+                        📱 Solicitar Orçamento
+                    </button>
+                </div>
+
+                <!-- PACOTE PLATINUM -->
+                <div class="package-card">
+                    <div class="package-header">
+                        <div class="package-icon">👑</div>
+                        <h3 class="package-name">Pacote Platinum</h3>
+                        <p class="package-description">Automação residencial total e integrada</p>
+                    </div>
+
+                    <div class="package-price">Proposta Personalizada</div>
+
+                    <ul class="services-list">
+                        <li>
+                            <div class="service-name"><span class="service-icon-small">✨</span> Tudo dos Pacotes Anteriores</div>
+                            <div class="service-description">Iluminação, segurança, temperatura</div>
+                        </li>
+                        <li>
+                            <div class="service-name"><span class="service-icon-small">🔊</span> Sistema de Som Premium</div>
+                            <div class="service-description">Áudio em todos os ambientes</div>
+                        </li>
+                        <li>
+                            <div class="service-name"><span class="service-icon-small">🤖</span> IA e Automações</div>
+                            <div class="service-description">Inteligência artificial customizada</div>
+                        </li>
+                        <li>
+                            <div class="service-name"><span class="service-icon-small">📱</span> Controle Total</div>
+                            <div class="service-description">App único para tudo + Assistente de Voz</div>
+                        </li>
+                        <li>
+                            <div class="service-name"><span class="service-icon-small">🛠️</span> Suporte Premium</div>
+                            <div class="service-description">Suporte 24/7 + Manutenção incluída</div>
+                        </li>
+                    </ul>
+
+                    <button class="contact-btn" data-package="PLATINUM">
+                        📱 Solicitar Orçamento
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SEÇÃO DE BENEFÍCIOS
+         ========================================== -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2>💪 Benefícios da Automação MK Tech</h2>
+
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="icon">💰</div>
+                    <h3>Economia de Energia</h3>
+                    <p>Reduza sua conta de luz em até 40% com controle inteligente de consumo.</p>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="icon">🔒</div>
+                    <h3>Segurança 24/7</h3>
+                    <p>Monitore sua casa em tempo real de qualquer lugar do mundo via smartphone.</p>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="icon">😌</div>
+                    <h3>Conforto e Conveniência</h3>
+                    <p>Automações que aprendem seus hábitos e se adaptam ao seu estilo de vida.</p>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="icon">📱</div>
+                    <h3>Controle Remoto</h3>
+                    <p>Controle sua casa pelo smartphone de qualquer lugar, a qualquer hora.</p>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="icon">🏠</div>
+                    <h3>Valorização do Imóvel</h3>
+                    <p>Imóvel automatizado é mais valorizado no mercado imobiliário.</p>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="icon">🔧</div>
+                    <h3>Fácil Instalação</h3>
+                    <p>Nossos técnicos cuidam de tudo. Você só aproveita o resultado!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CTA SECTION
+         ========================================== -->
+    <section id="cta" class="cta-section">
+        <div class="container">
+            <h2>🚀 Pronto para Transformar Sua Casa?</h2>
+            <p>
+                Não espere mais! Solicite seu orçamento personalizado e converse com nossos especialistas. 
+                <br>Oferecemos consultoria gratuita para entender melhor suas necessidades.
+            </p>
+            <button class="btn btn-primary" onclick="document.querySelector('#contactModal').style.display = 'block';">
+                ☎️ Solicitar Orçamento Agora
+            </button>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         MODAL DE CONTATO
+         ========================================== -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+
+            <div class="modal-header">
+                <h2>📞 Solicite Seu Orçamento</h2>
+                <p>Preencha seus dados e receba uma proposta personalizada via WhatsApp</p>
+            </div>
+
+            <div id="alertBox" class="alert"></div>
+
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Nome Completo *</label>
+                    <input type="text" id="name" name="name" required placeholder="Seu nome">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">WhatsApp (com DDD) *</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="(11) 99999-9999">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Mensagem (opcional)</label>
+                    <textarea id="message" name="message" placeholder="Conte-nos mais sobre sua casa e necessidades..."></textarea>
+                </div>
+
+                <input type="hidden" id="packageLevel" name="packageLevel">
+
+                <button type="submit" class="submit-btn">
+                    ✅ Enviar e Receber Orçamento
+                </button>
+            </form>
+
+            <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: #999;">
+                Responderemos em até 2 horas úteis
+            </p>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         FOOTER
+         ========================================== -->
+    <footer>
+        <div class="container">
+            <p><strong>MK Tech - Automação Residencial Inteligente</strong></p>
+            <p>Transformando casas em lares inteligentes</p>
+            <p>
+                <strong>WhatsApp:</strong> <a href="https://wa.me/5511999999999" style="color: inherit;">+55 (11) 9 9999-9999</a> | 
+                <strong>Email:</strong> <a href="mailto:contato@mktech.com.br" style="color: inherit;">contato@mktech.com.br</a>
+            </p>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MK Tech. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/js/script.js"></script>
+</body>
+</html>
+
