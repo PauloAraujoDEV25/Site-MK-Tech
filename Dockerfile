@@ -7,25 +7,22 @@ WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 
-# Build da aplicação com verbose
-RUN mvn clean package -DskipTests -X && echo "=== JAR Files ===" && find target -name "*.jar" -type f
+# Build da aplicação
+RUN mvn clean package -DskipTests
 
 # Stage 2: Runtime
 FROM eclipse-temurin:21-jre-alpine
 
 WORKDIR /app
 
-# Copiar qualquer JAR do build
-COPY --from=builder /app/target/*.jar app.jar || true
-
-# Verificar se JAR existe
-RUN ls -la /app/
+# Copiar JAR do build anterior
+COPY --from=builder /app/target/app.jar .
 
 # Expor porta
-EXPOSE 8080
+EXPOSE ${PORT:-8080}
 
 # Definir profile de produção
 ENV SPRING_PROFILES_ACTIVE=prod
 
 # Comando para iniciar
-CMD ["java", "-jar", "app.jar"]
+CMD ["sh", "-c", "java -Dserver.port=${PORT:-8080} -jar app.jar"]
