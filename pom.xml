@@ -4,13 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.1</version>
+        <relativePath/>
+    </parent>
+
     <groupId>org.example</groupId>
     <artifactId>Site-MK-Tech</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -19,14 +24,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>3.2.1</version>
         </dependency>
 
         <!-- Spring Boot para Thymeleaf (templates HTML) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
-            <version>3.2.1</version>
         </dependency>
 
         <!-- HTTP Client para WhatsApp API -->
@@ -47,7 +50,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.30</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
