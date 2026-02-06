@@ -671,6 +671,279 @@ public class HomeController {
             "            opacity: 0.8;\n" +
             "        }\n" +
             "\n" +
+            "        /* ==================== TESTIMONIALS SECTION ==================== */\n" +
+            "        .testimonials {\n" +
+            "            padding: 100px 2rem;\n" +
+            "            background: var(--light-bg);\n" +
+            "        }\n" +
+            "\n" +
+            "        .carousel-container {\n" +
+            "            max-width: 800px;\n" +
+            "            margin: 3rem auto;\n" +
+            "            position: relative;\n" +
+            "            overflow: hidden;\n" +
+            "        }\n" +
+            "\n" +
+            "        .carousel {\n" +
+            "            display: flex;\n" +
+            "            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);\n" +
+            "        }\n" +
+            "\n" +
+            "        .testimonial-card {\n" +
+            "            min-width: 100%;\n" +
+            "            background: white;\n" +
+            "            padding: 3rem;\n" +
+            "            border-radius: var(--border-radius);\n" +
+            "            box-shadow: var(--shadow);\n" +
+            "            text-align: center;\n" +
+            "        }\n" +
+            "\n" +
+            "        .testimonial-card .stars {\n" +
+            "            color: var(--accent);\n" +
+            "            font-size: 1.5rem;\n" +
+            "            margin-bottom: 1rem;\n" +
+            "        }\n" +
+            "\n" +
+            "        .testimonial-card p {\n" +
+            "            font-size: 1.1rem;\n" +
+            "            color: #555;\n" +
+            "            margin-bottom: 1.5rem;\n" +
+            "            font-style: italic;\n" +
+            "            line-height: 1.8;\n" +
+            "        }\n" +
+            "\n" +
+            "        .testimonial-author {\n" +
+            "            display: flex;\n" +
+            "            align-items: center;\n" +
+            "            justify-content: center;\n" +
+            "            gap: 1rem;\n" +
+            "        }\n" +
+            "\n" +
+            "        .author-avatar {\n" +
+            "            width: 60px;\n" +
+            "            height: 60px;\n" +
+            "            border-radius: 50%;\n" +
+            "            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);\n" +
+            "            display: flex;\n" +
+            "            align-items: center;\n" +
+            "            justify-content: center;\n" +
+            "            color: white;\n" +
+            "            font-size: 1.5rem;\n" +
+            "            font-weight: 700;\n" +
+            "        }\n" +
+            "\n" +
+            "        .author-info h4 {\n" +
+            "            margin: 0;\n" +
+            "            color: var(--primary);\n" +
+            "            font-weight: 700;\n" +
+            "        }\n" +
+            "\n" +
+            "        .author-info p {\n" +
+            "            margin: 0;\n" +
+            "            font-size: 0.9rem;\n" +
+            "            color: #999;\n" +
+            "            font-style: normal;\n" +
+            "        }\n" +
+            "\n" +
+            "        .carousel-nav {\n" +
+            "            display: flex;\n" +
+            "            justify-content: center;\n" +
+            "            gap: 1rem;\n" +
+            "            margin-top: 2rem;\n" +
+            "        }\n" +
+            "\n" +
+            "        .carousel-btn {\n" +
+            "            width: 40px;\n" +
+            "            height: 40px;\n" +
+            "            border: 2px solid var(--primary);\n" +
+            "            background: transparent;\n" +
+            "            color: var(--primary);\n" +
+            "            border-radius: 50%;\n" +
+            "            cursor: pointer;\n" +
+            "            font-size: 1.2rem;\n" +
+            "            transition: var(--transition);\n" +
+            "        }\n" +
+            "\n" +
+            "        .carousel-btn:hover {\n" +
+            "            background: var(--primary);\n" +
+            "            color: white;\n" +
+            "            transform: scale(1.1);\n" +
+            "        }\n" +
+            "\n" +
+            "        .carousel-dots {\n" +
+            "            display: flex;\n" +
+            "            justify-content: center;\n" +
+            "            gap: 0.5rem;\n" +
+            "            margin-top: 1.5rem;\n" +
+            "        }\n" +
+            "\n" +
+            "        .dot {\n" +
+            "            width: 12px;\n" +
+            "            height: 12px;\n" +
+            "            border-radius: 50%;\n" +
+            "            background: #ddd;\n" +
+            "            cursor: pointer;\n" +
+            "            transition: var(--transition);\n" +
+            "        }\n" +
+            "\n" +
+            "        .dot.active {\n" +
+            "            background: var(--primary);\n" +
+            "            width: 30px;\n" +
+            "            border-radius: 10px;\n" +
+            "        }\n" +
+            "\n" +
+            "        /* ==================== CONTACT SECTION ==================== */\n" +
+            "        .contact {\n" +
+            "            padding: 100px 2rem;\n" +
+            "            background: var(--dark-bg);\n" +
+            "            color: var(--text-light);\n" +
+            "        }\n" +
+            "\n" +
+            "        .contact-content {\n" +
+            "            max-width: 1200px;\n" +
+            "            margin: 0 auto;\n" +
+            "            display: grid;\n" +
+            "            grid-template-columns: 1fr 1fr;\n" +
+            "            gap: 3rem;\n" +
+            "            margin-top: 3rem;\n" +
+            "        }\n" +
+            "\n" +
+            "        .contact-info {\n" +
+            "            display: flex;\n" +
+            "            flex-direction: column;\n" +
+            "            gap: 2rem;\n" +
+            "        }\n" +
+            "\n" +
+            "        .contact-item {\n" +
+            "            display: flex;\n" +
+            "            gap: 1.5rem;\n" +
+            "            align-items: flex-start;\n" +
+            "        }\n" +
+            "\n" +
+            "        .contact-icon {\n" +
+            "            font-size: 1.8rem;\n" +
+            "            width: 50px;\n" +
+            "            height: 50px;\n" +
+            "            border-radius: 50%;\n" +
+            "            background: rgba(255, 215, 0, 0.1);\n" +
+            "            display: flex;\n" +
+            "            align-items: center;\n" +
+            "            justify-content: center;\n" +
+            "            flex-shrink: 0;\n" +
+            "        }\n" +
+            "\n" +
+            "        .contact-item h4 {\n" +
+            "            color: var(--accent);\n" +
+            "            margin-bottom: 0.5rem;\n" +
+            "            font-size: 1.2rem;\n" +
+            "        }\n" +
+            "\n" +
+            "        .contact-item p {\n" +
+            "            margin: 0;\n" +
+            "            opacity: 0.9;\n" +
+            "        }\n" +
+            "\n" +
+            "        .contact-form {\n" +
+            "            background: rgba(255, 255, 255, 0.05);\n" +
+            "            padding: 2.5rem;\n" +
+            "            border-radius: var(--border-radius);\n" +
+            "            border: 1px solid rgba(255, 215, 0, 0.2);\n" +
+            "        }\n" +
+            "\n" +
+            "        .contact-form h3 {\n" +
+            "            color: var(--accent);\n" +
+            "            margin-bottom: 1.5rem;\n" +
+            "            font-size: 1.3rem;\n" +
+            "        }\n" +
+            "\n" +
+            "        .form-group {\n" +
+            "            margin-bottom: 1.5rem;\n" +
+            "        }\n" +
+            "\n" +
+            "        .form-group label {\n" +
+            "            display: block;\n" +
+            "            margin-bottom: 0.5rem;\n" +
+            "            font-weight: 600;\n" +
+            "            font-size: 0.95rem;\n" +
+            "        }\n" +
+            "\n" +
+            "        .form-group input,\n" +
+            "        .form-group textarea {\n" +
+            "            width: 100%;\n" +
+            "            padding: 0.8rem;\n" +
+            "            border: 1px solid rgba(255, 215, 0, 0.3);\n" +
+            "            background: rgba(255, 255, 255, 0.05);\n" +
+            "            color: var(--text-light);\n" +
+            "            border-radius: 8px;\n" +
+            "            font-family: inherit;\n" +
+            "            transition: var(--transition);\n" +
+            "        }\n" +
+            "\n" +
+            "        .form-group input::placeholder,\n" +
+            "        .form-group textarea::placeholder {\n" +
+            "            color: rgba(255, 255, 255, 0.5);\n" +
+            "        }\n" +
+            "\n" +
+            "        .form-group input:focus,\n" +
+            "        .form-group textarea:focus {\n" +
+            "            outline: none;\n" +
+            "            border-color: var(--accent);\n" +
+            "            background: rgba(255, 215, 0, 0.1);\n" +
+            "            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);\n" +
+            "        }\n" +
+            "\n" +
+            "        .contact-form .btn {\n" +
+            "            width: 100%;\n" +
+            "        }\n" +
+            "\n" +
+            "        .footer-content {\n" +
+            "            max-width: 1400px;\n" +
+            "            margin: 0 auto;\n" +
+            "            display: grid;\n" +
+            "            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\n" +
+            "            gap: 3rem;\n" +
+            "            margin-bottom: 3rem;\n" +
+            "        }\n" +
+            "\n" +
+            "        .footer-section h4 {\n" +
+            "            color: var(--accent);\n" +
+            "            margin-bottom: 1.5rem;\n" +
+            "            font-size: 1.2rem;\n" +
+            "        }\n" +
+            "\n" +
+            "        .footer-section ul {\n" +
+            "            list-style: none;\n" +
+            "        }\n" +
+            "\n" +
+            "        .footer-section li {\n" +
+            "            margin-bottom: 0.8rem;\n" +
+            "        }\n" +
+            "\n" +
+            "        .footer-section a {\n" +
+            "            color: rgba(255, 255, 255, 0.8);\n" +
+            "            text-decoration: none;\n" +
+            "            transition: var(--transition);\n" +
+            "        }\n" +
+            "\n" +
+            "        .footer-section a:hover {\n" +
+            "            color: var(--accent);\n" +
+            "            margin-left: 5px;\n" +
+            "        }\n" +
+            "\n" +
+            "        .footer-divider {\n" +
+            "            border-top: 1px solid rgba(255, 215, 0, 0.2);\n" +
+            "            padding-top: 2rem;\n" +
+            "        }\n" +
+            "\n" +
+            "        .footer-bottom {\n" +
+            "            text-align: center;\n" +
+            "            opacity: 0.8;\n" +
+            "        }\n" +
+            "\n" +
+            "        .footer-bottom p {\n" +
+            "            margin: 0.5rem 0;\n" +
+            "        }\n" +
+            "\n" +
             "        /* ==================== SCROLLBAR ==================== */\n" +
             "        ::-webkit-scrollbar {\n" +
             "            width: 10px;\n" +
@@ -1144,10 +1417,77 @@ public class HomeController {
             "            });\n" +
             "        }, observerOptions);\n" +
             "\n" +
-            "        document.querySelectorAll('.package-card, .feature-card').forEach(el => {\n" +
+            "        document.querySelectorAll('.package-card, .feature-card, .mode-card, .menu-card').forEach(el => {\n" +
             "            el.style.opacity = '0';\n" +
             "            observer.observe(el);\n" +
             "        });\n" +
+            "\n" +
+            "        // Carousel Functionality\n" +
+            "        let currentSlide = 0;\n" +
+            "        const carousel = document.getElementById('carousel');\n" +
+            "        const dotsContainer = document.getElementById('dots');\n" +
+            "        const totalSlides = document.querySelectorAll('.testimonial-card').length;\n" +
+            "\n" +
+            "        function initCarousel() {\n" +
+            "            for (let i = 0; i < totalSlides; i++) {\n" +
+            "                const dot = document.createElement('div');\n" +
+            "                dot.className = 'dot' + (i === 0 ? ' active' : '');\n" +
+            "                dot.onclick = () => goToSlide(i);\n" +
+            "                dotsContainer.appendChild(dot);\n" +
+            "            }\n" +
+            "        }\n" +
+            "\n" +
+            "        function updateCarousel() {\n" +
+            "            carousel.style.transform = `translateX(-${currentSlide * 100}%)`;\n" +
+            "            updateDots();\n" +
+            "        }\n" +
+            "\n" +
+            "        function updateDots() {\n" +
+            "            document.querySelectorAll('.dot').forEach((dot, index) => {\n" +
+            "                dot.classList.toggle('active', index === currentSlide);\n" +
+            "            });\n" +
+            "        }\n" +
+            "\n" +
+            "        function nextSlide() {\n" +
+            "            currentSlide = (currentSlide + 1) % totalSlides;\n" +
+            "            updateCarousel();\n" +
+            "        }\n" +
+            "\n" +
+            "        function prevSlide() {\n" +
+            "            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;\n" +
+            "            updateCarousel();\n" +
+            "        }\n" +
+            "\n" +
+            "        function goToSlide(index) {\n" +
+            "            currentSlide = index;\n" +
+            "            updateCarousel();\n" +
+            "        }\n" +
+            "\n" +
+            "        // Auto-advance carousel every 8 seconds\n" +
+            "        setInterval(nextSlide, 8000);\n" +
+            "\n" +
+            "        // Contact Form Handler\n" +
+            "        function sendContact(e) {\n" +
+            "            e.preventDefault();\n" +
+            "            const name = document.getElementById('name').value;\n" +
+            "            const email = document.getElementById('email').value;\n" +
+            "            const phone = document.getElementById('phone').value;\n" +
+            "            const subject = document.getElementById('subject').value;\n" +
+            "            const message = document.getElementById('message').value;\n" +
+            "\n" +
+            "            // Simulate form submission\n" +
+            "            showAlert(`✅ Obrigado, ${name}!\\\\n\\\\nRecebemos sua mensagem sobre \\\"${subject}\\\".\\\\nNosso team responderá em breve no e-mail ${email} ou WhatsApp ${phone}.\\\\n\\\\nAguarde! 🚀`);\n" +
+            "\n" +
+            "            // Reset form\n" +
+            "            document.querySelector('.contact-form').reset();\n" +
+            "        }\n" +
+            "\n" +
+            "        // Initialize carousel\n" +
+            "        initCarousel();\n" +
+            "\n" +
+            "        function scrollToPackages() {\n" +
+            "            document.getElementById('pacotes').scrollIntoView({behavior: 'smooth'});\n" +
+            "        }\n" +
             "    </script>\n" +
             "</body>\n" +
             "</html>";
