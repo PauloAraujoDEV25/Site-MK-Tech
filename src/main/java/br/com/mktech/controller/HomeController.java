@@ -1377,7 +1377,7 @@ public class HomeController {
             "        <div class=\"footer-divider\">\n" +
             "            <div class=\"footer-bottom\">\n" +
             "                <p>&copy; 2026 MK Tech  Automação Residencial. Todos os direitos reservados.</p>\n" +
-            "                <p>Desenvolvido por phdev</p>\n" +
+            "                <p>Desenvolvido por phdev25</p>\n" +
             "            </div>\n" +
             "        </div>\n" +
             "    </footer>\n" +
