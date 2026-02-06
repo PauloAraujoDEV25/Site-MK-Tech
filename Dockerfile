@@ -8,18 +8,18 @@ COPY pom.xml .
 COPY src ./src
 
 # Build da aplicação
-RUN mvn clean package -DskipTests -q
-
-# Copiar o JAR executável
-RUN if [ -f target/app.jar ]; then cp target/app.jar /tmp/app.jar; else cp target/*.jar /tmp/app.jar 2>/dev/null || exit 1; fi
+RUN mvn clean package -DskipTests -q && ls -la target/ && ls -la target/*.jar
 
 # Stage 2: Runtime
 FROM eclipse-temurin:21-jre-alpine
 
 WORKDIR /app
 
-# Copiar o JAR
-COPY --from=builder /tmp/app.jar .
+# Copiar QUALQUER jar gerado (o único que vai estar lá é o executável)
+COPY --from=builder /app/target/*.jar app.jar
+
+# Listar para debug
+RUN ls -la /app/
 
 # Expor porta
 EXPOSE 8080
