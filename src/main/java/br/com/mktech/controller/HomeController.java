@@ -1018,7 +1018,7 @@ public class HomeController {
             "            <p class=\"subtitle\">Automação residencial com tecnologia de ponta. Segurança, economia e conforto em um só lugar.</p>\n" +
             "            <div class=\"cta-buttons\">\n" +
             "                <button class=\"btn btn-primary\" onclick=\"document.getElementById('pacotes').scrollIntoView({behavior: 'smooth'});\">Ver Pacotes</button>\n" +
-            "                <button class=\"btn btn-secondary\" onclick=\"showAlert();\">Agendar Demo</button>\n" +
+            "                <button class=\"btn btn-secondary\" onclick=\"showAlert();\">Solicitar Orçamento</button>\n" +
             "            </div>\n" +
             "        </div>\n" +
             "    </section>\n" +
