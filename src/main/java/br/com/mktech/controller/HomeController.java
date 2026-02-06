@@ -22,7 +22,12 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model) {
-        model.addAttribute("packages", packageService.getAllPackages());
+        try {
+            model.addAttribute("packages", packageService.getAllPackages());
+        } catch (Exception e) {
+            System.err.println("Erro ao carregar pacotes: " + e.getMessage());
+            e.printStackTrace();
+        }
         return "index";
     }
 }
