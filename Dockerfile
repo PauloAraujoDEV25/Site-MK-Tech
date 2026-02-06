@@ -26,6 +26,7 @@ EXPOSE 8080
 
 # Definir profile de produção
 ENV SPRING_PROFILES_ACTIVE=prod
+ENV PORT=8080
 
-# Comando para iniciar
-CMD exec java -Dserver.port=${PORT:-8080} -jar app.jar
+# Comando para iniciar com sh -c para expandir variáveis
+CMD sh -c 'exec java -Dserver.port=${PORT} -jar app.jar'
