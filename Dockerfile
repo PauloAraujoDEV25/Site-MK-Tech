@@ -7,27 +7,26 @@ WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 
-# Build da aplicação
-RUN mvn clean package -DskipTests -q
-
-# Debug: listar o que foi gerado
-RUN echo "=== Build output ===" && \
-    ls -la target/ && \
-    echo "=== JAR files ===" && \
-    find target -name "*.jar" -type f && \
-    echo "=== Renaming app.jar if needed ===" && \
-    (test -f target/app.jar && echo "app.jar found" || (ls target/*.jar && cp target/app*.jar target/app.jar 2>/dev/null || echo "No JAR found"))
+# Build com output visível
+RUN mvn clean package -DskipTests && \
+    echo "======================================" && \
+    echo "BUILD COMPLETE - Contents of target:" && \
+    echo "======================================" && \
+    ls -lah target/ && \
+    echo "" && \
+    echo "JAR files found:" && \
+    find target -name "*.jar" -exec ls -lh {} \; && \
+    echo "" && \
+    echo "Copying to /app/app.jar..." && \
+    cp target/app.jar /app/ || cp target/app*.jar /app/app.jar
 
 # Stage 2: Runtime
 FROM eclipse-temurin:21-jre-alpine
 
 WORKDIR /app
 
-# Copiar o JAR gerado
-COPY --from=builder /app/target/app.jar .
-
-# Verificar que existe
-RUN test -f /app/app.jar && echo "JAR copied successfully" || exit 1
+# Copiar JAR
+COPY --from=builder /app/app.jar .
 
 # Expor porta
 EXPOSE 8080
