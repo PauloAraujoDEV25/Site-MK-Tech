@@ -24,9 +24,14 @@ COPY --from=builder /tmp/app.jar .
 # Expor porta
 EXPOSE 8080
 
-# Definir profile de produção
+# Definir defaults
 ENV SPRING_PROFILES_ACTIVE=prod
 ENV PORT=8080
 
-# Comando para iniciar com sh -c para expandir variáveis
-CMD sh -c 'exec java -Dserver.port=${PORT} -jar app.jar'
+# Script de entrada para garantir expansão de variáveis
+RUN echo '#!/bin/sh' > /app/entrypoint.sh && \
+    echo 'exec java -Dserver.port=${PORT:-8080} -jar app.jar' >> /app/entrypoint.sh && \
+    chmod +x /app/entrypoint.sh
+
+# Comando para iniciar
+ENTRYPOINT ["/app/entrypoint.sh"]
