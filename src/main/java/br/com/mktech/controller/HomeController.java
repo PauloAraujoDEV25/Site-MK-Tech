@@ -1003,7 +1003,7 @@ public class HomeController {
             "<body>\n" +
             "    <!-- Navigation -->\n" +
             "    <nav>\n" +
-            "        <div class=\"logo\">🏠 MK Tech</div>\n" +
+            "        <div class=\"logo\">🏠 MK Tech Automacao Residencial</div>\n" +
             "        <ul class=\"nav-links\">\n" +
             "            <li><a href=\"#pacotes\">Pacotes</a></li>\n" +
             "            <li><a href=\"#recursos\">Recursos</a></li>\n" +
@@ -1014,7 +1014,7 @@ public class HomeController {
             "    <!-- Hero Section -->\n" +
             "    <section class=\"hero\">\n" +
             "        <div class=\"hero-content\">\n" +
-            "            <h1>🏠 Transforme Sua Casa em um Lar Inteligente</h1>\n" +
+            "            <h1>🏠 Transforme Sua Casa de Forma Inteligente</h1>\n" +
             "            <p class=\"subtitle\">Automação residencial com tecnologia de ponta. Segurança, economia e conforto em um só lugar.</p>\n" +
             "            <div class=\"cta-buttons\">\n" +
             "                <button class=\"btn btn-primary\" onclick=\"document.getElementById('pacotes').scrollIntoView({behavior: 'smooth'});\">Ver Pacotes</button>\n" +
@@ -1376,8 +1376,8 @@ public class HomeController {
             "        </div>\n" +
             "        <div class=\"footer-divider\">\n" +
             "            <div class=\"footer-bottom\">\n" +
-            "                <p>&copy; 2026 MK Tech - Automação Residencial Inteligente. Todos os direitos reservados.</p>\n" +
-            "                <p>Desenvolvido com ❤️ em São Paulo, Brasil | Inovação & Tecnologia</p>\n" +
+            "                <p>&copy; 2026 MK Tech  Automação Residencial. Todos os direitos reservados.</p>\n" +
+            "                <p>Desenvolvido por phdev</p>\n" +
             "            </div>\n" +
             "        </div>\n" +
             "    </footer>\n" +
