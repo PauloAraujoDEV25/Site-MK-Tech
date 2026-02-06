@@ -1286,14 +1286,14 @@ public class HomeController {
             "                    <div class=\"contact-icon\">📍</div>\n" +
             "                    <div>\n" +
             "                        <h4>Localização</h4>\n" +
-            "                        <p>Av. Paulista, 1000 - São Paulo, SP<br>CEP 01310-100</p>\n" +
+            "                        <p>Rua Parceria 40 Uberlândia - MG <br>38410-500</p>\n" +
             "                    </div>\n" +
             "                </div>\n" +
             "                <div class=\"contact-item\">\n" +
             "                    <div class=\"contact-icon\">📱</div>\n" +
             "                    <div>\n" +
             "                        <h4>Telefone</h4>\n" +
-            "                        <p>(11) 3000-1000<br>WhatsApp: (11) 99999-9999</p>\n" +
+            "                        <p>WhatsApp: (34) 99656 - 8351</p>\n" +
             "                    </div>\n" +
             "                </div>\n" +
             "                <div class=\"contact-item\">\n" +
@@ -1344,7 +1344,7 @@ public class HomeController {
             "        <div class=\"footer-content\">\n" +
             "            <div class=\"footer-section\">\n" +
             "                <h4>🏠 MK Tech</h4>\n" +
-            "                <p style=\"margin: 0; opacity: 0.8; font-size: 0.9rem;\">Transformando casas em lares inteligentes há 5 anos.</p>\n" +
+            "                <p style=\"margin: 0; opacity: 0.8; font-size: 0.9rem;\">Transformando casas em lares inteligentes.</p>\n" +
             "            </div>\n" +
             "            <div class=\"footer-section\">\n" +
             "                <h4>📦 Serviços</h4>\n" +
