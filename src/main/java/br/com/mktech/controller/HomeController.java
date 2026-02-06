@@ -23,7 +23,7 @@ public class HomeController {
             "    <style>\n" +
             "        :root {\n" +
             "            --primary: #5017e2;\n" +
-            "            --primary-dark: #592093;\n" +
+            "            --primary-dark: #8b0f99;\n" +
             "            --accent: #f3d00a;\n" +
             "            --accent-dark: #FFC700;\n" +
             "            --dark-bg: #0f172a;\n" +
@@ -1003,7 +1003,7 @@ public class HomeController {
             "<body>\n" +
             "    <!-- Navigation -->\n" +
             "    <nav>\n" +
-            "        <div class=\"logo\">🏠 MK Tech Automacao Residencial</div>\n" +
+            "        <div class=\"logo\">🏠 MK Tech </div>\n" +
             "        <ul class=\"nav-links\">\n" +
             "            <li><a href=\"#pacotes\">Pacotes</a></li>\n" +
             "            <li><a href=\"#recursos\">Recursos</a></li>\n" +
