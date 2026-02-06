@@ -1,1 +1,1 @@
-web: java -Dserver.port=${PORT:8080} -jar target/app.jar
+web: java -jar /app/app.jar
