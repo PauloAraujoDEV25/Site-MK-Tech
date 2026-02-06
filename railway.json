@@ -1,11 +1,13 @@
 {
   "$schema": "https://railway.app/railway.schema.json",
   "build": {
-    "builder": "DOCKERFILE"
+    "builder": "DOCKERFILE",
+    "buildCommand": "docker build -t app ."
   },
   "deploy": {
     "numReplicas": 1,
     "sleepApplication": false,
-    "restartPolicyMaxRetries": 10
+    "restartPolicyMaxRetries": 10,
+    "startCommand": "java -Dserver.port=$PORT -jar /app/app.jar"
   }
 }
