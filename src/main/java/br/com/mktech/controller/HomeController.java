@@ -22,13 +22,13 @@ public class HomeController {
             "    <title>MK Tech - Automação Residencial Inteligente</title>\n" +
             "    <style>\n" +
             "        :root {\n" +
-            "            --primary: #667eea;\n" +
-            "            --primary-dark: #764ba2;\n" +
-            "            --accent: #FFD700;\n" +
+            "            --primary: #5017e2;\n" +
+            "            --primary-dark: #592093;\n" +
+            "            --accent: #f3d00a;\n" +
             "            --accent-dark: #FFC700;\n" +
             "            --dark-bg: #0f172a;\n" +
             "            --light-bg: #ffffff;\n" +
-            "            --text-dark: #1a1a1a;\n" +
+            "            --text-dark: #1a1a1ae2;\n" +
             "            --text-light: #ffffff;\n" +
             "            --border-radius: 12px;\n" +
             "            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);\n" +
