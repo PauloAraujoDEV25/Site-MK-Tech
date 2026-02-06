@@ -1,5 +1,5 @@
 :root {
-    --primary: #5d4fa7;
+    --primary: #5931a3;
     --primary-dark: #3d2d5f;
     --accent: #FFD700;
     --dark: #0f172a;
@@ -71,7 +71,7 @@ nav .nav-links a:hover {
    HERO SECTION
    ==================================== */
 .hero {
-    background: linear-gradient(135deg, #5d4fa7 0%, #2a1a47 50%, #1a0f2e 100%);
+    background: linear-gradient(135deg, #6e38b6 0%, #2a1a47 50%, #1a0f2e 100%);
     color: white;
     padding: 6rem 2rem;
     text-align: center;
