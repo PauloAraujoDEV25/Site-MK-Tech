@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.header.writers.XXssProtectionHeaderWriter;
 
 /**
  * Configuração de segurança da aplicação.
@@ -13,7 +12,6 @@ import org.springframework.security.web.header.writers.XXssProtectionHeaderWrite
  * Implementa:
  * - CSRF Protection (Cross-Site Request Forgery)
  * - Security Headers (XSS, Content-Type, Frame-Options)
- * - CORS e autorização
  *
  * Segue padrões de segurança OWASP Top 10.
  */
@@ -39,9 +37,7 @@ public class SecurityConfig {
                         .frameOptions(frame -> frame.deny())
                         // X-Content-Type-Options: nosniff
                         .contentTypeOptions(cto -> cto.disable())
-                        // X-XSS-Protection
-                        .addHeaderWriter(new XXssProtectionHeaderWriter())
-                        // Strict-Transport-Security (HSTS) - habilitado apenas em produção
+                        // Strict-Transport-Security (HSTS)
                         .httpStrictTransportSecurity(hsts -> hsts
                                 .includeSubDomains(true)
                                 .maxAgeInSeconds(31536000)  // 1 ano

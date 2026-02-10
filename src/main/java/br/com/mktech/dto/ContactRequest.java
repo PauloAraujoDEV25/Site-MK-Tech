@@ -1,7 +1,6 @@
 package br.com.mktech.dto;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,17 +22,11 @@ public class ContactRequest {
     private String name;
 
     @NotBlank(message = "Telefone é obrigatório")
-    @Pattern(
-            regexp = "^\\(?\\d{2}\\)?\\s?9?\\d{4}-?\\d{4}$|^\\d{10,11}$",
-            message = "Telefone deve estar no formato (XX) 9XXXX-XXXX ou apenas números"
-    )
+    @Size(min = 10, max = 15, message = "Telefone deve ter entre 10 e 15 caracteres")
     private String phone;
 
     @NotBlank(message = "Pacote é obrigatório")
-    @Pattern(
-            regexp = "^(SILVER|GOLD|PLATINUM|Prata|Ouro|Platina)$",
-            message = "Pacote inválido. Escolha entre: Prata, Ouro ou Platina"
-    )
+    @Size(min = 3, max = 20, message = "Pacote inválido")
     private String packageLevel;
 }
 

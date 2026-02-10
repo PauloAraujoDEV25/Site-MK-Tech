@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 /**
  * Tratamento centralizado de exceções.
@@ -42,17 +41,6 @@ public class GlobalExceptionHandler {
         return ResponseEntity
                 .badRequest()
                 .body(new ContactResponse(false, "Dados inválidos na requisição. Verifique os campos."));
-    }
-
-    /**
-     * Trata recurso não encontrado (404).
-     */
-    @ExceptionHandler(NoResourceFoundException.class)
-    public ResponseEntity<String> handleNotFound(NoResourceFoundException ex) {
-        log.warn("Recurso não encontrado: {}", ex.getResourcePath());
-        return ResponseEntity
-                .status(HttpStatus.NOT_FOUND)
-                .body("{\"error\": \"Página não encontrada\"}");
     }
 
     /**
