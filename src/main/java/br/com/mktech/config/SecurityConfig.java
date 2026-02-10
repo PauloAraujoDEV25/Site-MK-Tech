@@ -28,13 +28,15 @@ public class SecurityConfig {
                 )
                 // Autorização de requisições
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/**").permitAll()  // Permite acesso público a todas as rotas
+                        .requestMatchers("/css/**", "/js/**", "/images/**", "/static/**").permitAll()  // Arquivos estáticos
+                        .requestMatchers("/").permitAll()  // Página inicial
+                        .requestMatchers("/api/**").permitAll()  // APIs públicas
                         .anyRequest().authenticated()
                 )
                 // Security Headers
                 .headers(headers -> headers
                         // X-Frame-Options: DENY (previne clickjacking)
-                        .frameOptions(frame -> frame.deny())
+                        .frameOptions(frame -> frame.disable())  // Desabilitar para permitir static files
                         // X-Content-Type-Options: nosniff
                         .contentTypeOptions(cto -> cto.disable())
                         // Strict-Transport-Security (HSTS)
