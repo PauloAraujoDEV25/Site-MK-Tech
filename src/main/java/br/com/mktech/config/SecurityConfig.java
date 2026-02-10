@@ -13,7 +13,7 @@ import org.springframework.security.web.header.writers.XXssProtectionHeaderWrite
  * Implementa:
  * - CSRF Protection (Cross-Site Request Forgery)
  * - Security Headers (XSS, Content-Type, Frame-Options)
- * - HTTPS Redirect
+ * - CORS e autorização
  *
  * Segue padrões de segurança OWASP Top 10.
  */
@@ -41,16 +41,11 @@ public class SecurityConfig {
                         .contentTypeOptions(cto -> cto.disable())
                         // X-XSS-Protection
                         .addHeaderWriter(new XXssProtectionHeaderWriter())
-                        // Strict-Transport-Security (HSTS)
+                        // Strict-Transport-Security (HSTS) - habilitado apenas em produção
                         .httpStrictTransportSecurity(hsts -> hsts
                                 .includeSubDomains(true)
                                 .maxAgeInSeconds(31536000)  // 1 ano
                         )
-                )
-                // Desabilita a redireção automática HTTP -> HTTPS em ambiente de desenvolvimento
-                .requiresChannel(channel -> channel
-                        .anyRequest()
-                        .requiresSecure()
                 );
 
         return http.build();
