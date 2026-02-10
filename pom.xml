@@ -32,12 +32,6 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
-        <!-- Spring Security (CSRF Protection + Security Headers) -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-
         <!-- Validation (Bean Validation com jakarta) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
