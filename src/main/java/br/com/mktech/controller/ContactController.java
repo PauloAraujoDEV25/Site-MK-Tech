@@ -5,16 +5,24 @@ import br.com.mktech.dto.ContactResponse;
 import br.com.mktech.model.ServicePackage;
 import br.com.mktech.service.IPackageService;
 import br.com.mktech.service.IWhatsAppService;
+import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * API Controller para contato
- * Responsável por processar requisições de contato via WhatsApp
+ * API Controller para contato.
+ * Responsável por processar requisições de contato via WhatsApp.
+ *
+ * Implementa validação de entrada, logging e tratamento de erros.
+ * Segue padrões RESTful e SOLID principles.
  */
+@Slf4j
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class ContactController {
 
     private final IWhatsAppService whatsAppService;
@@ -26,43 +34,95 @@ public class ContactController {
         this.packageService = packageService;
     }
 
+    /**
+     * Processa requisição de contato via WhatsApp.
+     *
+     * @param request Dados do contato com validação
+     * @return Resposta de sucesso ou erro
+     */
     @PostMapping("/contact")
-    public ResponseEntity<ContactResponse> sendContact(@RequestBody ContactRequest request) {
+    public ResponseEntity<ContactResponse> sendContact(@Valid @RequestBody ContactRequest request) {
         try {
-            // Valida os dados
-            if (request.getName() == null || request.getName().trim().isEmpty()) {
-                return ResponseEntity.badRequest()
-                    .body(new ContactResponse(false, "Nome é obrigatório"));
-            }
+            log.info("Nova requisição de contato - Nome: {}, Telefone: {}",
+                    sanitizeName(request.getName()),
+                    maskPhone(request.getPhone()));
 
-            if (request.getPhone() == null || request.getPhone().trim().isEmpty()) {
+            // Validação adicional de segurança (sanitização)
+            if (!isValidPhoneNumber(request.getPhone())) {
+                log.warn("Telefone inválido: {}", maskPhone(request.getPhone()));
                 return ResponseEntity.badRequest()
-                    .body(new ContactResponse(false, "Telefone é obrigatório"));
+                        .body(new ContactResponse(false, "Telefone em formato inválido. Use: (XX) 9XXXX-XXXX"));
             }
 
             // Busca o pacote selecionado
             ServicePackage selectedPackage = packageService.getPackageByLevel(request.getPackageLevel());
 
             if (selectedPackage == null) {
+                log.warn("Pacote solicitado não encontrado: {}", request.getPackageLevel());
                 return ResponseEntity.badRequest()
-                    .body(new ContactResponse(false, "Pacote inválido"));
+                        .body(new ContactResponse(false, "Pacote selecionado não existe"));
             }
 
             // Envia mensagem via WhatsApp
-            String result = whatsAppService.sendMessage(
-                request.getPhone(),
-                request.getName(),
-                selectedPackage.getName()
+            boolean messageSent = whatsAppService.sendMessage(
+                    request.getPhone(),
+                    request.getName(),
+                    selectedPackage.getName()
             );
 
-            return ResponseEntity.ok(
-                new ContactResponse(true, "Mensagem enviada com sucesso! Entraremos em contato em breve.")
-            );
+            if (messageSent) {
+                log.info("Mensagem enviada com sucesso para: {}", maskPhone(request.getPhone()));
+                return ResponseEntity.ok(
+                        new ContactResponse(true, "Mensagem enviada com sucesso! Entraremos em contato em breve.")
+                );
+            } else {
+                log.error("Falha ao enviar mensagem para: {}", maskPhone(request.getPhone()));
+                return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
+                        .body(new ContactResponse(false, "Erro ao enviar mensagem. Tente novamente em alguns momentos."));
+            }
+
+        } catch (IllegalArgumentException e) {
+            log.warn("Erro de validação: {}", e.getMessage());
+            return ResponseEntity.badRequest()
+                    .body(new ContactResponse(false, e.getMessage()));
 
         } catch (Exception e) {
-            return ResponseEntity.internalServerError()
-                .body(new ContactResponse(false, "Erro ao processar solicitação: " + e.getMessage()));
+            log.error("Erro não esperado ao processar contato", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ContactResponse(false, "Erro ao processar sua solicitação. Tente novamente mais tarde."));
         }
+    }
+
+    /**
+     * Valida formato do telefone brasileiro.
+     * Aceita: (XX) 9XXXX-XXXX ou (XX) XXXX-XXXX ou apenas números
+     */
+    private boolean isValidPhoneNumber(String phone) {
+        if (phone == null || phone.trim().isEmpty()) {
+            return false;
+        }
+        // Remove caracteres especiais e espaços
+        String cleaned = phone.replaceAll("[^0-9]", "");
+        // Valida se tem entre 10 e 11 dígitos
+        return cleaned.length() >= 10 && cleaned.length() <= 11;
+    }
+
+    /**
+     * Sanitiza nome removendo caracteres perigosos.
+     */
+    private String sanitizeName(String name) {
+        if (name == null) return "";
+        return name.replaceAll("[<>\"'%;()&+]", "").trim();
+    }
+
+    /**
+     * Mascara telefone para logging (segurança).
+     */
+    private String maskPhone(String phone) {
+        if (phone == null || phone.length() < 4) {
+            return "***";
+        }
+        return phone.substring(0, phone.length() - 4) + "****";
     }
 }
 

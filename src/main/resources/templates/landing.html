@@ -254,9 +254,11 @@
 
             <form class="contact-form" onsubmit="sendContact(event)">
                 <h3>📝 Enviar Mensagem</h3>
+                <!-- CSRF Token (Spring Security) -->
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                 <div class="form-group">
                     <label for="name">Nome Completo</label>
-                    <input type="text" id="name" name="name" placeholder="Seu nome" required>
+                    <input type="text" id="name" name="name" placeholder="Seu nome" required minlength="2" maxlength="100">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -264,15 +266,15 @@
                 </div>
                 <div class="form-group">
                     <label for="phone">Telefone</label>
-                    <input type="tel" id="phone" name="phone" placeholder="(11) 99999-9999" required>
+                    <input type="tel" id="phone" name="phone" placeholder="(11) 99999-9999" required pattern="\(?[0-9]{2}\)?\s?9?[0-9]{4}-?[0-9]{4}">
                 </div>
                 <div class="form-group">
                     <label for="subject">Assunto</label>
-                    <input type="text" id="subject" name="subject" placeholder="Qual sua dúvida?" required>
+                    <input type="text" id="subject" name="subject" placeholder="Qual sua dúvida?" required maxlength="100">
                 </div>
                 <div class="form-group">
                     <label for="message">Mensagem</label>
-                    <textarea id="message" name="message" rows="4" placeholder="Conte mais detalhes..." required></textarea>
+                    <textarea id="message" name="message" rows="4" placeholder="Conte mais detalhes..." required maxlength="500"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
             </form>
