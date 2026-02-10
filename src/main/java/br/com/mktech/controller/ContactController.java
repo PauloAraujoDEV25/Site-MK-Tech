@@ -64,13 +64,13 @@ public class ContactController {
             }
 
             // Envia mensagem via WhatsApp
-            boolean messageSent = whatsAppService.sendMessage(
+            String result = whatsAppService.sendMessage(
                     request.getPhone(),
                     request.getName(),
                     selectedPackage.getName()
             );
 
-            if (messageSent) {
+            if (result != null && result.contains("sucesso")) {
                 log.info("Mensagem enviada com sucesso para: {}", maskPhone(request.getPhone()));
                 return ResponseEntity.ok(
                         new ContactResponse(true, "Mensagem enviada com sucesso! Entraremos em contato em breve.")
