@@ -4,7 +4,1030 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MK Tech Automação Residencial</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        :root {
+    --primary: #5931a3;
+    --primary-dark: #3d2d5f;
+    --accent: #FFD700;
+    --dark: #0f172a;
+    --light: #ffffff;
+    --text-light: rgba(255, 255, 255, 0.9);
+    --border-radius: 12px;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ====================================
+   NAVEGAÇÃO
+   ==================================== */
+nav {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+nav .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+nav .nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+nav .nav-links a:hover {
+    color: var(--primary);
+}
+
+/* ====================================
+   HERO SECTION
+   ==================================== */
+.hero {
+    background: linear-gradient(135deg, #6e38b6 0%, #2a1a47 50%, #1a0f2e 100%);
+    color: white;
+    padding: 6rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 400px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    transform: translate(200px, -200px);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    animation: fadeInDown 1s ease-out;
+}
+
+.hero .subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.hero .cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+/* ====================================
+   BOTÕES
+   ==================================== */
+.btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: var(--dark);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 13px 30px;
+    border-radius: 50px;
+    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+}
+
+.btn-primary:hover {
+    background: #FFE033;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(255, 215, 0, 0.4);
+}
+
+.btn-secondary {
+    background: rgba(255,255,255,0.15);
+    color: white;
+    border: 2px solid white;
+    font-weight: 600;
+}
+
+.btn-secondary:hover {
+    background: var(--accent);
+    color: var(--primary);
+    border-color: var(--accent);
+}
+
+/* ====================================
+   CONTAINER
+   ==================================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* ====================================
+   SEÇÃO DE BENEFÍCIOS
+   ==================================== */
+.benefits-section {
+    padding: 5rem 2rem;
+    background: white;
+}
+
+.benefits-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--dark-color);
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.benefit-item {
+    text-align: center;
+    padding: 2rem;
+}
+
+.benefit-item .icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.benefit-item h3 {
+    font-size: 1.3rem;
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+}
+
+.benefit-item p {
+    color: #666;
+}
+
+/* ====================================
+   CTA SECTION
+   ==================================== */
+.cta-section {
+    background: linear-gradient(135deg, #5d4fa7 0%, #3d2d5f 50%, #2a1a47 100%);
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.cta-section p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ====================================
+   FOOTER
+   ==================================== */
+footer {
+    background: var(--dark-color);
+    color: white;
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+footer p {
+    margin: 0.5rem 0;
+}
+
+footer .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 2rem;
+    padding-top: 2rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* ====================================
+   ANIMAÇÕES
+   ==================================== */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ====================================
+   RESPONSIVO - MOBILE EXTRA SMALL (< 480px)
+   ==================================== */
+@media (max-width: 479px) {
+    /* Navegação */
+    nav {
+        padding: 0.75rem 1rem;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    nav .logo {
+        font-size: 1.3rem;
+    }
+
+    nav .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    nav .nav-links a {
+        font-size: 0.85rem;
+        padding: 0.5rem 0;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 3rem 1rem;
+    }
+
+    .hero::before {
+        width: 200px;
+        height: 200px;
+        transform: translate(100px, -100px);
+    }
+
+    .hero h1 {
+        font-size: 1.75rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .hero .subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero .cta-buttons {
+        gap: 0.75rem;
+    }
+
+    .btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.85rem;
+        width: 100%;
+    }
+
+    /* Seções */
+    .benefits-section,
+    .cta-section {
+        padding: 2.5rem 1rem;
+    }
+
+    h2 {
+        font-size: 1.5rem !important;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Grids */
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    /* Cards */
+    .benefit-item {
+        padding: 1.25rem;
+    }
+
+    /* Footer */
+    footer {
+        padding: 2rem 1rem;
+    }
+
+    footer p {
+        font-size: 0.85rem;
+    }
+}
+
+/* ====================================
+   RESPONSIVO - MOBILE SMALL (480px - 767px)
+   ==================================== */
+@media (min-width: 480px) and (max-width: 767px) {
+    /* Navegação */
+    nav {
+        padding: 0.85rem 1.5rem;
+        flex-direction: column;
+        gap: 0.85rem;
+    }
+
+    nav .logo {
+        font-size: 1.5rem;
+    }
+
+    nav .nav-links {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    nav .nav-links a {
+        font-size: 0.9rem;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 4rem 1.5rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1rem;
+    }
+
+    .hero .cta-buttons {
+        flex-direction: column;
+        gap: 0.85rem;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 0.85rem 2rem;
+    }
+
+    /* Seções */
+    .benefits-section,
+    .cta-section {
+        padding: 3rem 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.75rem !important;
+    }
+
+    /* Grids */
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+}
+
+/* ====================================
+   RESPONSIVO - TABLET (768px - 1023px)
+   ==================================== */
+@media (min-width: 768px) and (max-width: 1023px) {
+    nav {
+        padding: 1rem 1.5rem;
+    }
+
+    nav .logo {
+        font-size: 1.6rem;
+    }
+
+    nav .nav-links {
+        gap: 1.5rem;
+    }
+
+    .hero {
+        padding: 5rem 1.5rem;
+    }
+
+    .hero h1 {
+        font-size: 2.75rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1.25rem;
+    }
+
+    /* Seções */
+    .benefits-section,
+    .cta-section {
+        padding: 4rem 1.5rem;
+    }
+
+    h2 {
+        font-size: 2.25rem !important;
+    }
+
+    /* Grids */
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ====================================
+   RESPONSIVO - DESKTOP MÉDIO (1024px - 1439px)
+   ==================================== */
+@media (min-width: 1024px) and (max-width: 1439px) {
+    nav {
+        padding: 1rem 2rem;
+    }
+
+    nav .logo {
+        font-size: 1.7rem;
+    }
+
+    .hero {
+        padding: 5.5rem 2rem;
+    }
+
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1.4rem;
+    }
+
+    /* Seções */
+    .benefits-section,
+    .cta-section {
+        padding: 4.5rem 2rem;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    /* Grids */
+    .benefits-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ====================================
+   RESPONSIVO - DESKTOP GRANDE (> 1440px)
+   ==================================== */
+@media (min-width: 1440px) {
+    nav {
+        padding: 1rem 2rem;
+    }
+
+    nav .logo {
+        font-size: 1.8rem;
+    }
+
+    .hero {
+        padding: 6rem 2rem;
+    }
+
+    .hero h1 {
+        font-size: 4rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1.5rem;
+    }
+
+    /* Seções */
+    .benefits-section,
+    .cta-section {
+        padding: 5rem 2rem;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    /* Grids */
+    .benefits-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .container {
+        max-width: 1400px;
+    }
+}
+
+.quick-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+}
+
+.feature-item {
+    text-align: center;
+    padding: 2rem;
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.feature-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+}
+
+.feature-item p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+}
+
+.section-title p {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.benefits {
+    padding: 5rem 2rem;
+    background: white;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.benefit-card {
+    background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border-left: 4px solid var(--primary);
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.benefit-card h3 {
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+}
+
+.benefit-card p {
+    color: #666;
+    line-height: 1.8;
+}
+
+.packages {
+    padding: 5rem 2rem;
+    background: #f9f9f9;
+}
+
+.packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.package-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
+    border: 3px solid transparent;
+    display: flex;
+    flex-direction: column;
+}
+
+.package-card.featured {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, rgba(93, 79, 167, 0.15) 0%, rgba(61, 45, 95, 0.15) 100%);
+    color: white;
+    border: 2px solid var(--accent);
+}
+
+.package-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+.package-card.featured:hover {
+    transform: scale(1.05) translateY(-10px);
+}
+
+.package-badge {
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    background: #FFD700;
+    color: #000;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.package-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.package-card.featured h3 {
+    color: white;
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--accent);
+    margin: 1rem 0;
+}
+
+.package-card.featured .price {
+    color: #FFD700;
+}
+
+.period {
+    color: #999;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+.package-card ul {
+    list-style: none;
+    margin: 1.5rem 0;
+    flex-grow: 1;
+}
+
+.package-card li {
+    padding: 0.75rem;
+    margin: 0.25rem 0;
+    background: var(--light-color);
+    border-radius: 4px;
+    border-left: 3px solid var(--primary);
+    font-size: 0.95rem;
+}
+
+.package-card.featured li {
+    background: rgba(255,255,255,0.2);
+    border-left-color: #FFD700;
+    color: rgba(255,255,255,0.95);
+}
+
+.testimonials {
+    padding: 5rem 2rem;
+    background: white;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    background: #f9f9f9;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.stars {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--accent);
+}
+
+.testimonial-text {
+    color: #666;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    font-size: 0.95rem;
+    font-style: italic;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.author-avatar {
+    width: 50px;
+    height: 50px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.author-info h4 {
+    color: var(--primary);
+    margin-bottom: 0.25rem;
+}
+
+.author-info p {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.contact {
+    padding: 5rem 2rem;
+    background: linear-gradient(135deg, #5d4fa7 0%, #3d2d5f 50%, #2a1a47 100%);
+    color: white;
+}
+
+.contact .section-title h2 {
+    color: white;
+}
+
+.contact .section-title p {
+    color: rgba(255,255,255,0.8);
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.contact-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+}
+
+.contact-item h4 {
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.contact-item p {
+    color: rgba(255,255,255,0.9);
+    line-height: 1.6;
+}
+
+.contact-form {
+    background: rgba(255,255,255,0.1);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(10px);
+}
+
+.contact-form h3 {
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: white;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 6px;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: rgba(255,255,255,0.15);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+}
+
+.footer-section h4 {
+    margin-bottom: 1rem;
+    color: var(--accent);
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section a:hover {
+    color: var(--accent);
+}
+
+.footer-section li {
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    .package-card.featured {
+        transform: scale(1);
+    }
+
+    .package-card.featured:hover {
+        transform: translateY(-8px);
+    }
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hero .subtitle {
+    margin-bottom: 2rem;
+}
+
+#dark-color {
+    color: var(--dark-color);
+}
+
+@media (max-width: 768px) {
+    .packages-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .quick-features {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .quick-features {
+        grid-template-columns: 1fr;
+        padding: 2rem 1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .contact-form {
+        padding: 1.5rem;
+    }
+}
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -20,14 +1043,9 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-shape-1"></div>
-        <div class="hero-shape-2"></div>
-        <div class="hero-shape-3"></div>
-        <div class="hero-shape-4"></div>
-        
         <div class="hero-content">
             <h1>Sua Casa Inteligente Começa Aqui</h1>
-            <p>Automação residencial com segurança, economia de energia e total conforto para sua família. Transforme sua casa em um lar inteligente com tecnologia de ponta.</p>
+            <p class="subtitle">Automação residencial com segurança, economia de energia e total conforto para sua família. Transforme sua casa em um lar inteligente com tecnologia de ponta.</p>
             <div class="hero-buttons">
                 <button class="btn btn-primary" onclick="document.querySelector('#pacotes').scrollIntoView({behavior: 'smooth'});">
                     Explorar Pacotes
@@ -116,7 +1134,7 @@
                     <li>Suporte básico</li>
                     <li>6 meses de garantia</li>
                 </ul>
-                <button class="btn btn-primary" onclick="scrollToContact();">Solicitar Orçamento</button>
+                <button class="btn btn-primary" onclick="document.querySelector('#contato').scrollIntoView({behavior: 'smooth'});">Solicitar Orçamento</button>
             </div>
 
             <div class="package-card featured">
@@ -133,7 +1151,7 @@
                     <li>Suporte prioritário</li>
                     <li>12 meses de garantia</li>
                 </ul>
-                <button class="btn btn-primary" onclick="scrollToContact();">Solicitar Orçamento</button>
+                <button class="btn btn-primary" onclick="document.querySelector('#contato').scrollIntoView({behavior: 'smooth'});">Solicitar Orçamento</button>
             </div>
 
             <div class="package-card">
@@ -152,7 +1170,7 @@
                     <li>Suporte VIP 24/7</li>
                     <li>24 meses de garantia</li>
                 </ul>
-                <button class="btn btn-primary" onclick="scrollToContact();">Solicitar Orçamento</button>
+                <button class="btn btn-primary" onclick="document.querySelector('#contato').scrollIntoView({behavior: 'smooth'});">Solicitar Orçamento</button>
             </div>
         </div>
     </section>
@@ -178,7 +1196,7 @@
 
             <div class="testimonial-card">
                 <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p class="testimonial-text">""Já pensou em dizer 'vou para a cozinha' e as luzes acenderem automaticamente, ou apagar a casa inteira pelo celular antes de dormir? A MK Tech nasceu para simplificar sua rotina através da automação residencial. Instalamos interruptores inteligentes, sensores e sistemas de voz que trazem modernidade, segurança e redução na conta de luz. Mais que tecnologia, entregamos praticidade para você e sua família. Sinta o prazer de viver em uma casa que te obedece!""</p>
+                <p class="testimonial-text">"Já pensou em dizer 'vou para a cozinha' e as luzes acenderem automaticamente? A MK Tech é incrível!"</p>
                 <div class="testimonial-author">
                     <div class="author-avatar">MS</div>
                     <div class="author-info">
@@ -202,7 +1220,7 @@
 
             <div class="testimonial-card">
                 <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p class="testimonial-text">"Não sabia que minha casa podia ser assim! Incredibly user-friendly e a equipe foi muito prestativa na instalação."</p>
+                <p class="testimonial-text">"Não sabia que minha casa podia ser assim! Muito fácil de usar e a equipe foi muito prestativa."</p>
                 <div class="testimonial-author">
                     <div class="author-avatar">AO</div>
                     <div class="author-info">
@@ -233,14 +1251,14 @@
                     <div class="contact-icon">📱</div>
                     <div>
                         <h4>Telefone</h4>
-                        <p><a href="tel:+551130001000" style="color: var(--light); text-decoration: none;">(11) 3000-1000</a><br><a href="https://wa.me/551199999999" style="color: var(--light); text-decoration: none;">WhatsApp (11) 99999-9999</a></p>
+                        <p><a href="tel:+551130001000" style="color: white; text-decoration: none;">(11) 3000-1000</a><br><a href="https://wa.me/551199999999" style="color: white; text-decoration: none;">WhatsApp (11) 99999-9999</a></p>
                     </div>
                 </div>
                 <div class="contact-item">
                     <div class="contact-icon">📧</div>
                     <div>
                         <h4>Email</h4>
-                        <p><a href="mailto:contato@mktech.com.br" style="color: var(--light); text-decoration: none;">contato@mktech.com.br</a><br><a href="mailto:suporte@mktech.com.br" style="color: var(--light); text-decoration: none;">suporte@mktech.com.br</a></p>
+                        <p><a href="mailto:contato@mktech.com.br" style="color: white; text-decoration: none;">contato@mktech.com.br</a><br><a href="mailto:suporte@mktech.com.br" style="color: white; text-decoration: none;">suporte@mktech.com.br</a></p>
                     </div>
                 </div>
                 <div class="contact-item">
@@ -254,29 +1272,24 @@
 
             <form class="contact-form" onsubmit="sendContact(event)">
                 <h3>📝 Enviar Mensagem</h3>
-                <!-- CSRF Token (Spring Security) -->
-                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                 <div class="form-group">
                     <label for="name">Nome Completo</label>
                     <input type="text" id="name" name="name" placeholder="Seu nome" required minlength="2" maxlength="100">
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="seu@email.com" required>
-                </div>
-                <div class="form-group">
                     <label for="phone">Telefone</label>
-                    <input type="tel" id="phone" name="phone" placeholder="(11) 99999-9999" required pattern="\(?[0-9]{2}\)?\s?9?[0-9]{4}-?[0-9]{4}">
+                    <input type="tel" id="phone" name="phone" placeholder="(11) 99999-9999" required>
                 </div>
                 <div class="form-group">
-                    <label for="subject">Assunto</label>
-                    <input type="text" id="subject" name="subject" placeholder="Qual sua dúvida?" required maxlength="100">
+                    <label for="packageLevel">Pacote de Interesse</label>
+                    <select id="packageLevel" name="packageLevel" required style="width: 100%; padding: 0.8rem; border: 2px solid rgba(255,255,255,0.3); border-radius: 6px; background: rgba(255,255,255,0.1); color: white; font-family: inherit;">
+                        <option value="" style="color: black;">Selecione um pacote</option>
+                        <option value="Prata" style="color: black;">💎 Prata - R$ 1.499</option>
+                        <option value="Ouro" style="color: black;">🥇 Ouro - R$ 2.999</option>
+                        <option value="Platina" style="color: black;">👑 Platina - R$ 4.999</option>
+                    </select>
                 </div>
-                <div class="form-group">
-                    <label for="message">Mensagem</label>
-                    <textarea id="message" name="message" rows="4" placeholder="Conte mais detalhes..." required maxlength="500"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Mensagem</button>
             </form>
         </div>
     </section>
@@ -322,7 +1335,75 @@
         </div>
     </footer>
 
-    <!-- Link para JavaScript externo -->
-    <script th:src="@{/js/script.js}"></script>
+    <!-- JavaScript Inline -->
+    <script>
+        async function sendContact(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const packageLevel = document.getElementById('packageLevel').value;
+
+            if (!name || name.length < 2) {
+                alert('Por favor, insira um nome válido!');
+                return;
+            }
+
+            const phoneDigits = phone.replace(/\D/g, '');
+            if (phoneDigits.length < 10) {
+                alert('Por favor, insira um telefone com DDD válido!');
+                return;
+            }
+
+            if (!packageLevel) {
+                alert('Por favor, selecione um pacote!');
+                return;
+            }
+
+            const formData = {
+                name: name,
+                phone: phone,
+                packageLevel: packageLevel
+            };
+
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    alert('✅ Mensagem enviada com sucesso! Entraremos em contato em breve.');
+                    document.querySelector('.contact-form').reset();
+                } else {
+                    alert('❌ Erro ao enviar mensagem. Tente novamente.');
+                }
+            } catch (error) {
+                console.error('Erro:', error);
+                alert('❌ Erro ao enviar mensagem. Tente novamente mais tarde.');
+            }
+        }
+
+        // Scroll suave para links âncora
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Log de inicialização
+        console.log('MK Tech Landing Page - Inicializado com CSS e JS inline');
+    </script>
 </body>
 </html>
