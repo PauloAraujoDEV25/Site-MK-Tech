@@ -112,6 +112,14 @@ nav .nav-links a:hover {
     animation: fadeInDown 1s ease-out;
 }
 
+.hero .greeting {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+    font-weight: 600;
+    animation: fadeInDown 1s ease-out 0.1s both;
+}
+
 .hero .subtitle {
     font-size: 1.5rem;
     margin-bottom: 2rem;
@@ -335,6 +343,11 @@ footer .footer-bottom {
         margin-bottom: 0.75rem;
     }
 
+    .hero .greeting {
+        font-size: 1.2rem;
+        margin-bottom: 0.4rem;
+    }
+
     .hero .subtitle {
         font-size: 0.95rem;
         margin-bottom: 1.5rem;
@@ -415,6 +428,10 @@ footer .footer-bottom {
         font-size: 2rem;
     }
 
+    .hero .greeting {
+        font-size: 1.3rem;
+    }
+
     .hero .subtitle {
         font-size: 1rem;
     }
@@ -470,6 +487,10 @@ footer .footer-bottom {
         font-size: 2.75rem;
     }
 
+    .hero .greeting {
+        font-size: 1.5rem;
+    }
+
     .hero .subtitle {
         font-size: 1.25rem;
     }
@@ -510,6 +531,10 @@ footer .footer-bottom {
         font-size: 3.5rem;
     }
 
+    .hero .greeting {
+        font-size: 1.6rem;
+    }
+
     .hero .subtitle {
         font-size: 1.4rem;
     }
@@ -548,6 +573,10 @@ footer .footer-bottom {
 
     .hero h1 {
         font-size: 4rem;
+    }
+
+    .hero .greeting {
+        font-size: 1.8rem;
     }
 
     .hero .subtitle {
@@ -1044,6 +1073,7 @@ footer .footer-bottom {
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
+            <p class="greeting" id="greeting">Olá!</p>
             <h1>Sua Casa Inteligente Começa Aqui</h1>
             <p class="subtitle">Automação residencial com segurança, economia de energia e total conforto para sua família. Transforme sua casa em um lar inteligente com tecnologia de ponta.</p>
             <div class="hero-buttons">
@@ -1338,6 +1368,26 @@ footer .footer-bottom {
 
     <!-- JavaScript Inline -->
     <script>
+        // Função para definir a saudação baseada na hora do dia
+        function setGreeting() {
+            const greetingElement = document.getElementById('greeting');
+            const currentHour = new Date().getHours();
+            
+            let greeting;
+            if (currentHour >= 5 && currentHour < 12) {
+                greeting = 'Bom dia!';
+            } else if (currentHour >= 12 && currentHour < 18) {
+                greeting = 'Boa tarde!';
+            } else {
+                greeting = 'Boa noite!';
+            }
+            
+            greetingElement.textContent = greeting;
+        }
+        
+        // Definir a saudação ao carregar a página
+        setGreeting();
+
         async function sendContact(event) {
             event.preventDefault();
 
