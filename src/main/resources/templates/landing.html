@@ -1073,7 +1073,7 @@ footer .footer-bottom {
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <p class="greeting" id="greeting">Olá!</p>
+            <p class="greeting" id="greeting" aria-live="polite">Olá!</p>
             <h1>Sua Casa Inteligente Começa Aqui</h1>
             <p class="subtitle">Automação residencial com segurança, economia de energia e total conforto para sua família. Transforme sua casa em um lar inteligente com tecnologia de ponta.</p>
             <div class="hero-buttons">
@@ -1371,6 +1371,11 @@ footer .footer-bottom {
         // Função para definir a saudação baseada na hora do dia
         function setGreeting() {
             const greetingElement = document.getElementById('greeting');
+            if (!greetingElement) {
+                console.warn('Greeting element not found');
+                return;
+            }
+            
             const currentHour = new Date().getHours();
             
             let greeting;
