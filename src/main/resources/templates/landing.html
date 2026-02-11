@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MKTech - Automação Residencial</title>
+    <link rel="icon" type="image/png" th:href="@{/MKTech.png}" href="../static/MKTech.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -12,21 +13,21 @@
    VARIÁVEIS - DARK MODE (padrão)
    ============================================ */
 :root {
-    --primary: #9333ea;
+    --primary: #7c3aed;
     --primary-light: #a855f7;
-    --primary-dark: #7e22ce;
-    --primary-glow: rgba(147, 51, 234, 0.35);
-    --accent: #f59e0b;
-    --accent-light: #fbbf24;
-    --accent-dark: #d97706;
-    --accent-glow: rgba(245, 158, 11, 0.25);
+    --primary-dark: #5b21b6;
+    --primary-glow: rgba(124, 58, 237, 0.5);
+    --accent: #fb923c;
+    --accent-light: #fdba74;
+    --accent-dark: #f97316;
+    --accent-glow: rgba(251, 146, 60, 0.45);
 
-    --bg-body: #09090f;
-    --bg-primary: #0a0a0f;
-    --bg-secondary: #111118;
-    --bg-card: #16161f;
-    --bg-card-hover: #1e1e2a;
-    --bg-nav: rgba(9, 9, 15, 0.88);
+    --bg-body: #050816;
+    --bg-primary: #020617;
+    --bg-secondary: #050818;
+    --bg-card: #0b1024;
+    --bg-card-hover: #101632;
+    --bg-nav: rgba(2, 6, 23, 0.9);
     --bg-input: rgba(255,255,255,0.06);
     --bg-input-focus: rgba(255,255,255,0.1);
 
@@ -42,54 +43,56 @@
     --radius: 16px;
     --radius-sm: 10px;
     --radius-pill: 50px;
-    --shadow: 0 4px 20px rgba(0,0,0,0.3);
-    --shadow-lg: 0 12px 40px rgba(0,0,0,0.4);
+    --shadow: 0 8px 30px rgba(15,23,42,0.8);
+    --shadow-lg: 0 20px 60px rgba(15,23,42,0.95);
     --shadow-glow: 0 0 40px var(--primary-glow);
     --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 
-    --gradient-hero: linear-gradient(160deg, #1a0533 0%, #0d0018 50%, #09090f 100%);
-    --gradient-section-alt: linear-gradient(160deg, #111118 0%, #09090f 100%);
-    --gradient-cta: linear-gradient(160deg, #2a1250 0%, #150930 50%, #0d0018 100%);
+    --gradient-hero: radial-gradient(circle at 10% 20%, #1d2453 0%, transparent 55%),
+                     radial-gradient(circle at 80% 0%, rgba(248, 113, 113, 0.15) 0%, transparent 50%),
+                     linear-gradient(135deg, #020617 0%, #02021f 40%, #1e1148 70%, #4c1d95 100%);
+    --gradient-section-alt: linear-gradient(160deg, #050816 0%, #020617 100%);
+    --gradient-cta: linear-gradient(145deg, #4c1d95 0%, #7c3aed 40%, #fb923c 100%);
 }
 
 /* ============================================
    VARIÁVEIS - LIGHT MODE
    ============================================ */
 [data-theme="light"] {
-    --primary: #7c3aed;
-    --primary-light: #8b5cf6;
-    --primary-dark: #6d28d9;
-    --primary-glow: rgba(124, 58, 237, 0.15);
-    --accent: #d97706;
-    --accent-light: #f59e0b;
-    --accent-dark: #b45309;
-    --accent-glow: rgba(217, 119, 6, 0.12);
+    --primary: #6366f1;
+    --primary-light: #818cf8;
+    --primary-dark: #4f46e5;
+    --primary-glow: rgba(99, 102, 241, 0.18);
+    --accent: #f97316;
+    --accent-light: #fdba74;
+    --accent-dark: #ea580c;
+    --accent-glow: rgba(249, 115, 22, 0.16);
 
-    --bg-body: #faf8ff;
+    --bg-body: #f9fafb;
     --bg-primary: #ffffff;
-    --bg-secondary: #f4f0fa;
+    --bg-secondary: #eef2ff;
     --bg-card: #ffffff;
-    --bg-card-hover: #f9f5ff;
-    --bg-nav: rgba(255, 255, 255, 0.92);
-    --bg-input: rgba(0,0,0,0.04);
-    --bg-input-focus: rgba(0,0,0,0.07);
+    --bg-card-hover: #f3f4ff;
+    --bg-nav: rgba(255, 255, 255, 0.96);
+    --bg-input: rgba(15, 23, 42, 0.03);
+    --bg-input-focus: rgba(15, 23, 42, 0.06);
 
-    --text-primary: #1a1a2e;
-    --text-secondary: #555570;
-    --text-muted: #8888a0;
+    --text-primary: #0f172a;
+    --text-secondary: #4b5563;
+    --text-muted: #9ca3af;
     --text-on-accent: #ffffff;
     --text-on-primary: #ffffff;
 
-    --border: rgba(0,0,0,0.08);
-    --border-hover: rgba(124, 58, 237, 0.25);
+    --border: rgba(15, 23, 42, 0.08);
+    --border-hover: rgba(99, 102, 241, 0.3);
 
-    --shadow: 0 4px 20px rgba(0,0,0,0.06);
-    --shadow-lg: 0 12px 40px rgba(0,0,0,0.1);
-    --shadow-glow: 0 0 30px var(--primary-glow);
+    --shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+    --shadow-lg: 0 18px 60px rgba(15, 23, 42, 0.12);
+    --shadow-glow: 0 0 32px var(--primary-glow);
 
-    --gradient-hero: linear-gradient(160deg, #ede7f6 0%, #f5f0ff 50%, #faf8ff 100%);
-    --gradient-section-alt: linear-gradient(160deg, #f4f0fa 0%, #faf8ff 100%);
-    --gradient-cta: linear-gradient(160deg, #e8dff5 0%, #ede7f6 50%, #f5f0ff 100%);
+    --gradient-hero: linear-gradient(160deg, #e5e7eb 0%, #eef2ff 45%, #f9fafb 100%);
+    --gradient-section-alt: linear-gradient(160deg, #eef2ff 0%, #f9fafb 100%);
+    --gradient-cta: linear-gradient(160deg, #e0e7ff 0%, #e5e7eb 45%, #f9fafb 100%);
 }
 
 /* ============================================
@@ -149,6 +152,12 @@ img { max-width: 100%; display: block; }
     align-items: center;
     gap: 0.5rem;
     color: var(--text-primary);
+}
+
+.nav-logo img {
+    height: 32px;
+    width: auto;
+    display: block;
 }
 
 .nav-logo span {
@@ -253,28 +262,99 @@ img { max-width: 100%; display: block; }
     overflow: hidden;
 }
 
+.hero-decoration {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hero-dots-left {
+    position: absolute;
+    left: 4%;
+    top: 18%;
+    width: 6px;
+    height: 140px;
+    background-image: radial-gradient(circle, rgba(15, 23, 42, 0.7) 2px, transparent 2px);
+    background-size: 6px 14px;
+    opacity: 0.45;
+}
+
+[data-theme="light"] .hero-dots-left {
+    background-image: radial-gradient(circle, rgba(15, 23, 42, 0.4) 2px, transparent 2px);
+}
+
+.hero-plus-right {
+    position: absolute;
+    right: 6%;
+    bottom: 10%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    color: rgba(15, 23, 42, 0.6);
+}
+
+[data-theme="dark"] .hero-plus-right {
+    color: rgba(15, 23, 42, 0.25);
+}
+
+.hero-plus-right span {
+    display: inline-block;
+}
+
+.hero-ribbon-center {
+    position: absolute;
+    right: -10%;
+    top: 5%;
+    width: 520px;
+    height: 520px;
+    background:
+        radial-gradient(circle at 10% 0%, rgba(251, 146, 60, 0.0) 0%, rgba(251, 146, 60, 0.45) 35%, transparent 70%),
+        radial-gradient(circle at 90% 100%, rgba(129, 140, 248, 0.0) 0%, rgba(129, 140, 248, 0.50) 35%, transparent 70%);
+    opacity: 0.9;
+    filter: blur(4px);
+    transform: rotate(-24deg) translateX(10%);
+    mix-blend-mode: screen;
+}
+
+[data-theme="light"] .hero-ribbon-center {
+    opacity: 0.55;
+    filter: blur(5px);
+}
+
 .hero::before {
     content: '';
     position: absolute;
-    top: -30%;
-    right: -15%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+    top: -40%;
+    right: -20%;
+    width: 720px;
+    height: 720px;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(251, 146, 60, 0.35) 0%, transparent 55%),
+        radial-gradient(circle at 70% 70%, rgba(248, 113, 113, 0.35) 0%, transparent 60%),
+        radial-gradient(circle, rgba(124, 58, 237, 0.65) 0%, transparent 70%);
     border-radius: 50%;
-    animation: float 8s ease-in-out infinite;
+    filter: blur(2px);
+    opacity: 0.9;
+    animation: float 10s ease-in-out infinite;
 }
 
 .hero::after {
     content: '';
     position: absolute;
-    bottom: -20%;
-    left: -10%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    bottom: -25%;
+    left: -15%;
+    width: 520px;
+    height: 520px;
+    background:
+        radial-gradient(circle at 30% 10%, rgba(56, 189, 248, 0.32) 0%, transparent 55%),
+        radial-gradient(circle at 80% 80%, rgba(129, 140, 248, 0.4) 0%, transparent 65%),
+        radial-gradient(circle, rgba(15, 23, 42, 0.9) 0%, transparent 70%);
     border-radius: 50%;
-    animation: float 10s ease-in-out infinite reverse;
+    opacity: 0.7;
+    animation: float 14s ease-in-out infinite reverse;
 }
 
 @keyframes float {
@@ -997,6 +1077,14 @@ img { max-width: 100%; display: block; }
 @media (max-width: 767px) {
     .hamburger { display: flex; }
 
+    .nav-logo {
+        font-size: 1.25rem;
+    }
+
+    .nav-logo img {
+        height: 26px;
+    }
+
     .nav-links {
         position: fixed;
         top: 0;
@@ -1067,6 +1155,10 @@ img { max-width: 100%; display: block; }
 @media (min-width: 768px) and (max-width: 1023px) {
     .hamburger { display: flex; }
 
+    .nav-logo img {
+        height: 30px;
+    }
+
     .nav-links {
         position: fixed;
         top: 0;
@@ -1109,6 +1201,10 @@ img { max-width: 100%; display: block; }
     .benefits-grid { grid-template-columns: repeat(3, 1fr); }
     .packages-grid { grid-template-columns: repeat(3, 1fr); }
     .quick-features { grid-template-columns: repeat(4, 1fr); }
+
+    .nav-logo img {
+        height: 34px;
+    }
 }
 
 /* ============================================
@@ -1135,7 +1231,7 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
     <!-- Navegação -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#" class="nav-logo"><img th:src="@{/MKTech.png}" src="/MKTech.png" alt="MKTech logo"><span>MKTech</span></a>
+            <a href="#" class="nav-logo"><img th:src="@{/MKTech.png}" src="../static/MKTech.png" alt="MKTech logo"><span>MKTech</span></a>
 
             <div class="nav-links" id="navLinks">
                 <a href="#beneficios">Benefícios</a>
@@ -1160,6 +1256,16 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
 
     <!-- Hero -->
     <section class="hero">
+        <div class="hero-decoration">
+            <div class="hero-dots-left"></div>
+            <div class="hero-ribbon-center"></div>
+            <div class="hero-plus-right">
+                <span>+</span>
+                <span>+</span>
+                <span>+</span>
+                <span>+</span>
+            </div>
+        </div>
         <div class="hero-content">
             <div class="hero-badge">⚡ Tecnologia que transforma</div>
             <h1>Sua Casa <span class="highlight">Inteligente</span> Começa Aqui</h1>
@@ -1452,7 +1558,7 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
     <footer class="footer">
         <div class="footer-grid">
             <div class="footer-brand">
-                <div class="nav-logo"><img th:src="@{/MKTech.png}" src="/MKTech.png" alt="MKTech logo"> MK<span>Tech</span></div>
+                <div class="nav-logo"><img th:src="@{/MKTech.png}" src="../static/MKTech.png" alt="MKTech logo"> MK<span>Tech</span></div>
                 <p>Transformando casas em lares inteligentes desde 2026.</p>
             </div>
             <div class="footer-section">
