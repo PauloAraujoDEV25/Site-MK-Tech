@@ -7,7 +7,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
 /* ============================================
    VARIÁVEIS - DARK MODE (padrão)
@@ -469,7 +468,22 @@ img { max-width: 100%; display: block; }
 .feature-icon {
     font-size: 2.5rem;
     margin-bottom: 0.75rem;
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(147, 51, 234, 0.3);
+}
+
+.feature-icon svg {
+    width: 30px;
+    height: 30px;
+    fill: currentColor;
 }
 
 .feature-item h3 {
@@ -529,6 +543,23 @@ img { max-width: 100%; display: block; }
 .benefit-card .card-icon {
     font-size: 2rem;
     margin-bottom: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent-light), var(--accent-dark));
+    color: var(--text-on-accent);
+    font-weight: 600;
+    box-shadow: 0 3px 10px rgba(245, 158, 11, 0.3);
+}
+
+.benefit-card .card-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
     display: block;
 }
 
@@ -783,16 +814,23 @@ img { max-width: 100%; display: block; }
 }
 
 .contact-icon {
-    font-size: 2rem;
+    font-size: 1.5rem;
     flex-shrink: 0;
     width: 52px;
     height: 52px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(147, 51, 234, 0.1);
+    background: linear-gradient(135deg, rgba(147, 51, 234, 0.2), rgba(147, 51, 234, 0.05));
     border-radius: var(--radius-sm);
     border: 1px solid var(--border);
+    color: var(--primary-light);
+}
+
+.contact-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
 }
 
 .contact-item h4 {
@@ -893,6 +931,20 @@ img { max-width: 100%; display: block; }
 .form-success .success-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+}
+
+.form-success .success-icon svg {
+    width: 40px;
+    height: 40px;
+    fill: currentColor;
 }
 
 .form-success h4 {
@@ -1147,8 +1199,17 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
 
             <div class="nav-actions">
                 <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
-                    <span class="icon-moon"><i class="fas fa-moon"></i></span>
-                    <span class="icon-sun"><i class="fas fa-sun"></i></span>
+                    <span class="icon-moon">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
+                    </span>
+                    <span class="icon-sun">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                            <circle cx="12" cy="12" r="5"/>
+                            <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                        </svg>
+                    </span>
                 </button>
                 <button class="hamburger" id="hamburger" aria-label="Menu">
                     <span></span>
@@ -1176,22 +1237,39 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
     <section class="section-alt">
         <div class="quick-features">
             <div class="feature-item reveal">
-                <span class="feature-icon"><i class="fas fa-bolt"></i></span>
+                <span class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                    </svg>
+                </span>
                 <h3>Economia Inteligente</h3>
                 <p>Reduza até 40% na conta de energia com automação</p>
             </div>
             <div class="feature-item reveal">
-                <span class="feature-icon"><i class="fas fa-shield-alt"></i></span>
+                <span class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </span>
                 <h3>Segurança Total</h3>
                 <p>Monitoramento 24/7 com câmeras e alertas em tempo real</p>
             </div>
             <div class="feature-item reveal">
-                <span class="feature-icon"><i class="fas fa-mobile-alt"></i></span>
+                <span class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                        <path d="M12 18h.01"/>
+                    </svg>
+                </span>
                 <h3>Controle Mobile</h3>
                 <p>Gerencie tudo de onde estiver pelo celular</p>
             </div>
             <div class="feature-item reveal">
-                <span class="feature-icon"><i class="fas fa-trophy"></i></span>
+                <span class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/>
+                    </svg>
+                </span>
                 <h3>Valor Agregado</h3>
                 <p>Valorize seu imóvel em até 15% no mercado</p>
             </div>
@@ -1207,32 +1285,65 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
             </div>
             <div class="benefits-grid">
                 <div class="benefit-card reveal">
-                    <span class="card-icon"><i class="fas fa-tools"></i></span>
+                    <span class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                        </svg>
+                    </span>
                     <h3>Instalação Profissional</h3>
                     <p>Nossa equipe experiente realiza a instalação completa sem perturbações em suas atividades diárias.</p>
                 </div>
                 <div class="benefit-card reveal">
-                    <span class="card-icon"><i class="fas fa-headset"></i></span>
+                    <span class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                            <line x1="12" y1="19" x2="12" y2="23"/>
+                            <line x1="8" y1="23" x2="16" y2="23"/>
+                        </svg>
+                    </span>
                     <h3>Suporte Dedicado</h3>
                     <p>Atendimento ao cliente disponível 24/7 para resolver qualquer dúvida ou problema rapidamente.</p>
                 </div>
                 <div class="benefit-card reveal">
-                    <span class="card-icon"><i class="fas fa-sync-alt"></i></span>
+                    <span class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="23 4 23 10 17 10"/>
+                            <polyline points="1 20 1 14 7 14"/>
+                            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+                        </svg>
+                    </span>
                     <h3>Atualizações Gratuitas</h3>
                     <p>Receba novas funcionalidades e melhorias de segurança regularmente sem custos adicionais.</p>
                 </div>
                 <div class="benefit-card reveal">
-                    <span class="card-icon"><i class="fas fa-leaf"></i></span>
+                    <span class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2C8.25 7 12 12 12 12C12 12 15.75 7 12 2z"/>
+                            <path d="M12 22s-8-4.5-8-10v-2c0-4.42 3.58-8 8-8s8 3.58 8 8v2c0 5.5-8 10-8 10z"/>
+                        </svg>
+                    </span>
                     <h3>Soluções Sustentáveis</h3>
                     <p>Tecnologia eco-friendly que preserva o meio ambiente enquanto economiza sua energia.</p>
                 </div>
                 <div class="benefit-card reveal">
-                    <span class="card-icon"><i class="fas fa-credit-card"></i></span>
+                    <span class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                            <line x1="1" y1="10" x2="23" y2="10"/>
+                        </svg>
+                    </span>
                     <h3>Formas de Pagamento</h3>
                     <p>Diversos planos de financiamento para adaptar ao seu bolso e às suas necessidades.</p>
                 </div>
                 <div class="benefit-card reveal">
-                    <span class="card-icon"><i class="fas fa-rocket"></i></span>
+                    <span class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                            <line x1="3" y1="6" x2="21" y2="6"/>
+                            <path d="M16 10a4 4 0 0 1-8 0"/>
+                        </svg>
+                    </span>
                     <h3>Tecnologia de Ponta</h3>
                     <p>Equipamentos de marcas internacionais reconhecidas com garantia prolongada.</p>
                 </div>
@@ -1251,16 +1362,22 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                 <!-- Prata -->
                 <div class="package-card reveal">
                     <div class="package-badge">Básico</div>
-                    <h3><i class="fas fa-gem"></i> Prata</h3>
+                    <h3>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:8px;">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                        Prata
+                    </h3>
                     <div class="package-tier">Ideal para começar</div>
                     <div class="price">R$ 1.499</div>
                     <p class="price-period">Instalação única</p>
                     <ul>
-                        <li><span class="check"><i class="fas fa-check"></i></span> Iluminação Inteligente (até 10 pontos)</li>
-                        <li><span class="check"><i class="fas fa-check"></i></span> Fechadura Inteligente 1x</li>
-                        <li><span class="check"><i class="fas fa-check"></i></span> Aplicativo de Controle</li>
-                        <li><span class="check"><i class="fas fa-check"></i></span> Suporte básico</li>
-                        <li><span class="check"><i class="fas fa-check"></i></span> 6 meses de garantia</li>
+                        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></span> Iluminação Inteligente (até 10 pontos)</li>
+                        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></span> Fechadura Inteligente 1x</li>
+                        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></span> Aplicativo de Controle</li>
+                        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></span> Suporte básico</li>
+                        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></span> 6 meses de garantia</li>
                     </ul>
                     <button class="btn btn-outline" onclick="scrollTo('#contato')">Solicitar Orçamento</button>
                 </div>
@@ -1268,18 +1385,24 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                 <!-- Ouro -->
                 <div class="package-card featured reveal">
                     <div class="package-badge">Mais Popular</div>
-                    <h3><i class="fas fa-medal"></i> Ouro</h3>
+                    <h3>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:8px;">
+                            <circle cx="12" cy="8" r="7"/>
+                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                        </svg>
+                        Ouro
+                    </h3>
                     <div class="package-tier">Melhor custo-benefício</div>
                     <div class="price">R$ 2.999</div>
                     <p class="price-period">Instalação única</p>
                     <ul>
-                        <li><span class="check"><i class="fas fa-check"></i></span> Iluminação Inteligente (até 20 pontos)</li>
-                        <li><span class="check"><i class="fas fa-check"></i></span> Fechadura Inteligente 2x</li>
-                        <li><span class="check"><i class="fas fa-check"></i></span> Controle de Temperatura</li>
-                        <li><span class="check"><i class="fas fa-check"></i></span> Cortinas Inteligentes</li>
-                        <li><span class="check"><i class="fas fa-check"></i></span> Aplicativo + Automações</li>
-                        <li><span class="check"><i class="fas fa-check"></i></span> Suporte prioritário</li>
-                        <li><span class="check"><i class="fas fa-check"></i></span> 12 meses de garantia</li>
+                        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></span> Iluminação Inteligente (até 20 pontos)</li>
+                        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></span> Fechadura Inteligente 2x</li>
+                        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></span> Controle de Temperatura</li>
+                        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></span> Cortinas Inteligentes</li>
+                        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></span> Aplicativo + Automações</li>
+                        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></span> Suporte prioritário</li>
+                        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></span> 12 meses de garantia</li>
                     </ul>
                     <button class="btn btn-primary" onclick="scrollTo('#contato')">Solicitar Orçamento</button>
                 </div>
@@ -1287,20 +1410,25 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                 <!-- Platina -->
                 <div class="package-card reveal">
                     <div class="package-badge">Premium</div>
-                    <h3><i class="fas fa-crown"></i> Platina</h3>
+                    <h3>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:8px;">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        Platina
+                    </h3>
                     <div class="package-tier">Experiência completa</div>
                     <div class="price">R$ 4.999</div>
                     <p class="price-period">Instalação única</p>
                     <ul>
-                        <li><span class="check"><i class="fas fa-check"></i></span> Iluminação Inteligente (ilimitada)</li>
-                        <li><span class="check"><i class="fas fa-check"></i></span> Fechadura Inteligente ilimitada</li>
-                        <li><span class="check"><i class="fas fa-check"></i></span> Controle de Temperatura + Umidade</li>
-                        <li><span class="check"><i class="fas fa-check"></i></span> Cortinas Inteligentes motorizadas</li>
-                        <li><span class="check"><i class="fas fa-check"></i></span> Câmeras de Segurança 360° (4x)</li>
-                        <li><span class="check"><i class="fas fa-check"></i></span> Assistente de Voz IA</li>
-                        <li><span class="check"><i class="fas fa-check"></i></span> Automações Avançadas</li>
-                        <li><span class="check"><i class="fas fa-check"></i></span> Suporte VIP 24/7</li>
-                        <li><span class="check"><i class="fas fa-check"></i></span> 24 meses de garantia</li>
+                        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></span> Iluminação Inteligente (ilimitada)</li>
+                        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></span> Fechadura Inteligente ilimitada</li>
+                        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></span> Controle de Temperatura + Umidade</li>
+                        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></span> Cortinas Inteligentes motorizadas</li>
+                        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></span> Câmeras de Segurança 360° (4x)</li>
+                        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></span> Assistente de Voz IA</li>
+                        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></span> Automações Avançadas</li>
+                        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></span> Suporte VIP 24/7</li>
+                        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></span> 24 meses de garantia</li>
                     </ul>
                     <button class="btn btn-accent" onclick="scrollTo('#contato')">Solicitar Orçamento</button>
                 </div>
@@ -1386,28 +1514,47 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
             <div class="contact-content">
                 <div class="contact-info reveal">
                     <div class="contact-item">
-                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
                         <div>
                             <h4>Endereço</h4>
                             <p>Rua Parceria - Aurora<br>Uberlândia - MG, 38410-500</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                        </div>
                         <div>
                             <h4>Telefone</h4>
                             <p><a href="tel:+551130001000">(11) 3000-1000</a><br><a href="https://wa.me/551199999999">WhatsApp (11) 99999-9999</a></p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </div>
                         <div>
                             <h4>Email</h4>
                             <p><a href="mailto:contato@mktech.com.br">contato@mktech.com.br</a><br><a href="mailto:suporte@mktech.com.br">suporte@mktech.com.br</a></p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
                         <div>
                             <h4>Horário de Funcionamento</h4>
                             <p>Seg-Sex: 08:00 - 18:00<br>Sáb: 09:00 - 14:00</p>
@@ -1417,7 +1564,13 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
 
                 <div class="contact-form reveal" id="contactFormWrapper">
                     <form id="contactForm" onsubmit="sendContact(event)">
-                        <h3><i class="fas fa-paper-plane"></i> Enviar Mensagem</h3>
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;display:inline-block;vertical-align:middle;margin-right:8px;">
+                                <line x1="22" y1="2" x2="11" y2="13"/>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                            </svg>
+                            Enviar Mensagem
+                        </h3>
                         <div class="form-group">
                             <label for="name">Nome Completo</label>
                             <input type="text" id="name" name="name" placeholder="Seu nome" required minlength="2" maxlength="100">
@@ -1440,7 +1593,11 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                         </button>
                     </form>
                     <div class="form-success" id="formSuccess">
-                        <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="success-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                        </div>
                         <h4>Mensagem enviada com sucesso!</h4>
                         <p>Entraremos em contato em breve.</p>
                     </div>
