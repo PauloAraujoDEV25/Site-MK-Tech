@@ -1770,15 +1770,14 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
         });
 
         // ========================
-        // ENVIO DO FORMULÁRIO
+        // ENVIO DO FORMULÁRIO (abre WhatsApp)
         // ========================
-        window.sendContact = async function(event) {
+        window.sendContact = function(event) {
             event.preventDefault();
 
             const name = document.getElementById('name').value.trim();
             const phone = document.getElementById('phone').value.trim();
             const packageLevel = document.getElementById('packageLevel').value;
-            const submitBtn = document.getElementById('submitBtn');
 
             if (!name || name.length < 2) {
                 showToast('Por favor, insira um nome válido!', 'error');
@@ -1796,34 +1795,15 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                 return;
             }
 
-            // Animação de loading
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span style="display:inline-block;animation:spin 1s linear infinite">⏳</span> Enviando...';
+            const message = `Olá, meu nome é ${name}.\nTelefone: ${phone}.\nPacote de interesse: ${packageLevel}.`;
+            const whatsappUrl = 'https://wa.me/5534996568351?text=' + encodeURIComponent(message);
 
-            const formData = { name, phone, packageLevel };
+            window.open(whatsappUrl, '_blank');
 
-            try {
-                const response = await fetch('/api/contact', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
-                });
-
-                if (response.ok) {
-                    // Mostra mensagem de sucesso
-                    document.getElementById('contactForm').style.display = 'none';
-                    document.getElementById('formSuccess').style.display = 'block';
-                    showToast('Mensagem enviada com sucesso!', 'success');
-                } else {
-                    showToast('Erro ao enviar. Tente novamente.', 'error');
-                }
-            } catch (error) {
-                console.error('Erro:', error);
-                showToast('Erro de conexão. Tente novamente.', 'error');
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = 'Enviar Mensagem';
-            }
+            // Atualiza UI como sucesso
+            document.getElementById('contactForm').style.display = 'none';
+            document.getElementById('formSuccess').style.display = 'block';
+            showToast('Abrimos o WhatsApp com sua mensagem.', 'success');
         };
 
         // ========================
