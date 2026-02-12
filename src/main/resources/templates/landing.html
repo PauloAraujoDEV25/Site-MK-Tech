@@ -1234,8 +1234,8 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
             <h1>Sua Casa <span class="highlight">Inteligente</span> Começa Aqui</h1>
             <p class="subtitle">Automação residencial com segurança, economia e conforto total. Transforme seu lar com tecnologia de ponta da MK Tech.</p>
             <div class="hero-buttons">
-                <button class="btn btn-primary" onclick="scrollTo('#pacotes')">Explorar Pacotes</button>
-                <button class="btn btn-outline" onclick="scrollTo('#contato')">Solicitar Orçamento</button>
+                <button class="btn btn-primary" onclick="goToSection('#pacotes')">Explorar Pacotes</button>
+                <button class="btn btn-outline" onclick="goToSection('#contato')">Solicitar Orçamento</button>
             </div>
         </div>
     </section>
@@ -1386,7 +1386,7 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                         <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></span> Suporte básico</li>
                         <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></span> 6 meses de garantia</li>
                     </ul>
-                    <button class="btn btn-outline" onclick="scrollTo('#contato')">Solicitar Orçamento</button>
+                    <button class="btn btn-outline" onclick="goToSection('#contato')">Solicitar Orçamento</button>
                 </div>
 
                 <!-- Ouro -->
@@ -1411,7 +1411,7 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                         <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></span> Suporte prioritário</li>
                         <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></span> 12 meses de garantia</li>
                     </ul>
-                    <button class="btn btn-primary" onclick="scrollTo('#contato')">Solicitar Orçamento</button>
+                    <button class="btn btn-primary" onclick="goToSection('#contato')">Solicitar Orçamento</button>
                 </div>
 
                 <!-- Platina -->
@@ -1437,7 +1437,7 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                         <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></span> Suporte VIP 24/7</li>
                         <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg></span> 24 meses de garantia</li>
                     </ul>
-                    <button class="btn btn-accent" onclick="scrollTo('#contato')">Solicitar Orçamento</button>
+                    <button class="btn btn-accent" onclick="goToSection('#contato')">Solicitar Orçamento</button>
                 </div>
             </div>
         </div>
@@ -1507,7 +1507,7 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
         <div class="cta-content reveal">
             <h2>Pronto para transformar sua casa?</h2>
             <p>Entre em contato agora e descubra como tornar seu lar mais inteligente, seguro e econômico.</p>
-            <button class="btn btn-accent" onclick="scrollTo('#contato')">Fale Conosco Agora</button>
+            <button class="btn btn-accent" onclick="goToSection('#contato')">Fale Conosco Agora</button>
         </div>
     </section>
 
@@ -1762,7 +1762,7 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
         // ========================
         // SMOOTH SCROLL
         // ========================
-        window.scrollTo = function(selector) {
+        window.goToSection = function(selector) {
             const target = document.querySelector(selector);
             if (target) {
                 const offset = 80; // altura da navbar
@@ -1777,7 +1777,7 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                 const href = this.getAttribute('href');
                 if (href !== '#' && document.querySelector(href)) {
                     e.preventDefault();
-                    scrollTo(href);
+                    goToSection(href);
                 }
             });
         });
