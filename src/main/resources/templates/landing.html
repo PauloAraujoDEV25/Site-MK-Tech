@@ -684,6 +684,113 @@ img { max-width: 100%; display: block; }
 }
 
 /* ============================================
+   FAQ
+   ============================================ */
+.faq-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+.faq-intro h3 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.faq-intro p {
+    color: var(--text-secondary);
+    font-size: 0.98rem;
+    line-height: 1.7;
+    max-width: 360px;
+}
+
+.faq-intro .btn {
+    margin-top: 1.75rem;
+}
+
+.faq-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.faq-item {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+    overflow: hidden;
+}
+
+.faq-item.open {
+    border-color: var(--border-hover);
+    box-shadow: var(--shadow);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    text-align: left;
+    font: inherit;
+}
+
+.faq-question span:first-child {
+    font-size: 1.02rem;
+    font-weight: 600;
+}
+
+.faq-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    border: 1px solid var(--border-hover);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    color: var(--primary-light);
+    background: rgba(147, 51, 234, 0.12);
+    flex-shrink: 0;
+    transition: var(--transition);
+}
+
+.faq-item.open .faq-icon {
+    background: rgba(147, 51, 234, 0.18);
+    border-color: var(--border-hover);
+    color: var(--primary-light);
+}
+
+.faq-answer {
+    padding: 0 1.5rem 0.85rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.faq-item.open .faq-answer {
+    max-height: 260px;
+}
+
+.faq-answer p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-top: 0.25rem;
+    padding-bottom: 0.6rem;
+}
+
+/* ============================================
    PACOTES
    ============================================ */
 .packages-grid {
@@ -1104,15 +1211,58 @@ img { max-width: 100%; display: block; }
     padding: 4rem 2rem 2rem;
 }
 
-.footer-grid {
-    display: grid;
-    grid-template-columns: 1.5fr repeat(3, 1fr);
-    gap: 2.5rem;
-    max-width: 1200px;
-    margin: 0 auto 2.5rem;
+ .footer-grid {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    text-align: left;
+    padding: 0;
 }
 
-.footer-brand p {
+.faq-question span:first-child {
+    font-size: 1.02rem;
+    font-weight: 600;
+}
+
+.faq-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    border: 1px solid var(--border-hover);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    color: var(--primary-light);
+    background: rgba(147, 51, 234, 0.12);
+    flex-shrink: 0;
+    transition: var(--transition);
+}
+
+.faq-item.open .faq-icon {
+    background: rgba(147, 51, 234, 0.18);
+    border-color: var(--border-hover);
+    color: var(--primary-light);
+}
+
+.faq-answer {
+    margin-top: 0.75rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.faq-item.open .faq-answer {
+    max-height: 260px;
+}
+
+.faq-answer p {
     color: var(--text-secondary);
     font-size: 0.9rem;
     line-height: 1.7;
@@ -1591,6 +1741,76 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
         </div>
     </section>
 
+    <!-- FAQ -->
+    <section id="faq" class="section">
+        <div class="container">
+            <div class="faq-layout">
+                <div class="faq-intro reveal">
+                    <span class="badge">Perguntas frequentes</span>
+                    <h3>Perguntas frequentes</h3>
+                    <p>Reunimos as dúvidas mais comuns sobre automação residencial para você entender, de forma simples, como a MKTech pode deixar sua casa mais inteligente, segura e prática.</p>
+                    <a href="#contato" class="btn btn-outline">Entrar em contato</a>
+                </div>
+                <div class="faq-grid">
+                    <div class="faq-item reveal open">
+                        <button class="faq-question" type="button">
+                            <span>O que é automação residencial na prática?</span>
+                            <span class="faq-icon">⌄</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>É o uso de tecnologia para controlar e integrar iluminação, climatização, fechaduras, cortinas, câmeras e outros dispositivos da casa a partir do celular, tablet, controle físico ou voz, deixando tudo mais simples e inteligente.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item reveal">
+                        <button class="faq-question" type="button">
+                            <span>Preciso quebrar parede ou fazer uma grande reforma?</span>
+                            <span class="faq-icon">⌄</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Na maioria dos projetos não é necessário. Utilizamos soluções sem fio e módulos que aproveitam a infraestrutura elétrica existente, minimizando obra, sujeira e tempo de instalação.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item reveal">
+                        <button class="faq-question" type="button">
+                            <span>A automação funciona se faltar internet?</span>
+                            <span class="faq-icon">⌄</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Grande parte dos comandos locais, como acender luzes e acionar cenas gravadas, continua funcionando normalmente. A internet é usada principalmente para acesso remoto e integrações na nuvem.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item reveal">
+                        <button class="faq-question" type="button">
+                            <span>Quanto custa automatizar minha casa?</span>
+                            <span class="faq-icon">⌄</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>O investimento varia conforme o tamanho do imóvel e o nível de automação desejado. Por isso, montamos um projeto personalizado para o seu orçamento, começando pelos pontos que mais fazem diferença no seu dia a dia.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item reveal">
+                        <button class="faq-question" type="button">
+                            <span>Vou conseguir usar mesmo não sendo muito tecnológico?</span>
+                            <span class="faq-icon">⌄</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Com certeza. Configuramos cenas simples, em português, com botões físicos, aplicativo intuitivo e, se quiser, comandos por voz. No final da instalação, você recebe uma explicação completa de como usar tudo.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item reveal">
+                        <button class="faq-question" type="button">
+                            <span>O que eu preciso fazer para começar um projeto com a MKTech?</span>
+                            <span class="faq-icon">⌄</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>É simples: envie seus dados pelo formulário ou chame no WhatsApp, conte um pouco sobre sua casa e o que você deseja automatizar, e nós retornamos com um estudo inicial e as melhores opções para o seu perfil.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contato -->
     <section id="contato" class="section section-alt">
         <div class="container">
@@ -1932,6 +2152,33 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                 nameInput.focus();
             }
         };
+
+        // ========================
+        // FAQ - acordeão
+        // ========================
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach((item) => {
+            const questionBtn = item.querySelector('.faq-question');
+            if (!questionBtn) return;
+
+            questionBtn.addEventListener('click', () => {
+                const isOpen = item.classList.contains('open');
+
+                // fecha todos os outros
+                faqItems.forEach((other) => {
+                    if (other !== item) {
+                        other.classList.remove('open');
+                    }
+                });
+
+                // alterna o atual
+                if (!isOpen) {
+                    item.classList.add('open');
+                } else {
+                    item.classList.remove('open');
+                }
+            });
+        });
 
         // ========================
         // TOAST NOTIFICATIONS
