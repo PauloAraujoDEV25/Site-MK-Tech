@@ -751,24 +751,45 @@ img { max-width: 100%; display: block; }
 }
 
 .faq-icon {
-    width: 28px;
-    height: 28px;
-    border-radius: 999px;
-    border: 1px solid var(--border-hover);
-    display: flex;
+    position: relative;
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.25rem;
-    color: var(--primary-light);
-    background: rgba(147, 51, 234, 0.12);
     flex-shrink: 0;
+}
+
+.faq-icon::before,
+.faq-icon::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--text-secondary);
     transition: var(--transition);
 }
 
 .faq-item.open .faq-icon {
-    background: rgba(147, 51, 234, 0.18);
-    border-color: var(--border-hover);
-    color: var(--primary-light);
+}
+
+.faq-icon::before {
+    transform: rotate(0deg);
+}
+
+.faq-icon::after {
+    transform: rotate(90deg);
+}
+
+.faq-item.open .faq-icon::before {
+    transform: rotate(45deg);
+    background: var(--primary-light);
+}
+
+.faq-item.open .faq-icon::after {
+    transform: rotate(-45deg);
+    background: var(--primary-light);
 }
 
 .faq-answer {
@@ -1231,24 +1252,45 @@ img { max-width: 100%; display: block; }
 }
 
 .faq-icon {
-    width: 28px;
-    height: 28px;
-    border-radius: 999px;
-    border: 1px solid var(--border-hover);
-    display: flex;
+    position: relative;
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.25rem;
-    color: var(--primary-light);
-    background: rgba(147, 51, 234, 0.12);
     flex-shrink: 0;
+}
+
+.faq-icon::before,
+.faq-icon::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--text-secondary);
     transition: var(--transition);
 }
 
 .faq-item.open .faq-icon {
-    background: rgba(147, 51, 234, 0.18);
-    border-color: var(--border-hover);
-    color: var(--primary-light);
+}
+
+.faq-icon::before {
+    transform: rotate(0deg);
+}
+
+.faq-icon::after {
+    transform: rotate(90deg);
+}
+
+.faq-item.open .faq-icon::before {
+    transform: rotate(45deg);
+    background: var(--primary-light);
+}
+
+.faq-item.open .faq-icon::after {
+    transform: rotate(-45deg);
+    background: var(--primary-light);
 }
 
 .faq-answer {
@@ -1516,6 +1558,7 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                 <a href="#beneficios">Benefícios</a>
                 <a href="#pacotes">Serviços</a>
                 <a href="#depoimentos">Depoimentos</a>
+                <a href="#faq">Perguntas frequentes</a>
                 <a href="#contato">Contato</a>
             </div>
 
@@ -1755,7 +1798,7 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                     <div class="faq-item reveal open">
                         <button class="faq-question" type="button">
                             <span>O que é automação residencial na prática?</span>
-                            <span class="faq-icon">⌄</span>
+                            <span class="faq-icon"></span>
                         </button>
                         <div class="faq-answer">
                             <p>É o uso de tecnologia para controlar e integrar iluminação, climatização, fechaduras, cortinas, câmeras e outros dispositivos da casa a partir do celular, tablet, controle físico ou voz, deixando tudo mais simples e inteligente.</p>
@@ -1764,7 +1807,7 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                     <div class="faq-item reveal">
                         <button class="faq-question" type="button">
                             <span>Preciso quebrar parede ou fazer uma grande reforma?</span>
-                            <span class="faq-icon">⌄</span>
+                            <span class="faq-icon"></span>
                         </button>
                         <div class="faq-answer">
                             <p>Na maioria dos projetos não é necessário. Utilizamos soluções sem fio e módulos que aproveitam a infraestrutura elétrica existente, minimizando obra, sujeira e tempo de instalação.</p>
@@ -1773,7 +1816,7 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                     <div class="faq-item reveal">
                         <button class="faq-question" type="button">
                             <span>A automação funciona se faltar internet?</span>
-                            <span class="faq-icon">⌄</span>
+                            <span class="faq-icon"></span>
                         </button>
                         <div class="faq-answer">
                             <p>Grande parte dos comandos locais, como acender luzes e acionar cenas gravadas, continua funcionando normalmente. A internet é usada principalmente para acesso remoto e integrações na nuvem.</p>
@@ -1782,7 +1825,7 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                     <div class="faq-item reveal">
                         <button class="faq-question" type="button">
                             <span>Quanto custa automatizar minha casa?</span>
-                            <span class="faq-icon">⌄</span>
+                            <span class="faq-icon"></span>
                         </button>
                         <div class="faq-answer">
                             <p>O investimento varia conforme o tamanho do imóvel e o nível de automação desejado. Por isso, montamos um projeto personalizado para o seu orçamento, começando pelos pontos que mais fazem diferença no seu dia a dia.</p>
@@ -1791,7 +1834,7 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                     <div class="faq-item reveal">
                         <button class="faq-question" type="button">
                             <span>Vou conseguir usar mesmo não sendo muito tecnológico?</span>
-                            <span class="faq-icon">⌄</span>
+                            <span class="faq-icon"></span>
                         </button>
                         <div class="faq-answer">
                             <p>Com certeza. Configuramos cenas simples, em português, com botões físicos, aplicativo intuitivo e, se quiser, comandos por voz. No final da instalação, você recebe uma explicação completa de como usar tudo.</p>
@@ -1800,7 +1843,7 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                     <div class="faq-item reveal">
                         <button class="faq-question" type="button">
                             <span>O que eu preciso fazer para começar um projeto com a MKTech?</span>
-                            <span class="faq-icon">⌄</span>
+                            <span class="faq-icon"></span>
                         </button>
                         <div class="faq-answer">
                             <p>É simples: envie seus dados pelo formulário ou chame no WhatsApp, conte um pouco sobre sua casa e o que você deseja automatizar, e nós retornamos com um estudo inicial e as melhores opções para o seu perfil.</p>
