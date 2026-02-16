@@ -267,10 +267,12 @@ img { max-width: 100%; display: block; }
         linear-gradient(90deg, rgba(5,5,16,0.92) 0%, rgba(5,5,16,0.7) 42%, rgba(5,5,16,0.18) 72%, rgba(5,5,16,0) 100%),
         image-set(
             var(--hero-bg-1x, var(--hero-bg-url, url('/Cozinha%20moderna%20com%20toque%20aconchegante.png'))) 1x,
-            var(--hero-bg-2x, var(--hero-bg-url, url('/Cozinha%20moderna%20com%20toque%20aconchegante.png'))) 2x
+            var(--hero-bg-2x, var(--hero-bg-url, url('/Cozinha%20moderna%20com%20toque%20aconchegante.png'))) 2x,
+            var(--hero-bg-3x, var(--hero-bg-2x, var(--hero-bg-url, url('/Cozinha%20moderna%20com%20toque%20aconchegante.png')))) 3x
         );
     background-size: cover;
-    background-position: 66% 86%;
+    /* Ajuste para destacar o dispositivo no balcão */
+    background-position: 72% 78%;
     background-repeat: no-repeat;
     padding: clamp(6.75rem, 10vh, 7.75rem) 3rem clamp(4.5rem, 7vh, 5.5rem) 3rem;
     position: relative;
@@ -368,6 +370,11 @@ img { max-width: 100%; display: block; }
 }
 
 @media (max-width: 900px) {
+    .hero {
+        /* Em telas menores, prioriza composição central */
+        background-position: 58% 70%;
+    }
+
     .hero-inner {
         grid-template-columns: 1fr;
         gap: 1.75rem;
@@ -1892,6 +1899,8 @@ img { max-width: 100%; display: block; }
     .hero {
         min-height: 54vh;
         padding: 5.25rem 3rem 3.25rem 3rem;
+        /* Em widescreens, puxa mais para a direita para destacar o dispositivo */
+        background-position: 78% 76%;
     }
 
     .hero-overlay-card {
@@ -1949,8 +1958,8 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
 
     <!-- Hero -->
     <section class="hero"
-             style="--hero-bg-url: url('../static/Cozinha moderna com toque aconchegante.png'); --hero-bg-1x: url('../static/Cozinha moderna com toque aconchegante.png'); --hero-bg-2x: url('../static/Cozinha moderna com toque aconchegante@2x.png');"
-             th:style="|--hero-bg-url: url('@{/Cozinha moderna com toque aconchegante.png}'); --hero-bg-1x: url('@{/Cozinha moderna com toque aconchegante.png}'); --hero-bg-2x: url('@{/Cozinha moderna com toque aconchegante@2x.png}');|">
+             style="--hero-bg-url: url('../static/Cozinha moderna com toque aconchegante.png'); --hero-bg-1x: url('../static/Cozinha moderna com toque aconchegante.png'); --hero-bg-2x: url('../static/Cozinha moderna com toque aconchegante@2x.png'); --hero-bg-3x: url('../static/Cozinha moderna com toque aconchegante@4k.png');"
+             th:style="|--hero-bg-url: url('@{/Cozinha moderna com toque aconchegante.png}'); --hero-bg-1x: url('@{/Cozinha moderna com toque aconchegante.png}'); --hero-bg-2x: url('@{/Cozinha moderna com toque aconchegante@2x.png}'); --hero-bg-3x: url('@{/Cozinha moderna com toque aconchegante@4k.png}');|">
         <div class="hero-particles" aria-hidden="true"></div>
         <div class="hero-inner">
             <div class="hero-content">
