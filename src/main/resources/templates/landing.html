@@ -260,7 +260,6 @@ img { max-width: 100%; display: block; }
     align-items: center;
     justify-content: center;
     background: var(--gradient-hero);
-    background-image: var(--hero-bg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -274,7 +273,7 @@ img { max-width: 100%; display: block; }
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.55;
+    opacity: 0.18;
     background-image:
         radial-gradient(circle at 12% 18%, rgba(226,232,240,0.35) 0, transparent 45%),
         radial-gradient(circle at 38% 72%, rgba(226,232,240,0.35) 0, transparent 50%),
@@ -287,14 +286,17 @@ img { max-width: 100%; display: block; }
     max-width: 1320px;
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 3.75rem;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 3.25rem;
     align-items: center;
+    justify-items: start;
 }
 
 .hero-media {
     position: relative;
-    max-width: 480px;
+    width: 100%;
+    max-width: 680px;
+    justify-self: end;
 }
 
 .hero-carousel {
@@ -325,21 +327,23 @@ img { max-width: 100%; display: block; }
 
 .hero-static-image {
     width: 100%;
-    max-width: 460px;
-    height: clamp(260px, 30vw, 360px);
+    max-width: 680px;
+    height: clamp(320px, 36vw, 440px);
     display: block;
-    margin: 0 auto;
+    margin: 0;
     border-radius: 24px;
     box-shadow: 0 28px 70px rgba(0,0,0,0.8);
     object-fit: cover;
+    /* Ajuste para destacar o “aparelho digital” na imagem */
+    object-position: 70% 80%;
 }
 
 .hero-content {
     position: relative;
     z-index: 1;
-    max-width: 820px;
-    margin: 0 auto;
-    text-align: center;
+    max-width: 640px;
+    margin: 0;
+    text-align: left;
 }
 
 .hero-overlay-card {
@@ -348,10 +352,113 @@ img { max-width: 100%; display: block; }
     border: none;
     border-radius: 24px;
     box-shadow: none;
-    padding: 2.25rem 2.5rem;
+    padding: 0;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-    margin: 0 auto;
+    margin: 0;
+}
+
+@media (max-width: 900px) {
+    .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+    }
+
+    .hero-media {
+        max-width: 520px;
+        justify-self: start;
+    }
+
+    .hero-static-image {
+        height: clamp(260px, 55vw, 360px);
+        object-position: 70% 78%;
+    }
+}
+
+.hero-brand {
+    display: flex;
+    align-items: baseline;
+    gap: 0.85rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero-brand-name {
+    font-weight: 900;
+    font-size: 1.45rem;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.hero-brand-name .mk {
+    color: var(--accent);
+}
+
+.hero-brand-sub {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.72);
+}
+
+.hero-kicker {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.86);
+    margin-bottom: 0.65rem;
+}
+
+.hero-kicker .accent {
+    color: var(--accent);
+    font-weight: 800;
+}
+
+.hero-title {
+    font-size: clamp(2.25rem, 4.7vw, 3.55rem);
+    font-weight: 900;
+    line-height: 1.06;
+    margin-bottom: 1rem;
+    color: var(--text-on-primary);
+}
+
+.hero-title .accent {
+    color: var(--accent);
+}
+
+.hero-lead {
+    color: rgba(255,255,255,0.78);
+    max-width: 520px;
+    font-size: 0.98rem;
+    line-height: 1.7;
+    margin-bottom: 1.35rem;
+}
+
+.hero-feature-list {
+    display: grid;
+    gap: 0.55rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.hero-feature-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.8);
+}
+
+.hero-feature-list li::before {
+    content: '✓';
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(249, 115, 22, 0.16);
+    color: var(--accent);
+    font-weight: 900;
+    flex-shrink: 0;
 }
 
 .hero-copy {
@@ -1611,7 +1718,7 @@ img { max-width: 100%; display: block; }
 
     .hero { min-height: auto; padding: 5.75rem 1.25rem 2.75rem; }
     .hero-inner { grid-template-columns: 1fr; gap: 1.75rem; }
-    .hero-content { text-align: center; }
+    .hero-content { text-align: left; }
     .hero-overlay-card { padding: 1.5rem; border-radius: 20px; }
 
     .section { padding: 3.25rem 1.25rem; }
@@ -1784,17 +1891,33 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
     </nav>
 
     <!-- Hero -->
-    <section class="hero" th:style="|--hero-bg: url('@{/Cozinha%20moderna%20com%20toque%20aconchegante.png}')|" style="--hero-bg: url('../static/Cozinha moderna com toque aconchegante.png')">
+    <section class="hero">
         <div class="hero-particles" aria-hidden="true"></div>
         <div class="hero-inner">
             <div class="hero-content">
                 <div class="hero-overlay-card reveal">
+                  
 
-                    <h1>Transforme sua casa em um lar inteligente</h1>
-                    <p class="subtitle">Segurança, conforto e economia com instalação profissional e integração completa dos sistemas.</p>
+            
+                    <h1 class="hero-title">Transformamos tecnologia em <span class="accent">experiências</span><br>inteligentes</h1>
 
-                   
+                    <p class="hero-lead">Tecnologia integrada para transformar sua casa em um ambiente mais seguro, prático e energeticamente eficiente.</p>
+
+                    <ul class="hero-feature-list" aria-label="Destaques">
+                        <li>Projetos personalizados</li>
+                        <li>Instalação de alto padrão</li>
+                        <li>Integração com Alexa, Google Assistant e Siri</li>
+                        <li>Suporte contínuo</li>
+                    </ul>
                 </div>
+            </div>
+
+            <div class="hero-media reveal" aria-label="Imagem de automação residencial">
+                <img class="hero-static-image"
+                     th:src="@{/Cozinha%20moderna%20com%20toque%20aconchegante.png}"
+                     src="../static/Cozinha moderna com toque aconchegante.png"
+                     alt="Cozinha moderna com dispositivo inteligente"
+                     loading="eager" decoding="async">
             </div>
         </div>
     </section>
@@ -2172,15 +2295,9 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                 <h2>Vamos <span class="highlight">Conversar</span>?</h2>
                 <p>Entre em contato e transforme sua casa em um lar inteligente</p>
             </div>
+
             <div class="contact-content">
                 <div class="contact-info reveal">
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div>
-                            <h4>Endereço</h4>
-                            <p>Rua Parceria - Aurora<br>Uberlândia - MG, 38410-500</p>
-                        </div>
-                    </div>
                     <div class="contact-item">
                         <div class="contact-icon">📱</div>
                         <div>
