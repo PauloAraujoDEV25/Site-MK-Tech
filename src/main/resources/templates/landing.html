@@ -250,7 +250,7 @@ img { max-width: 100%; display: block; }
    HERO
    ============================================ */
 .hero {
-    min-height: 78vh;
+    min-height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -383,11 +383,11 @@ img { max-width: 100%; display: block; }
 }
 
 .hero h1 {
-    font-size: clamp(2rem, 4.2vw, 3.25rem);
+    font-size: clamp(1.85rem, 3.6vw, 3rem);
     font-weight: 900;
     line-height: 1.1;
     margin-bottom: 1.1rem;
-    color: var(--text-primary);
+    color: var(--text-on-primary);
     animation: fadeInDown 0.8s ease-out 0.1s both;
 }
 
@@ -399,8 +399,8 @@ img { max-width: 100%; display: block; }
 }
 
 .hero .subtitle {
-    font-size: clamp(1rem, 2.5vw, 1.25rem);
-    color: var(--text-secondary);
+    font-size: clamp(0.98rem, 2vw, 1.12rem);
+    color: var(--text-on-primary);
     margin-bottom: 1.85rem;
     max-width: 540px;
     animation: fadeInUp 0.8s ease-out 0.25s both;
@@ -1068,6 +1068,21 @@ img { max-width: 100%; display: block; }
 .testimonials-grid {
     position: relative;
     overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 980px;
+}
+
+@media (min-width: 1024px) {
+    .testimonials-grid {
+        max-width: 860px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .testimonials-grid {
+        max-width: 820px;
+    }
 }
 
 .testimonials-track {
@@ -1078,7 +1093,7 @@ img { max-width: 100%; display: block; }
 
 .testimonial-card {
     background: var(--bg-card);
-    padding: 2rem;
+    padding: 1.75rem;
     border-radius: var(--radius);
     border: 1px solid var(--border);
     transition: var(--transition);
@@ -1602,8 +1617,8 @@ img { max-width: 100%; display: block; }
    ============================================ */
 @media (min-width: 1024px) {
     .hero {
-        min-height: 68vh;
-        padding: 6.25rem 3rem 4.25rem 3rem;
+        min-height: 58vh;
+        padding: 5.5rem 3rem 3.5rem 3rem;
     }
 
     .hero-inner {
@@ -1611,8 +1626,8 @@ img { max-width: 100%; display: block; }
     }
 
     .hero-overlay-card {
-        padding: 1.75rem 2rem;
-        max-width: 700px;
+        padding: 1.5rem 1.75rem;
+        max-width: 680px;
     }
 
     .benefits-grid { grid-template-columns: repeat(3, 1fr); }
@@ -1621,6 +1636,17 @@ img { max-width: 100%; display: block; }
 
     .nav-logo img {
         height: 34px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .hero {
+        min-height: 54vh;
+        padding: 5.25rem 3rem 3.25rem 3rem;
+    }
+
+    .hero-overlay-card {
+        max-width: 650px;
     }
 }
 
@@ -1692,11 +1718,11 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
             <div class="hero-content">
                 <div class="hero-overlay-card reveal">
                     <h1>Quem Somos</h1>
-                    <p class="subtitle">Automação residencial com propósito: projetada para a sua rotina, preparada para evoluir com você.</p>
+                    <p class="subtitle">Automação residencial com propósito — projetada para a sua rotina e preparada para evoluir com você.</p>
 
-                    <p class="hero-copy">Somos especialistas em automação residencial e entregamos soluções inteligentes que proporcionam mais segurança, conforto e economia para sua família. Trabalhamos com instalação de alto padrão, garantindo acabamento impecável, funcionamento estável e integração completa dos sistemas.</p>
+                    <p class="hero-copy">Somos especialistas em automação residencial e entregamos soluções inteligentes que trazem mais segurança, conforto e economia para sua família. Atuamos com instalação de alto padrão, garantindo acabamento impecável, funcionamento estável e integração completa dos sistemas.</p>
 
-                    <p class="hero-copy">Atuamos com interruptores inteligentes, sensores, controle por aplicativo e comando de voz por meio da Alexa (Amazon), Google Assistant e Siri (Apple). Mais do que instalar equipamentos, desenvolvemos projetos personalizados, criando rotinas automatizadas que facilitam o dia a dia e reduzem o consumo de energia.</p>
+                    <p class="hero-copy">Trabalhamos com interruptores inteligentes, sensores, controle por aplicativo e comando de voz — por meio da Alexa (Amazon), Google Assistant e Siri (Apple). Mais do que instalar equipamentos, desenvolvemos projetos personalizados e criamos rotinas automatizadas que facilitam o dia a dia e ajudam a reduzir o consumo de energia.</p>
 
                     <p class="hero-copy">Nosso compromisso é oferecer tecnologia confiável, execução profissional e suporte contínuo, transformando sua casa em um ambiente moderno, prático e eficiente — hoje e no futuro.</p>
                 </div>
@@ -1916,48 +1942,48 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                 <div class="testimonials-track" id="testimonialsTrack">
                 <div class="testimonial-card reveal">
                     <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"A MKTech transformou completamente minha casa! Agora controlo tudo pelo celular e economizo muito na energia. Recomendo!"</p>
+                    <p class="testimonial-text">"O atendimento foi muito claro desde o orçamento. Instalaram os interruptores inteligentes e deixaram tudo organizado, com as rotinas funcionando certinho no app."</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">JM</div>
                         <div class="author-info">
                             <h4>João Mendes</h4>
-                            <p>São Paulo, SP</p>
+                            <p>Uberlândia, MG</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="testimonial-card reveal">
                     <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"Já pensou em dizer 'vou para a cozinha' e as luzes acenderem automaticamente? A MKTech tornou isso realidade!"</p>
+                    <p class="testimonial-text">"A instalação ficou com acabamento impecável. Configuraram comandos de voz e cenas (chegar em casa, noite, cinema). Ficou muito prático no dia a dia."</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">MS</div>
                         <div class="author-info">
                             <h4>Mariana Silva</h4>
-                            <p>Rio de Janeiro, RJ</p>
+                            <p>Uberaba, MG</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="testimonial-card reveal">
                     <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"O melhor investimento que fiz na minha residência. Instalação rápida, equipe profissional e suporte excelente!"</p>
+                    <p class="testimonial-text">"Eu tinha receio de instabilidade, mas ficou tudo bem configurado. Sensores e automações funcionando sem travar, e o suporte respondeu rápido quando tive dúvida."</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">CF</div>
                         <div class="author-info">
                             <h4>Carlos Ferreira</h4>
-                            <p>Belo Horizonte, MG</p>
+                            <p>Araguari, MG</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="testimonial-card reveal">
                     <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"Não sabia que minha casa podia ser assim! Muito fácil de usar e a equipe foi extremamente prestativa."</p>
+                    <p class="testimonial-text">"Gostei porque eles explicam com paciência e deixam tudo pronto para usar. Hoje controlo iluminação e algumas rotinas pelo celular, sem complicação."</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">AO</div>
                         <div class="author-info">
                             <h4>Aline Oliveira</h4>
-                            <p>Curitiba, PR</p>
+                            <p>Ituiutaba, MG</p>
                         </div>
                     </div>
                 </div>
