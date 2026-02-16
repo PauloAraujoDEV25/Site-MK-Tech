@@ -103,11 +103,16 @@ html { scroll-behavior: smooth; }
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
     line-height: 1.7;
     color: var(--text-primary);
     background: var(--bg-body);
     overflow-x: hidden;
     transition: background 0.4s ease, color 0.4s ease;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -333,8 +338,8 @@ img { max-width: 100%; display: block; }
     position: relative;
     z-index: 1;
     max-width: 820px;
-    margin: 0;
-    text-align: left;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .hero-overlay-card {
@@ -346,6 +351,7 @@ img { max-width: 100%; display: block; }
     padding: 2.25rem 2.5rem;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+    margin: 0 auto;
 }
 
 .hero-copy {
@@ -402,14 +408,16 @@ img { max-width: 100%; display: block; }
     font-size: clamp(0.98rem, 2vw, 1.12rem);
     color: var(--text-on-primary);
     margin-bottom: 1.85rem;
-    max-width: 540px;
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
     animation: fadeInUp 0.8s ease-out 0.25s both;
 }
 
 .hero-buttons {
     display: flex;
     gap: 1rem;
-    justify-content: flex-start;
+    justify-content: center;
     flex-wrap: wrap;
     animation: fadeInUp 0.8s ease-out 0.4s both;
 }
@@ -421,6 +429,7 @@ img { max-width: 100%; display: block; }
     gap: 0.75rem 1.75rem;
     padding: 0;
     list-style: none;
+    justify-content: center;
 }
 
 .hero-highlights li {
@@ -493,80 +502,63 @@ img { max-width: 100%; display: block; }
 }
 
 /* ============================================
-   MODAL DE ORÇAMENTO
+   BOTÃO FIXO (Fale conosco)
    ============================================ */
-.quote-modal-overlay {
+.floating-contact {
     position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.65);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 1100;
-}
-
-.quote-modal-overlay.open {
-    display: flex;
-}
-
-.quote-modal {
-    background: var(--bg-card);
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    padding: 2rem 2.25rem;
-    max-width: 420px;
-    width: 100%;
-    box-shadow: var(--shadow-lg);
-    position: relative;
-}
-
-.quote-modal h3 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    color: var(--text-primary);
-}
-
-.quote-modal p {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    margin-bottom: 1.5rem;
-}
-
-.quote-modal-actions {
-    display: flex;
-    gap: 0.75rem;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.quote-modal-actions .btn {
-    min-width: 150px;
-    justify-content: center;
-}
-
-.quote-modal-close {
-    position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
-    width: 32px;
-    height: 32px;
-    border-radius: 999px;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--text-secondary);
-    cursor: pointer;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    z-index: 1200;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.1rem;
+    padding: 0.95rem 1.2rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: linear-gradient(135deg, var(--primary-light), var(--accent));
+    color: var(--text-on-primary);
+    font-weight: 700;
+    font-size: 0.95rem;
+    box-shadow: 0 14px 34px rgba(0,0,0,0.25);
     transition: var(--transition);
+    white-space: nowrap;
 }
 
-.quote-modal-close:hover {
-    border-color: var(--primary-light);
-    color: var(--primary-light);
-    background: rgba(147, 51, 234, 0.08);
+.floating-contact::after {
+    content: '';
+    position: absolute;
+    right: 1.05rem;
+    bottom: -6px;
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(135deg, var(--primary-light), var(--accent));
+    transform: rotate(45deg);
+    border-radius: 2px;
+    filter: drop-shadow(0 6px 10px rgba(0,0,0,0.18));
+}
+
+.floating-contact:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 44px rgba(0,0,0,0.3);
+    filter: brightness(1.05);
+}
+
+.floating-contact:active {
+    transform: translateY(0);
+}
+
+.floating-contact:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(147, 51, 234, 0.22), 0 14px 34px rgba(0,0,0,0.25);
+}
+
+@media (max-width: 480px) {
+    .floating-contact {
+        right: 0.85rem;
+        bottom: 0.85rem;
+        padding: 0.85rem 1.05rem;
+        font-size: 0.92rem;
+    }
 }
 
 /* ============================================
@@ -1065,12 +1057,51 @@ img { max-width: 100%; display: block; }
 /* ============================================
    DEPOIMENTOS
    ============================================ */
+.testimonials-split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.testimonials-split > * {
+    min-width: 0;
+}
+
+@media (min-width: 1024px) {
+    .testimonials-split {
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+        gap: 2.5rem;
+    }
+}
+
+.testimonials-carousel-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    width: 100%;
+}
+
+/* Centraliza o bloco do carrossel dentro da coluna esquerda */
+.testimonials-split .testimonials-carousel-panel {
+    max-width: 820px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .testimonials-grid {
     position: relative;
     overflow: hidden;
     width: 100%;
-    margin: 0 auto;
+    margin: 0;
     max-width: 980px;
+}
+
+/* Quando estiver no layout dividido, o próprio grid limita a largura */
+.testimonials-split .testimonials-grid {
+    max-width: 100%;
+    margin: 0;
 }
 
 @media (min-width: 1024px) {
@@ -1161,8 +1192,8 @@ img { max-width: 100%; display: block; }
 }
 
 .testimonial-nav {
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 46px;
     border-radius: 999px;
     border: 1px solid var(--border);
     background: var(--bg-card);
@@ -1171,13 +1202,34 @@ img { max-width: 100%; display: block; }
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    padding: 0;
     transition: var(--transition);
+}
+
+.testimonial-nav svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+}
+
+.testimonial-nav:focus-visible {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 4px rgba(147, 51, 234, 0.18);
 }
 
 .testimonial-nav:hover {
     border-color: var(--primary-light);
     background: rgba(147, 51, 234, 0.1);
+}
+
+.testimonial-nav:active {
+    transform: translateY(1px);
+}
+
+@media (max-width: 420px) {
+    .testimonials-controls { gap: 0.75rem; }
+    .testimonial-nav { width: 36px; height: 46px; }
 }
 
 .testimonials-dots {
@@ -1197,6 +1249,39 @@ img { max-width: 100%; display: block; }
 .testimonial-dot.active {
     width: 18px;
     background: var(--primary-light);
+}
+
+.testimonials-about {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+}
+
+.testimonials-about h3 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.testimonials-about .subtitle {
+    margin-bottom: 1.15rem;
+    color: var(--text-secondary);
+    font-size: 0.98rem;
+    line-height: 1.6;
+}
+
+.testimonials-about p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin: 0 0 1rem;
+}
+
+.testimonials-about p:last-child {
+    margin-bottom: 0;
 }
 
 /* ============================================
@@ -1526,7 +1611,7 @@ img { max-width: 100%; display: block; }
 
     .hero { min-height: auto; padding: 5.75rem 1.25rem 2.75rem; }
     .hero-inner { grid-template-columns: 1fr; gap: 1.75rem; }
-    .hero-content { text-align: left; }
+    .hero-content { text-align: center; }
     .hero-overlay-card { padding: 1.5rem; border-radius: 20px; }
 
     .section { padding: 3.25rem 1.25rem; }
@@ -1671,19 +1756,6 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
     <!-- Overlay para menu mobile -->
     <div class="mobile-overlay" id="mobileOverlay"></div>
 
-    <!-- Modal de seleção de canal para orçamento -->
-    <div class="quote-modal-overlay" id="quoteModal" aria-hidden="true">
-        <div class="quote-modal" role="dialog" aria-modal="true" aria-labelledby="quoteModalTitle">
-            <button class="quote-modal-close" type="button" aria-label="Fechar" onclick="closeQuoteModal()">&times;</button>
-            <h3 id="quoteModalTitle">Quer um orçamento personalizado?</h3>
-            <p>Escolha se deseja solicitar seu orçamento por WhatsApp ou por e-mail e fale com nossa equipe para montar a melhor proposta para você.</p>
-            <div class="quote-modal-actions">
-                <button type="button" class="btn btn-accent" onclick="handleQuoteChannel('whatsapp')">WhatsApp</button>
-                <button type="button" class="btn btn-outline" onclick="handleQuoteChannel('email')">E-mail</button>
-            </div>
-        </div>
-    </div>
-
     <!-- Navegação -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -1717,18 +1789,17 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
         <div class="hero-inner">
             <div class="hero-content">
                 <div class="hero-overlay-card reveal">
-                    <h1>Quem Somos</h1>
-                    <p class="subtitle">Automação residencial com propósito — projetada para a sua rotina e preparada para evoluir com você.</p>
 
-                    <p class="hero-copy">Somos especialistas em automação residencial e entregamos soluções inteligentes que trazem mais segurança, conforto e economia para sua família. Atuamos com instalação de alto padrão, garantindo acabamento impecável, funcionamento estável e integração completa dos sistemas.</p>
+                    <h1>Transforme sua casa em um lar inteligente</h1>
+                    <p class="subtitle">Segurança, conforto e economia com instalação profissional e integração completa dos sistemas.</p>
 
-                    <p class="hero-copy">Trabalhamos com interruptores inteligentes, sensores, controle por aplicativo e comando de voz — por meio da Alexa (Amazon), Google Assistant e Siri (Apple). Mais do que instalar equipamentos, desenvolvemos projetos personalizados e criamos rotinas automatizadas que facilitam o dia a dia e ajudam a reduzir o consumo de energia.</p>
-
-                    <p class="hero-copy">Nosso compromisso é oferecer tecnologia confiável, execução profissional e suporte contínuo, transformando sua casa em um ambiente moderno, prático e eficiente — hoje e no futuro.</p>
+                   
                 </div>
             </div>
         </div>
     </section>
+
+    <a class="floating-contact" href="#contato" aria-label="Fale conosco agora">Fale conosco agora</a>
 
     <!-- Benefícios -->
     <section id="beneficios" class="section">
@@ -1935,64 +2006,82 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
     <section id="depoimentos" class="section">
         <div class="container">
             <div class="section-header reveal">
-                <h2>O que nossos <span class="highlight">clientes</span> dizem</h2>
-                <p>Histórias reais de clientes satisfeitos com nossas soluções</p>
+                <h2><span class="highlight">Depoimentos</span></h2>
             </div>
-            <div class="testimonials-grid">
-                <div class="testimonials-track" id="testimonialsTrack">
-                <div class="testimonial-card reveal">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"O atendimento foi muito claro desde o orçamento. Instalaram os interruptores inteligentes e deixaram tudo organizado, com as rotinas funcionando certinho no app."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">JM</div>
-                        <div class="author-info">
-                            <h4>João Mendes</h4>
-                            <p>Uberlândia, MG</p>
+            <div class="testimonials-split">
+                <div class="testimonials-carousel-panel reveal" aria-label="Carrossel de depoimentos">
+                    <div class="testimonials-grid">
+                        <div class="testimonials-track" id="testimonialsTrack">
+                        <div class="testimonial-card reveal">
+                        <div class="stars">★★★★★</div>
+                        <p class="testimonial-text">"O atendimento foi muito claro desde o orçamento. Instalaram os interruptores inteligentes e deixaram tudo organizado, com as rotinas funcionando certinho no app."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">JM</div>
+                            <div class="author-info">
+                                <h4>João Mendes</h4>
+                                <p>Uberlândia, MG</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card reveal">
+                        <div class="stars">★★★★★</div>
+                        <p class="testimonial-text">"A instalação ficou com acabamento impecável. Configuraram comandos de voz e cenas (chegar em casa, noite, cinema). Ficou muito prático no dia a dia."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">MS</div>
+                            <div class="author-info">
+                                <h4>Mariana Silva</h4>
+                                <p>Uberaba, MG</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card reveal">
+                        <div class="stars">★★★★★</div>
+                        <p class="testimonial-text">"Eu tinha receio de instabilidade, mas ficou tudo bem configurado. Sensores e automações funcionando sem travar, e o suporte respondeu rápido quando tive dúvida."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">CF</div>
+                            <div class="author-info">
+                                <h4>Carlos Ferreira</h4>
+                                <p>Araguari, MG</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card reveal">
+                        <div class="stars">★★★★★</div>
+                        <p class="testimonial-text">"Gostei porque eles explicam com paciência e deixam tudo pronto para usar. Hoje controlo iluminação e algumas rotinas pelo celular, sem complicação."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">AO</div>
+                            <div class="author-info">
+                                <h4>Aline Oliveira</h4>
+                                <p>Ituiutaba, MG</p>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                        <div class="testimonials-controls">
+                            <button type="button" class="testimonial-nav prev" aria-label="Depoimento anterior">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                    <path d="M15 18l-6-6 6-6" />
+                                </svg>
+                            </button>
+                            <div class="testimonials-dots" id="testimonialDots"></div>
+                            <button type="button" class="testimonial-nav next" aria-label="Próximo depoimento">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                    <path d="M9 6l6 6-6 6" />
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="testimonial-card reveal">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"A instalação ficou com acabamento impecável. Configuraram comandos de voz e cenas (chegar em casa, noite, cinema). Ficou muito prático no dia a dia."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">MS</div>
-                        <div class="author-info">
-                            <h4>Mariana Silva</h4>
-                            <p>Uberaba, MG</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card reveal">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"Eu tinha receio de instabilidade, mas ficou tudo bem configurado. Sensores e automações funcionando sem travar, e o suporte respondeu rápido quando tive dúvida."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">CF</div>
-                        <div class="author-info">
-                            <h4>Carlos Ferreira</h4>
-                            <p>Araguari, MG</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card reveal">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"Gostei porque eles explicam com paciência e deixam tudo pronto para usar. Hoje controlo iluminação e algumas rotinas pelo celular, sem complicação."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">AO</div>
-                        <div class="author-info">
-                            <h4>Aline Oliveira</h4>
-                            <p>Ituiutaba, MG</p>
-                        </div>
-                    </div>
-                </div>
-                </div>
-                <div class="testimonials-controls">
-                    <button type="button" class="testimonial-nav prev" aria-label="Depoimento anterior">‹</button>
-                    <div class="testimonials-dots" id="testimonialDots"></div>
-                    <button type="button" class="testimonial-nav next" aria-label="Próximo depoimento">›</button>
-                </div>
+                <aside class="testimonials-about reveal" aria-label="Quem Somos">
+                    <h3>Quem Somos</h3>
+                    <p class="subtitle">A MkTech nasceu com o propósito de levar tecnologia, eficiência e segurança para residências e empresas no Triângulo Mineiro. Atuamos com soluções completas em automação e instalações elétricas, sempre com planejamento técnico e execução de alto padrão.</p>
+                    <p>Participamos de todas as fases do projeto, desde o estudo das necessidades do cliente até a implementação final e o acompanhamento técnico após a entrega. Desenvolvemos sistemas inteligentes que conectam iluminação, climatização, cortinas, áudio, vídeo e redes de dados, criando ambientes mais funcionais e integrados.</p>
+                    <p>Cada projeto é pensado de forma estratégica, respeitando as normas técnicas e priorizando desempenho, durabilidade e confiabilidade. Nosso foco é transformar espaços em ambientes modernos, eficientes e preparados para evoluir com o tempo.</p>
+                </aside>
             </div>
         </div>
     </section>
@@ -2002,7 +2091,7 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
         <div class="cta-content reveal">
             <h2>Pronto para transformar sua casa?</h2>
             <p>Entre em contato agora e descubra como tornar seu lar mais inteligente, seguro e econômico.</p>
-            <button class="btn btn-accent" type="button" onclick="openQuoteModal()">Fale Conosco Agora</button>
+            <a class="btn btn-accent" href="#contato">Fale Conosco Agora</a>
         </div>
     </section>
 
@@ -2315,54 +2404,6 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                     scrollTo(href);
                 }
             });
-        });
-
-        // ========================
-        // MODAL DE ORÇAMENTO
-        // ========================
-        const quoteModal = document.getElementById('quoteModal');
-
-        window.openQuoteModal = function() {
-            if (!quoteModal) return;
-            quoteModal.classList.add('open');
-            quoteModal.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden';
-        };
-
-        window.closeQuoteModal = function() {
-            if (!quoteModal) return;
-            quoteModal.classList.remove('open');
-            quoteModal.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
-        };
-
-        window.handleQuoteChannel = function(channel) {
-            const whatsappUrl = 'https://wa.me/5534996568351';
-            const emailUrl = 'mailto:Mktechudi@gmail.com';
-
-            if (channel === 'whatsapp') {
-                window.open(whatsappUrl, '_blank');
-            } else if (channel === 'email') {
-                window.location.href = emailUrl;
-            }
-
-            closeQuoteModal();
-        };
-
-        // Fechar modal ao clicar fora do conteúdo
-        if (quoteModal) {
-            quoteModal.addEventListener('click', (event) => {
-                if (event.target === quoteModal) {
-                    closeQuoteModal();
-                }
-            });
-        }
-
-        // Fechar modal com tecla ESC
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && quoteModal && quoteModal.classList.contains('open')) {
-                closeQuoteModal();
-            }
         });
 
         // ========================
