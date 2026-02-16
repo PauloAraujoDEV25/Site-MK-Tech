@@ -1,7 +1,7 @@
-﻿Start: 2026-02-16T20:28:06.0747226-03:00
+﻿Start: 2026-02-16T20:28:59.8296282-03:00
 InputPath: src/main/resources/static/Cozinha moderna com toque aconchegante.png
 OutputPath: src/main/resources/static/Cozinha moderna com toque aconchegante@4k.png
-Scale: 2; TargetWidth: 3840; TargetHeight: 0; NoSharpen: False
+Scale: 2; TargetWidth: 3840; TargetHeight: 0; NoSharpen: True
 ResolvedInput: C:\development\java\Site-MK-Tech\src\main\resources\static\Cozinha moderna com toque aconchegante.png
 Loaded: 1536x1024
 Target: 3840x2560
@@ -9,4 +9,6 @@ Alloc bitmap...
 Alloc bitmap OK
 Draw...
 Draw OK
-Sharpen...
+Save...
+Save OK
+Created: src/main/resources/static/Cozinha moderna com toque aconchegante@4k.png (3840 x 2560)
