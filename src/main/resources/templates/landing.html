@@ -259,9 +259,18 @@ img { max-width: 100%; display: block; }
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--gradient-hero);
+    background-color: #050510;
+    background-image:
+        linear-gradient(90deg, rgba(5,5,16,0.92) 0%, rgba(5,5,16,0.7) 42%, rgba(5,5,16,0.18) 72%, rgba(5,5,16,0) 100%),
+        var(--hero-bg-url, url('/Cozinha%20moderna%20com%20toque%20aconchegante.png'));
+    background-image:
+        linear-gradient(90deg, rgba(5,5,16,0.92) 0%, rgba(5,5,16,0.7) 42%, rgba(5,5,16,0.18) 72%, rgba(5,5,16,0) 100%),
+        image-set(
+            var(--hero-bg-1x, var(--hero-bg-url, url('/Cozinha%20moderna%20com%20toque%20aconchegante.png'))) 1x,
+            var(--hero-bg-2x, var(--hero-bg-url, url('/Cozinha%20moderna%20com%20toque%20aconchegante.png'))) 2x
+        );
     background-size: cover;
-    background-position: center;
+    background-position: 66% 86%;
     background-repeat: no-repeat;
     padding: clamp(6.75rem, 10vh, 7.75rem) 3rem clamp(4.5rem, 7vh, 5.5rem) 3rem;
     position: relative;
@@ -286,8 +295,8 @@ img { max-width: 100%; display: block; }
     max-width: 1320px;
     width: 100%;
     display: grid;
-    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-    gap: 3.25rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
     align-items: center;
     justify-items: start;
 }
@@ -335,7 +344,7 @@ img { max-width: 100%; display: block; }
     box-shadow: 0 28px 70px rgba(0,0,0,0.8);
     object-fit: cover;
     /* Ajuste para destacar o “aparelho digital” na imagem */
-    object-position: 70% 80%;
+    object-position: 66% 86%;
 }
 
 .hero-content {
@@ -371,15 +380,21 @@ img { max-width: 100%; display: block; }
 
     .hero-static-image {
         height: clamp(260px, 55vw, 360px);
-        object-position: 70% 78%;
+        object-position: 66% 84%;
     }
 }
 
 .hero-brand {
     display: flex;
-    align-items: baseline;
-    gap: 0.85rem;
-    margin-bottom: 1.5rem;
+    align-items: center;
+    gap: 0.65rem;
+    margin-bottom: 1.25rem;
+}
+
+.hero-brand-logo {
+    width: 26px;
+    height: 26px;
+    display: block;
 }
 
 .hero-brand-name {
@@ -401,9 +416,9 @@ img { max-width: 100%; display: block; }
 }
 
 .hero-kicker {
-    font-size: 1.05rem;
-    color: rgba(255,255,255,0.86);
-    margin-bottom: 0.65rem;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 0.55rem;
 }
 
 .hero-kicker .accent {
@@ -412,7 +427,7 @@ img { max-width: 100%; display: block; }
 }
 
 .hero-title {
-    font-size: clamp(2.25rem, 4.7vw, 3.55rem);
+    font-size: clamp(2.1rem, 4.4vw, 3.4rem);
     font-weight: 900;
     line-height: 1.06;
     margin-bottom: 1rem;
@@ -429,6 +444,48 @@ img { max-width: 100%; display: block; }
     font-size: 0.98rem;
     line-height: 1.7;
     margin-bottom: 1.35rem;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+    flex-wrap: wrap;
+}
+
+.btn-hero-secondary {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: rgba(255,255,255,0.92);
+}
+
+.btn-hero-secondary:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.28);
+    transform: translateY(-2px);
+}
+
+.hero-meta {
+    margin-top: 1.15rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    padding: 0;
+    list-style: none;
+}
+
+.hero-meta li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.65);
+}
+
+.hero-meta li::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: 900;
 }
 
 .hero-feature-list {
@@ -469,7 +526,7 @@ img { max-width: 100%; display: block; }
     margin-top: 1rem;
 }
 
-.hero h1,
+.hero h1:not(.hero-title),
 .hero .subtitle,
 .hero-copy {
     text-shadow: 0 8px 28px rgba(0,0,0,0.55);
@@ -495,7 +552,7 @@ img { max-width: 100%; display: block; }
     animation: fadeInDown 0.8s ease-out;
 }
 
-.hero h1 {
+.hero h1:not(.hero-title) {
     font-size: clamp(1.85rem, 3.6vw, 3rem);
     font-weight: 900;
     line-height: 1.1;
@@ -1734,8 +1791,8 @@ img { max-width: 100%; display: block; }
 
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
 
-    .hero-buttons { flex-direction: column; gap: 0.75rem; }
-    .hero-buttons .btn { width: 100%; justify-content: center; }
+    .hero-actions { flex-direction: column; gap: 0.75rem; }
+    .hero-actions .btn { width: 100%; justify-content: center; }
 
     .cta-section { padding: 3.5rem 1.25rem; }
 
@@ -1891,17 +1948,18 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
     </nav>
 
     <!-- Hero -->
-    <section class="hero">
+    <section class="hero"
+             style="--hero-bg-url: url('../static/Cozinha moderna com toque aconchegante.png'); --hero-bg-1x: url('../static/Cozinha moderna com toque aconchegante.png'); --hero-bg-2x: url('../static/Cozinha moderna com toque aconchegante@2x.png');"
+             th:style="|--hero-bg-url: url('@{/Cozinha moderna com toque aconchegante.png}'); --hero-bg-1x: url('@{/Cozinha moderna com toque aconchegante.png}'); --hero-bg-2x: url('@{/Cozinha moderna com toque aconchegante@2x.png}');|">
         <div class="hero-particles" aria-hidden="true"></div>
         <div class="hero-inner">
             <div class="hero-content">
                 <div class="hero-overlay-card reveal">
-                  
+                   
 
-            
-                    <h1 class="hero-title">Transformamos tecnologia em <span class="accent">experiências</span><br>inteligentes</h1>
+                    <h1 class="hero-title">Transformamos sua casa em um <span class="accent">ambiente inteligente</span>, seguro e eficiente.</h1>
 
-                    <p class="hero-lead">Tecnologia integrada para transformar sua casa em um ambiente mais seguro, prático e energeticamente eficiente.</p>
+                    <p class="hero-lead">Tecnologia integrada com instalação profissional e acabamento de alto padrão.</p>
 
                     <ul class="hero-feature-list" aria-label="Destaques">
                         <li>Projetos personalizados</li>
@@ -1909,15 +1967,10 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                         <li>Integração com Alexa, Google Assistant e Siri</li>
                         <li>Suporte contínuo</li>
                     </ul>
-                </div>
-            </div>
 
-            <div class="hero-media reveal" aria-label="Imagem de automação residencial">
-                <img class="hero-static-image"
-                     th:src="@{/Cozinha%20moderna%20com%20toque%20aconchegante.png}"
-                     src="../static/Cozinha moderna com toque aconchegante.png"
-                     alt="Cozinha moderna com dispositivo inteligente"
-                     loading="eager" decoding="async">
+
+                  
+                </div>
             </div>
         </div>
     </section>
