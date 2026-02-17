@@ -260,9 +260,10 @@ img { max-width: 100%; display: block; }
     align-items: center;
     justify-content: center;
     background-color: #050510;
+    --hero-scrim: linear-gradient(90deg, rgba(5,5,16,0.92) 0%, rgba(5,5,16,0.7) 42%, rgba(5,5,16,0.18) 72%, rgba(5,5,16,0) 100%);
     --hero-bg-selected: var(--hero-bg-1x, var(--hero-bg-url, url('/Cozinha%20moderna%20com%20toque%20aconchegante.png')));
     background-image:
-        linear-gradient(90deg, rgba(5,5,16,0.92) 0%, rgba(5,5,16,0.7) 42%, rgba(5,5,16,0.18) 72%, rgba(5,5,16,0) 100%),
+        var(--hero-scrim),
         var(--hero-bg-selected);
     background-size: cover;
     /* Mantém foco no dispositivo (lado direito) */
@@ -377,6 +378,7 @@ img { max-width: 100%; display: block; }
 
 @media (max-width: 900px) {
     .hero {
+        --hero-scrim: linear-gradient(90deg, rgba(5,5,16,0.78) 0%, rgba(5,5,16,0.55) 44%, rgba(5,5,16,0.14) 76%, rgba(5,5,16,0) 100%);
         /* Em telas menores, ainda preserva o dispositivo à direita */
         background-position: 78% 60%;
     }
@@ -1786,7 +1788,11 @@ img { max-width: 100%; display: block; }
 
     .mobile-overlay.show { display: block; }
 
-    .hero { min-height: auto; padding: 5.75rem 1.25rem 2.75rem; }
+    .hero {
+        min-height: auto;
+        padding: 5.75rem 1.25rem 2.75rem;
+        --hero-scrim: linear-gradient(90deg, rgba(5,5,16,0.72) 0%, rgba(5,5,16,0.48) 46%, rgba(5,5,16,0.12) 78%, rgba(5,5,16,0) 100%);
+    }
     .hero-inner { grid-template-columns: 1fr; gap: 1.75rem; }
     .hero-content { text-align: left; }
     .hero-overlay-card { padding: 1.5rem; border-radius: 20px; }
