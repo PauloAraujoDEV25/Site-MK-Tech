@@ -260,24 +260,30 @@ img { max-width: 100%; display: block; }
     align-items: center;
     justify-content: center;
     background-color: #050510;
+    --hero-bg-selected: var(--hero-bg-1x, var(--hero-bg-url, url('/Cozinha%20moderna%20com%20toque%20aconchegante.png')));
     background-image:
         linear-gradient(90deg, rgba(5,5,16,0.92) 0%, rgba(5,5,16,0.7) 42%, rgba(5,5,16,0.18) 72%, rgba(5,5,16,0) 100%),
-        var(--hero-bg-url, url('/Cozinha%20moderna%20com%20toque%20aconchegante.png'));
-    background-image:
-        linear-gradient(90deg, rgba(5,5,16,0.92) 0%, rgba(5,5,16,0.7) 42%, rgba(5,5,16,0.18) 72%, rgba(5,5,16,0) 100%),
-        image-set(
-            var(--hero-bg-1x, var(--hero-bg-url, url('/Cozinha%20moderna%20com%20toque%20aconchegante.png'))) 1x,
-            var(--hero-bg-2x, var(--hero-bg-url, url('/Cozinha%20moderna%20com%20toque%20aconchegante.png'))) 2x,
-            var(--hero-bg-3x, var(--hero-bg-2x, var(--hero-bg-url, url('/Cozinha%20moderna%20com%20toque%20aconchegante.png')))) 3x
-        );
+        var(--hero-bg-selected);
     background-size: cover;
-    /* Ajuste para destacar o dispositivo no balcão */
-    background-position: 72% 78%;
+    /* Mantém foco no dispositivo (lado direito) */
+    background-position: 84% 66%;
     background-repeat: no-repeat;
     padding: clamp(6.75rem, 10vh, 7.75rem) 3rem clamp(4.5rem, 7vh, 5.5rem) 3rem;
     position: relative;
     overflow: hidden;
     color: var(--text-on-primary);
+}
+
+@media (min-resolution: 2dppx) {
+    .hero {
+        --hero-bg-selected: var(--hero-bg-2x, var(--hero-bg-selected));
+    }
+}
+
+@media (min-resolution: 3dppx) {
+    .hero {
+        --hero-bg-selected: var(--hero-bg-3x, var(--hero-bg-2x, var(--hero-bg-selected)));
+    }
 }
 
 .hero-particles {
@@ -371,8 +377,8 @@ img { max-width: 100%; display: block; }
 
 @media (max-width: 900px) {
     .hero {
-        /* Em telas menores, prioriza composição central */
-        background-position: 58% 70%;
+        /* Em telas menores, ainda preserva o dispositivo à direita */
+        background-position: 78% 60%;
     }
 
     .hero-inner {
@@ -1873,8 +1879,8 @@ img { max-width: 100%; display: block; }
    ============================================ */
 @media (min-width: 1024px) {
     .hero {
-        min-height: 58vh;
-        padding: 5.5rem 3rem 3.5rem 3rem;
+        min-height: 66vh;
+        padding: 6rem 3rem 4rem 3rem;
     }
 
     .hero-inner {
@@ -1899,8 +1905,8 @@ img { max-width: 100%; display: block; }
     .hero {
         min-height: 54vh;
         padding: 5.25rem 3rem 3.25rem 3rem;
-        /* Em widescreens, puxa mais para a direita para destacar o dispositivo */
-        background-position: 78% 76%;
+        /* Em widescreens, puxa mais para o dispositivo */
+        background-position: 90% 66%;
     }
 
     .hero-overlay-card {
@@ -1958,8 +1964,8 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
 
     <!-- Hero -->
     <section class="hero"
-             style="--hero-bg-url: url('../static/Cozinha moderna com toque aconchegante.png'); --hero-bg-1x: url('../static/Cozinha moderna com toque aconchegante.png'); --hero-bg-2x: url('../static/Cozinha moderna com toque aconchegante@2x.png'); --hero-bg-3x: url('../static/Cozinha moderna com toque aconchegante@4k.png');"
-             th:style="|--hero-bg-url: url('@{/Cozinha moderna com toque aconchegante.png}'); --hero-bg-1x: url('@{/Cozinha moderna com toque aconchegante.png}'); --hero-bg-2x: url('@{/Cozinha moderna com toque aconchegante@2x.png}'); --hero-bg-3x: url('@{/Cozinha moderna com toque aconchegante@4k.png}');|">
+             style="--hero-bg-url: url('../static/Cozinha%20moderna%20com%20toque%20aconchegante.png'); --hero-bg-1x: url('../static/Cozinha%20moderna%20com%20toque%20aconchegante@2x.png'); --hero-bg-2x: url('../static/Cozinha%20moderna%20com%20toque%20aconchegante@4k.png'); --hero-bg-3x: url('../static/Cozinha%20moderna%20com%20toque%20aconchegante@4k.png');"
+             th:style="|--hero-bg-url: url('@{/Cozinha moderna com toque aconchegante.png}'); --hero-bg-1x: url('@{/Cozinha moderna com toque aconchegante@2x.png}'); --hero-bg-2x: url('@{/Cozinha moderna com toque aconchegante@4k.png}'); --hero-bg-3x: url('@{/Cozinha moderna com toque aconchegante@4k.png}');|">
         <div class="hero-particles" aria-hidden="true"></div>
         <div class="hero-inner">
             <div class="hero-content">
