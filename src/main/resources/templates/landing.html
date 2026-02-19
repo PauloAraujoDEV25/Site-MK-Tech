@@ -13,14 +13,14 @@
    VARIÁVEIS - DARK MODE (padrão)
    ============================================ */
 :root {
-    --primary: #7c3aed;
-    --primary-light: #a855f7;
-    --primary-dark: #5b21b6;
-    --primary-glow: rgba(124, 58, 237, 0.45);
-    --accent: #fb923c;
-    --accent-light: #fdba74;
+    --primary: #8b5cf6;
+    --primary-light: #c084fc;
+    --primary-dark: #6d28d9;
+    --primary-glow: rgba(139, 92, 246, 0.58);
+    --accent: #fb7a2a;
+    --accent-light: #ffb38a;
     --accent-dark: #f97316;
-    --accent-glow: rgba(251, 146, 60, 0.35);
+    --accent-glow: rgba(251, 122, 42, 0.42);
 
     --bg-body: #050510;
     --bg-primary: #060614;
@@ -71,7 +71,8 @@
     --bg-secondary: #e5e7eb;   /* faixas alternadas */
     --bg-card: #ffffff;
     --bg-card-hover: #f9fafb;
-    --bg-nav: rgba(255,255,255,0.72);
+    /* Navbar no tema claro igual à section Serviços (azul bebê + cinza claro) */
+    --bg-nav: rgba(255,255,255,0.62);
     --bg-input: rgba(15, 23, 42, 0.03);
     --bg-input-focus: rgba(15, 23, 42, 0.08);
 
@@ -152,6 +153,27 @@ img { max-width: 100%; display: block; }
     opacity: 0.14;
     pointer-events: none;
     z-index: 0;
+}
+
+/* No tema claro, o nav segue o mesmo fundo da section (.section) */
+[data-theme="light"] .navbar::after {
+    background: var(--gradient-section-alt);
+    opacity: 0.78;
+}
+
+[data-theme="light"] .navbar {
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .navbar .nav-links a {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+[data-theme="light"] .navbar .nav-links a:hover,
+[data-theme="light"] .navbar .nav-links a.active {
+    color: var(--text-primary);
+    background: var(--bg-input-focus);
 }
 
 .navbar.scrolled {
