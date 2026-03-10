@@ -293,7 +293,7 @@ img { max-width: 100%; display: block; }
     justify-content: center;
     background-color: var(--bg-body);
     --hero-scrim: linear-gradient(90deg, rgba(5,5,16,0.92) 0%, rgba(5,5,16,0.7) 42%, rgba(5,5,16,0.18) 72%, rgba(5,5,16,0) 100%);
-    --hero-bg-selected: var(--hero-bg-url, url('/Cozinha%20moderna%20com%20toque%20aconchegante@2x.png?v=20260219'));
+    --hero-bg-selected: var(--hero-bg-url, url('/static/Cozinha%20moderna%20com%20toque%20aconchegante@2x.png?v=20260219'));
     background-image:
         var(--hero-scrim),
         var(--hero-bg-selected);
