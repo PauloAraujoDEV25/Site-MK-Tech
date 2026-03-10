@@ -92,6 +92,22 @@ mvn spring-boot:run
 
 Acesse: `http://localhost:8080`
 
+## ▲ Deploy na Vercel (somente Landing Page)
+
+Se a ideia por enquanto é **apenas a landing page de captação**, este repositório já inclui uma versão estática em `public/` para deploy direto na Vercel, **sem backend Java**.
+
+- Entrada: `public/index.html`
+- Assets: `public/static/*`
+
+### Como publicar
+
+1. Importe o repositório na Vercel
+2. Em **Framework Preset**, escolha **Other**
+3. Em **Build Command**, deixe vazio
+4. Em **Output Directory**, use `public`
+
+Pronto: a Vercel vai servir o HTML/CSS/JS e o formulário continuará abrindo o WhatsApp via `wa.me` (client-side).
+
 ## 💬 Integração WhatsApp
 
 O sistema integra com a WhatsApp Business API para:
