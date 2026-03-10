@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Tecnologia de ponta">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1b0f3a"/>
+      <stop offset="0.55" stop-color="#111125"/>
+      <stop offset="1" stop-color="#060614"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8b5cf6" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#fb7a2a" stop-opacity="0.9"/>
+    </linearGradient>
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.55 0"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="900" fill="url(#bg)"/>
+
+  <!-- Decorative grid -->
+  <g opacity="0.25" stroke="#ffffff" stroke-opacity="0.14">
+    <path d="M120 120H1080"/>
+    <path d="M120 220H1080"/>
+    <path d="M120 320H1080"/>
+    <path d="M120 420H1080"/>
+    <path d="M120 520H1080"/>
+    <path d="M120 620H1080"/>
+    <path d="M120 720H1080"/>
+
+    <path d="M220 120V780"/>
+    <path d="M340 120V780"/>
+    <path d="M460 120V780"/>
+    <path d="M580 120V780"/>
+    <path d="M700 120V780"/>
+    <path d="M820 120V780"/>
+    <path d="M940 120V780"/>
+  </g>
+
+  <!-- Chip card -->
+  <g filter="url(#softGlow)">
+    <rect x="290" y="200" width="620" height="500" rx="40" fill="#111125" stroke="url(#glow)" stroke-width="3"/>
+    <rect x="340" y="250" width="520" height="400" rx="28" fill="#0b0b1a" stroke="#ffffff" stroke-opacity="0.10"/>
+
+    <!-- Chip pins -->
+    <g stroke="url(#glow)" stroke-width="10" stroke-linecap="round" opacity="0.85">
+      <path d="M290 270H240"/>
+      <path d="M290 350H240"/>
+      <path d="M290 430H240"/>
+      <path d="M290 510H240"/>
+      <path d="M290 590H240"/>
+      <path d="M290 670H240"/>
+
+      <path d="M960 270H910"/>
+      <path d="M960 350H910"/>
+      <path d="M960 430H910"/>
+      <path d="M960 510H910"/>
+      <path d="M960 590H910"/>
+      <path d="M960 670H910"/>
+
+      <path d="M370 200V150"/>
+      <path d="M470 200V150"/>
+      <path d="M570 200V150"/>
+      <path d="M670 200V150"/>
+      <path d="M770 200V150"/>
+      <path d="M870 200V150"/>
+
+      <path d="M370 750V700"/>
+      <path d="M470 750V700"/>
+      <path d="M570 750V700"/>
+      <path d="M670 750V700"/>
+      <path d="M770 750V700"/>
+      <path d="M870 750V700"/>
+    </g>
+
+    <!-- Center icon -->
+    <g>
+      <circle cx="600" cy="450" r="120" fill="url(#glow)" opacity="0.20"/>
+      <path d="M600 330c66 0 120 54 120 120s-54 120-120 120-120-54-120-120 54-120 120-120Z" fill="none" stroke="url(#glow)" stroke-width="10" opacity="0.9"/>
+      <path d="M540 450h120" stroke="#ffffff" stroke-opacity="0.7" stroke-width="10" stroke-linecap="round"/>
+      <path d="M600 390v120" stroke="#ffffff" stroke-opacity="0.7" stroke-width="10" stroke-linecap="round"/>
+    </g>
+  </g>
+</svg>

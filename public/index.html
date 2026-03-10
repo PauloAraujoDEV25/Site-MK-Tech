@@ -935,7 +935,7 @@ img { max-width: 100%; display: block; }
 }
 
 .benefit-card.topics-open .benefit-sidepanel {
-    max-height: 360px;
+    max-height: 560px;
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
@@ -982,9 +982,127 @@ img { max-width: 100%; display: block; }
     background: rgba(147, 51, 234, 0.12);
 }
 
+.benefit-panel {
+    margin-top: 0.85rem;
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 0.95rem;
+    align-items: start;
+}
+
+.benefit-panel-left {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.benefit-detail-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.benefit-detail-media {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    background: var(--bg-card);
+}
+
+.benefit-detail-media::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 55%;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(5,5,16,0.72) 100%);
+    pointer-events: none;
+}
+
+.benefit-detail-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.benefit-detail-icon {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(6, 6, 20, 0.35);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.benefit-detail-icon svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+.benefit-detail-body {
+    padding: 1.1rem 1.1rem 1.2rem;
+}
+
+.benefit-detail-body .benefit-topic-heading {
+    font-size: 1.15rem;
+    margin-bottom: 0.4rem;
+}
+
+.benefit-detail-body .benefit-topic-text {
+    font-size: 0.92rem;
+    margin-bottom: 0;
+}
+
+.benefit-panel-right {
+    min-width: 0;
+}
+
+.benefit-panel-detail {
+    border: 1px solid var(--border);
+    background: var(--bg-input);
+    border-radius: 14px;
+    padding: 0.85rem;
+}
+
+.benefit-topic-heading {
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    margin-bottom: 0.35rem;
+}
+
+.benefit-topic-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
 @media (max-width: 767px) {
     .benefit-card.topics-open .benefit-sidepanel {
-        max-height: 520px;
+        max-height: 720px;
+    }
+
+    .benefit-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .benefit-detail-media {
+        height: 190px;
     }
 }
 
@@ -2111,7 +2229,23 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                             </div>
                             <div class="benefit-sidepanel" aria-hidden="true">
                                 <div class="benefit-sidepanel-title">Benefícios</div>
-                                <div class="benefit-topic-list"></div>
+                                <div class="benefit-panel" hidden>
+                                    <div class="benefit-panel-left">
+                                        <div class="benefit-detail-card">
+                                            <div class="benefit-detail-media">
+                                                <img alt="" loading="lazy" decoding="async">
+                                                <span class="benefit-detail-icon" aria-hidden="true"></span>
+                                            </div>
+                                            <div class="benefit-detail-body">
+                                                <div class="benefit-topic-heading"></div>
+                                                <p class="benefit-topic-text"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="benefit-panel-right">
+                                        <div class="benefit-topic-list"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2132,7 +2266,23 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                             </div>
                             <div class="benefit-sidepanel" aria-hidden="true">
                                 <div class="benefit-sidepanel-title">Benefícios</div>
-                                <div class="benefit-topic-list"></div>
+                                <div class="benefit-panel" hidden>
+                                    <div class="benefit-panel-left">
+                                        <div class="benefit-detail-card">
+                                            <div class="benefit-detail-media">
+                                                <img alt="" loading="lazy" decoding="async">
+                                                <span class="benefit-detail-icon" aria-hidden="true"></span>
+                                            </div>
+                                            <div class="benefit-detail-body">
+                                                <div class="benefit-topic-heading"></div>
+                                                <p class="benefit-topic-text"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="benefit-panel-right">
+                                        <div class="benefit-topic-list"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2153,27 +2303,23 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                             </div>
                             <div class="benefit-sidepanel" aria-hidden="true">
                                 <div class="benefit-sidepanel-title">Benefícios</div>
-                                <div class="benefit-topic-list"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="benefits-slide">
-                        <div class="benefit-card reveal">
-                            <div class="benefit-main">
-                                <span class="card-icon" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M20 4c-9 0-15 6-15 15" />
-                                        <path d="M20 4c0 9-6 15-15 15" />
-                                        <path d="M9 15c2-2 5-3 8-3" />
-                                    </svg>
-                                </span>
-                                <h3>Soluções Sustentáveis</h3>
-                                <p>Tecnologia eco-friendly que preserva o meio ambiente enquanto economiza sua energia.</p>
-                            </div>
-                            <div class="benefit-sidepanel" aria-hidden="true">
-                                <div class="benefit-sidepanel-title">Benefícios</div>
-                                <div class="benefit-topic-list"></div>
+                                <div class="benefit-panel" hidden>
+                                    <div class="benefit-panel-left">
+                                        <div class="benefit-detail-card">
+                                            <div class="benefit-detail-media">
+                                                <img alt="" loading="lazy" decoding="async">
+                                                <span class="benefit-detail-icon" aria-hidden="true"></span>
+                                            </div>
+                                            <div class="benefit-detail-body">
+                                                <div class="benefit-topic-heading"></div>
+                                                <p class="benefit-topic-text"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="benefit-panel-right">
+                                        <div class="benefit-topic-list"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2193,7 +2339,23 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                             </div>
                             <div class="benefit-sidepanel" aria-hidden="true">
                                 <div class="benefit-sidepanel-title">Benefícios</div>
-                                <div class="benefit-topic-list"></div>
+                                <div class="benefit-panel" hidden>
+                                    <div class="benefit-panel-left">
+                                        <div class="benefit-detail-card">
+                                            <div class="benefit-detail-media">
+                                                <img alt="" loading="lazy" decoding="async">
+                                                <span class="benefit-detail-icon" aria-hidden="true"></span>
+                                            </div>
+                                            <div class="benefit-detail-body">
+                                                <div class="benefit-topic-heading"></div>
+                                                <p class="benefit-topic-text"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="benefit-panel-right">
+                                        <div class="benefit-topic-list"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2214,7 +2376,23 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                             </div>
                             <div class="benefit-sidepanel" aria-hidden="true">
                                 <div class="benefit-sidepanel-title">Benefícios</div>
-                                <div class="benefit-topic-list"></div>
+                                <div class="benefit-panel" hidden>
+                                    <div class="benefit-panel-left">
+                                        <div class="benefit-detail-card">
+                                            <div class="benefit-detail-media">
+                                                <img alt="" loading="lazy" decoding="async">
+                                                <span class="benefit-detail-icon" aria-hidden="true"></span>
+                                            </div>
+                                            <div class="benefit-detail-body">
+                                                <div class="benefit-topic-heading"></div>
+                                                <p class="benefit-topic-text"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="benefit-panel-right">
+                                        <div class="benefit-topic-list"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2462,6 +2640,15 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                         </button>
                         <div class="faq-answer">
                             <p>Com certeza. Configuramos cenas simples, em português, com botões físicos, aplicativo intuitivo e, se quiser, comandos por voz. No final da instalação, você recebe uma explicação completa de como usar tudo.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item reveal">
+                        <button class="faq-question" type="button">
+                            <span>Automação para idosos</span>
+                            <span class="faq-icon"></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Muitas pessoas querem ser independentes, mas têm medo de que a tecnologia seja complicada demais. Por causa disso, acabam dependendo de outros para tarefas simples, como acender uma luz ou cuidar da segurança da casa. O que falta é alguém que mostre, com paciência, que a automação não é um bicho de sete cabeças, mas sim uma ferramenta para que elas voltem a se sentir seguras e donas do próprio lar.</p>
                         </div>
                     </div>
                     <div class="faq-item reveal">
@@ -2924,6 +3111,71 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
             let resumeTimeoutId = null;
             let topicsOpen = false;
 
+            function getAssetsBasePath() {
+                const logo = document.querySelector('.nav-logo img');
+                const src = logo ? (logo.getAttribute('src') || '') : '';
+                // No estático usamos "../static/"; no Spring normalmente fica "/MKTech.png".
+                return src.includes('static/') ? '../static/' : '/';
+            }
+
+            const ASSETS_BASE = getAssetsBasePath();
+
+            function benefitImageForIndex(index) {
+                const slide = benefitSlides[index];
+                const title = slide ? getBenefitTitle(slide).toLowerCase() : '';
+
+                if (title.includes('instala')) return 'beneficios/instalacao-profissional.png';
+                if (title.includes('suporte')) return 'beneficios/suporte-dedicado.png';
+                if (title.includes('atualiza')) return 'beneficios/atualizacoes-gratuitas.png';
+                if (title.includes('formas')) return 'beneficios/formas-de-pagamento.png';
+                if (title.includes('tecnologia')) return 'beneficios/tecnologia-de-ponta.png';
+
+                return 'tranca-inteligente.png';
+            }
+
+            function getBenefitText(slideEl) {
+                const p = slideEl.querySelector('.benefit-main p');
+                return p ? p.textContent.trim() : '';
+            }
+
+            function getBenefitDetailText(slideEl) {
+                const title = getBenefitTitle(slideEl).toLowerCase();
+
+                if (title.includes('instala')) {
+                    return 'Instalação limpa e organizada, com configuração completa, testes e orientação de uso. Tudo fica pronto para você começar a usar no mesmo dia, com acabamento de alto padrão.';
+                }
+
+                if (title.includes('suporte')) {
+                    return 'Suporte rápido via WhatsApp, com diagnóstico e acompanhamento pós-instalação. Se precisar, agendamos ajustes e visitas técnicas para manter tudo funcionando perfeito.';
+                }
+
+                if (title.includes('atualiza')) {
+                    return 'Seu sistema evolui com novas automações e melhorias de segurança. Fazemos ajustes finos e atualizações para você aproveitar mais recursos sem complicação.';
+                }
+
+                if (title.includes('formas')) {
+                    return 'Opções flexíveis para caber no seu orçamento, com parcelamento e condições que facilitam a decisão. Você escolhe o melhor caminho sem abrir mão de qualidade.';
+                }
+
+                if (title.includes('tecnologia')) {
+                    return 'Trabalhamos com dispositivos confiáveis, compatíveis com Alexa, Google e Siri, e integrações entre marcas. Mais estabilidade, performance e garantia para o seu projeto.';
+                }
+
+                return getBenefitText(slideEl);
+            }
+
+            function getBenefitIconMarkup(slideEl) {
+                const iconSvg = slideEl.querySelector('.benefit-main .card-icon svg');
+                return iconSvg ? iconSvg.outerHTML : '';
+            }
+
+            const benefitDetails = benefitSlides.map((slide, idx) => ({
+                title: getBenefitTitle(slide),
+                text: getBenefitDetailText(slide),
+                image: benefitImageForIndex(idx),
+                icon: getBenefitIconMarkup(slide)
+            }));
+
             function updateBenefitsCarousel(instant = false) {
                 const target = benefitSlides[currentIndex];
                 if (!target) return;
@@ -2973,6 +3225,15 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                 benefitSlides.forEach(slide => {
                     const card = slide.querySelector('.benefit-card');
                     if (card) card.classList.remove('topics-open');
+
+                    const panel = slide.querySelector('.benefit-panel');
+                    if (panel instanceof HTMLElement) {
+                        panel.hidden = true;
+                        const img = panel.querySelector('.benefit-detail-media img');
+                        if (img) img.removeAttribute('src');
+                        const icon = panel.querySelector('.benefit-detail-icon');
+                        if (icon) icon.innerHTML = '';
+                    }
                 });
             }
 
@@ -2985,6 +3246,32 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                 });
             }
 
+            function renderBenefitDetail(slideEl, detailIndex) {
+                const panel = slideEl.querySelector('.benefit-panel');
+                if (!(panel instanceof HTMLElement)) return;
+
+                const data = benefitDetails[detailIndex];
+                if (!data) return;
+
+                const heading = panel.querySelector('.benefit-topic-heading');
+                const text = panel.querySelector('.benefit-topic-text');
+                const img = panel.querySelector('.benefit-detail-media img');
+                const icon = panel.querySelector('.benefit-detail-icon');
+
+                if (heading) heading.textContent = data.title;
+                if (text) text.textContent = data.text;
+                if (img) {
+                    img.alt = data.title;
+                    img.src = encodeURI(ASSETS_BASE + data.image);
+                }
+
+                if (icon) {
+                    icon.innerHTML = data.icon || '';
+                }
+
+                panel.hidden = false;
+            }
+
             function openTopicsForCurrent() {
                 closeAllTopics();
                 const slide = benefitSlides[currentIndex];
@@ -2993,6 +3280,7 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                 if (!card) return;
                 card.classList.add('topics-open');
                 syncActiveTopicButtons();
+                renderBenefitDetail(slide, currentIndex);
             }
 
             function stopBenefitsAutoplay() {
@@ -3038,6 +3326,26 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                 const idx = Number(btn.dataset.index);
                 if (Number.isNaN(idx)) return;
                 goToBenefit(idx);
+            });
+
+            // Suporte a toque/mobile: tocar no card abre/fecha o painel de tópicos.
+            benefitsCarousel.addEventListener('click', (event) => {
+                const target = event.target;
+                if (!(target instanceof HTMLElement)) return;
+
+                if (target.closest('.benefit-topic')) return;
+
+                const card = target.closest('.benefit-card');
+                if (!card) return;
+
+                topicsOpen = !topicsOpen;
+                if (topicsOpen) {
+                    stopBenefitsAutoplay();
+                    openTopicsForCurrent();
+                } else {
+                    closeAllTopics();
+                    scheduleBenefitsResume();
+                }
             });
 
             window.addEventListener('resize', () => updateBenefitsCarousel(true), { passive: true });
