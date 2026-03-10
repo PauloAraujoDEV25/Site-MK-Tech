@@ -1042,8 +1042,14 @@ img { max-width: 100%; display: block; }
 .faq-layout {
     display: grid;
     grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-    gap: 3rem;
-    align-items: flex-start;
+    gap: 2rem;
+    align-items: stretch;
+}
+
+.faq-intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .faq-intro h3 {
@@ -1057,7 +1063,7 @@ img { max-width: 100%; display: block; }
     color: var(--text-secondary);
     font-size: 0.98rem;
     line-height: 1.7;
-    max-width: 360px;
+    max-width: 520px;
 }
 
 .faq-intro .btn {
@@ -2014,6 +2020,7 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                 <a href="#beneficios">Benefícios</a>
                 <a href="#pacotes">Serviços</a>
                 <a href="#depoimentos">Depoimentos</a>
+                <a href="#quem-somos">Quem somos</a>
                 <a href="#faq">Perguntas frequentes</a>
                 <a href="#contato">Contato</a>
             </div>
@@ -2045,6 +2052,11 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                     <h1 class="hero-title">Transformamos sua casa em um <span class="accent">ambiente inteligente</span>, seguro e eficiente.</h1>
 
                     <p class="hero-lead">Tecnologia integrada com instalação profissional e acabamento de alto padrão.</p>
+
+                    <p class="hero-lead">MkTech.<br>
+                    Mais do que automação residencial.<br>
+                    Nós preparamos sua casa para o futuro.<br>
+                    Para você viver o amanhã.</p>
 
                     <ul class="hero-feature-list" aria-label="Destaques">
                         <li>Projetos personalizados</li>
@@ -2361,7 +2373,7 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                     </div>
                 </div>
 
-                <aside class="testimonials-about reveal" aria-label="Quem Somos">
+                <aside id="quem-somos" class="testimonials-about reveal" aria-label="Quem Somos">
                     <h3>Quem Somos</h3>
                     <p class="subtitle">A MkTech nasceu com o propósito de levar tecnologia, eficiência e segurança para residências e empresas no Triângulo Mineiro. Atuamos com soluções completas em automação e instalações elétricas, sempre com planejamento técnico e execução de alto padrão.</p>
                     <p>Participamos de todas as fases do projeto, desde o estudo das necessidades do cliente até a implementação final e o acompanhamento técnico após a entrega. Desenvolvemos sistemas inteligentes que conectam iluminação, climatização, cortinas, áudio, vídeo e redes de dados, criando ambientes mais funcionais e integrados.</p>
@@ -2387,7 +2399,8 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
                 <div class="faq-intro reveal">
                     <span class="badge">Perguntas frequentes</span>
                     <h3>Perguntas frequentes</h3>
-                    <p>Reunimos as dúvidas mais comuns sobre automação residencial para você entender, de forma simples, como a MKTech pode deixar sua casa mais inteligente, segura e prática.</p>
+                    <p>Reunimos as dúvidas mais comuns sobre automação residencial para você entender, de forma direta, como a MKTech pode deixar sua casa mais inteligente, segura e prática — sem complicação e com instalação profissional.</p>
+                    <p>Aqui você encontra respostas objetivas sobre funcionamento, obra, internet e investimento. Se quiser, a gente avalia seu cenário (casa/apartamento/comercial), define prioridades e monta uma proposta sob medida com as melhores opções de integração.</p>
                     <a href="#contato" class="btn btn-outline">Entrar em contato</a>
                 </div>
                 <div class="faq-grid">
@@ -2660,7 +2673,7 @@ body, .navbar, .feature-item, .benefit-card, .package-card,
         // ========================
         // ACTIVE NAV LINK (scroll spy)
         // ========================
-        const sections = document.querySelectorAll('section[id]');
+        const sections = document.querySelectorAll('section[id], aside[id]');
         const navLinksList = document.querySelectorAll('.nav-links a');
 
         const spyObserver = new IntersectionObserver((entries) => {
