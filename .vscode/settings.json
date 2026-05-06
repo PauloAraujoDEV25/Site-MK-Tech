@@ -1,3 +1,56 @@
 {
-    "java.compile.nullAnalysis.mode": "automatic"
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "files.autoSave": "onFocusChange",
+  "files.autoSaveDelay": 1000,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.formatOnPaste": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true,
+    "source.fixAll": true
+  },
+  "editor.wordWrap": "on",
+  "editor.rulers": [
+    80,
+    120
+  ],
+  "editor.quickSuggestionsDelay": 50,
+  "editor.smoothScrolling": true,
+  "editor.hover.delay": 300,
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.cursorBlinking": "smooth",
+  "editor.semanticHighlighting.enabled": true,
+  "editor.minimap.enabled": true,
+  "workbench.startupEditor": "none",
+  "workbench.editor.enablePreview": true,
+  "workbench.editor.showTabs": true,
+  "breadcrumbs.enabled": true,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/target": true,
+    "**/.classpath": true,
+    "**/.project": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/target": true
+  },
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.fontSize": 13,
+  "window.zoomLevel": 0,
+  "telemetry.enableTelemetry": false,
+  "telemetry.telemetryLevel": "off",
+  "extensions.ignoreRecommendations": false,
+  "editor.formatOnSaveTimeout": 2000
+}{
+  "java.compile.nullAnalysis.mode": "automatic"
 }
