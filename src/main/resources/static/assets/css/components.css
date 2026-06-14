@@ -107,24 +107,20 @@
 
 
 
-/* Carrossel de frases da hero */
-.hero-story {
-    width: min(760px, 100%);
+/* Carrossel de histórias da seção de benefícios */
+.benefits-story-section {
+    background:
+        radial-gradient(circle at 15% 20%, var(--primary-glow), transparent 32%),
+        radial-gradient(circle at 85% 75%, var(--accent-glow), transparent 30%),
+        var(--bg-primary);
 }
 
-.hero-impact {
-    margin-bottom: 1.35rem;
+.benefits-story {
+    width: min(900px, 100%);
+    margin: 0 auto;
 }
 
-.hero-impact .hero-title {
-    font-size: clamp(2rem, 4vw, 3.2rem);
-}
-
-.hero-impact .hero-lead {
-    margin-bottom: 0;
-}
-
-.hero-phrase-card {
+.benefits-phrase-card {
     min-height: 230px;
     display: flex;
     flex-direction: column;
@@ -138,7 +134,7 @@
     -webkit-backdrop-filter: blur(14px);
 }
 
-.hero h1.hero-phrase {
+.benefits-phrase {
     min-height: 6.2em;
     margin: 0;
     color: var(--text-on-primary);
@@ -150,12 +146,12 @@
     transition: opacity 0.45s ease, transform 0.45s ease;
 }
 
-.hero-phrase.is-leaving {
+.benefits-phrase.is-leaving {
     opacity: 0;
     transform: translateY(-8px);
 }
 
-.hero-word {
+.benefits-word {
     display: inline-block;
     opacity: 0;
     filter: blur(5px);
@@ -163,19 +159,19 @@
     transition: opacity 0.42s ease, filter 0.42s ease, transform 0.42s ease;
 }
 
-.hero-word.visible {
+.benefits-word.visible {
     opacity: 1;
     filter: blur(0);
     transform: translateY(0);
 }
 
-.hero-phrase-dots {
+.benefits-phrase-dots {
     display: flex;
     gap: 0.55rem;
     margin-top: 1.2rem;
 }
 
-.hero-phrase-dot {
+.benefits-phrase-dot {
     width: 10px;
     height: 10px;
     padding: 0;
@@ -186,13 +182,13 @@
     transition: width 0.3s ease, background 0.3s ease;
 }
 
-.hero-phrase-dot.active {
+.benefits-phrase-dot.active {
     width: 34px;
     border-radius: var(--radius-pill);
     background: linear-gradient(90deg, var(--primary-light), var(--accent));
 }
 
-.hero-offer {
+.benefits-offer {
     position: relative;
     display: grid;
     justify-items: center;
@@ -208,8 +204,8 @@
     text-align: center;
 }
 
-.hero-offer::before,
-.hero-offer::after {
+.benefits-offer::before,
+.benefits-offer::after {
     content: "";
     position: absolute;
     width: 180px;
@@ -219,10 +215,10 @@
     pointer-events: none;
 }
 
-.hero-offer::before { left: -125px; bottom: -135px; }
-.hero-offer::after { right: -130px; top: -140px; }
+.benefits-offer::before { left: -125px; bottom: -135px; }
+.benefits-offer::after { right: -130px; top: -140px; }
 
-.hero-offer-intro {
+.benefits-offer-intro {
     position: relative;
     z-index: 1;
     color: var(--text-on-primary);
@@ -230,7 +226,7 @@
     font-weight: 800;
 }
 
-.hero-offer-price {
+.benefits-offer-price {
     position: relative;
     z-index: 1;
     color: var(--accent-light);
@@ -241,12 +237,12 @@
     text-shadow: 0 0 24px var(--accent-glow);
 }
 
-.hero-offer-price span {
+.benefits-offer-price span {
     color: var(--primary-light);
     text-shadow: 0 0 26px var(--primary-glow);
 }
 
-.hero-offer-brand {
+.benefits-offer-brand {
     position: relative;
     z-index: 1;
     margin-top: 0.4rem;

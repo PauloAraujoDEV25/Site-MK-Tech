@@ -239,11 +239,11 @@
     window.addEventListener('resize', () => updateCarousel(true), { passive: true });
   }
 
-  // CARROSSEL DE FRASES DA HERO
-  const heroPhrase = document.getElementById('heroPhrase');
-  const heroPhraseDots = Array.from(document.querySelectorAll('.hero-phrase-dot'));
+  // CARROSSEL DE FRASES DOS BENEFÍCIOS
+  const benefitsPhrase = document.getElementById('benefitsPhrase');
+  const benefitsPhraseDots = Array.from(document.querySelectorAll('.benefits-phrase-dot'));
 
-  if (heroPhrase && heroPhraseDots.length > 0) {
+  if (benefitsPhrase && benefitsPhraseDots.length > 0) {
     const phrases = [
       'Imagine você acordando não com um alarme estridente, mas com as cortinas se abrindo suavemente e a luz do quarto simulando o nascer do sol, preparando seu corpo para o dia de forma natural.',
       'Imagine entrar na cozinha com as mãos ocupadas pelas compras e a luz se acender automaticamente, iluminando seu caminho sem que você precise procurar por um interruptor.',
@@ -255,14 +255,14 @@
     let phraseTimer = null;
     let transitionTimer = null;
 
-    function clearHeroTimers() {
+    function clearBenefitsTimers() {
       window.clearInterval(wordTimer);
       window.clearTimeout(phraseTimer);
       window.clearTimeout(transitionTimer);
     }
 
-    function updateHeroDots(index) {
-      heroPhraseDots.forEach((dot, dotIndex) => {
+    function updateBenefitsDots(index) {
+      benefitsPhraseDots.forEach((dot, dotIndex) => {
         const active = dotIndex === index;
         dot.classList.toggle('active', active);
         dot.setAttribute('aria-pressed', String(active));
@@ -270,22 +270,22 @@
     }
 
     function showPhrase(index) {
-      clearHeroTimers();
+      clearBenefitsTimers();
       currentPhrase = (index + phrases.length) % phrases.length;
-      updateHeroDots(currentPhrase);
+      updateBenefitsDots(currentPhrase);
 
       const words = phrases[currentPhrase].split(' ');
-      heroPhrase.replaceChildren();
+      benefitsPhrase.replaceChildren();
 
       words.forEach((word) => {
         const wordElement = document.createElement('span');
-        wordElement.className = 'hero-word';
+        wordElement.className = 'benefits-word';
         wordElement.textContent = word;
-        heroPhrase.appendChild(wordElement);
-        heroPhrase.appendChild(document.createTextNode(' '));
+        benefitsPhrase.appendChild(wordElement);
+        benefitsPhrase.appendChild(document.createTextNode(' '));
       });
 
-      const wordElements = Array.from(heroPhrase.querySelectorAll('.hero-word'));
+      const wordElements = Array.from(benefitsPhrase.querySelectorAll('.benefits-word'));
       if (reduceMotion) {
         wordElements.forEach((word) => word.classList.add('visible'));
         phraseTimer = window.setTimeout(() => showPhrase(currentPhrase + 1), 6500);
@@ -300,9 +300,9 @@
         if (wordIndex >= wordElements.length) {
           window.clearInterval(wordTimer);
           phraseTimer = window.setTimeout(() => {
-            heroPhrase.classList.add('is-leaving');
+            benefitsPhrase.classList.add('is-leaving');
             transitionTimer = window.setTimeout(() => {
-              heroPhrase.classList.remove('is-leaving');
+              benefitsPhrase.classList.remove('is-leaving');
               showPhrase(currentPhrase + 1);
             }, 450);
           }, 4000);
@@ -310,7 +310,7 @@
       }, 85);
     }
 
-    heroPhraseDots.forEach((dot) => {
+    benefitsPhraseDots.forEach((dot) => {
       dot.addEventListener('click', () => showPhrase(Number(dot.dataset.phraseIndex)));
     });
 

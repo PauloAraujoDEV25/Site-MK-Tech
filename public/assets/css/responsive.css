@@ -113,24 +113,17 @@
     }
     .hero-inner { grid-template-columns: 1fr; gap: 1.75rem; }
     .hero-content { text-align: left; }
-    .hero-story { padding: 0; }
-    .hero-impact {
-        margin-bottom: 1rem;
-    }
-    .hero-impact .hero-title {
-        font-size: clamp(1.75rem, 8vw, 2.35rem);
-    }
-    .hero-phrase-card {
+    .benefits-phrase-card {
         min-height: 285px;
         padding: 1.35rem;
         border-radius: 22px 22px 10px 10px;
     }
-    .hero h1.hero-phrase {
+    .benefits-phrase {
         min-height: 9em;
         font-size: clamp(1.08rem, 5vw, 1.35rem);
         line-height: 1.5;
     }
-    .hero-offer {
+    .benefits-offer {
         padding: 1rem 1rem 1.15rem;
         border-radius: 10px 10px 22px 22px;
     }
@@ -228,11 +221,6 @@
         gap: 2.75rem;
     }
 
-    .hero-story {
-        padding: 0;
-        max-width: 680px;
-    }
-
     .packages-grid { grid-template-columns: repeat(3, 1fr); }
     .quick-features { grid-template-columns: repeat(4, 1fr); }
 
@@ -246,13 +234,10 @@
         padding: 5.25rem 3rem 3.25rem 3rem;
     }
 
-    .hero-story {
-        max-width: 650px;
-    }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .hero-word {
+    .benefits-word {
         transition: none;
     }
 }
