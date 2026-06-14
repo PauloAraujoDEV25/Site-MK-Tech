@@ -264,7 +264,7 @@
 
 .hero-carousel-controls {
     position: absolute;
-    right: clamp(1rem, 3vw, 3rem);
+    left: clamp(1rem, 3vw, 3rem);
     bottom: clamp(1rem, 3vw, 2rem);
     z-index: 3;
     display: flex;

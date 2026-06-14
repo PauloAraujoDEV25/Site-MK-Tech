@@ -77,6 +77,36 @@
     white-space: nowrap;
 }
 
+.floating-contact-icon {
+    display: none;
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.floating-contact.is-over-hero {
+    left: clamp(1rem, 3vw, 3rem);
+    right: auto;
+    bottom: calc(clamp(1rem, 3vw, 2rem) + 3.25rem);
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border-radius: 50%;
+}
+
+.floating-contact.is-over-hero .floating-contact-icon {
+    display: block;
+}
+
+.floating-contact.is-over-hero .floating-contact-text,
+.floating-contact.is-over-hero::after {
+    display: none;
+}
+
 .floating-contact::after {
     content: '';
     position: absolute;

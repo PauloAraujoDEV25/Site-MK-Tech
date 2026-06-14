@@ -90,6 +90,20 @@
 
   revealElements.forEach(el => revealObserver.observe(el));
 
+  // Reposiciona o contato flutuante enquanto a hero estiver visível
+  const heroSection = document.querySelector('.hero');
+  const floatingContact = document.querySelector('.floating-contact');
+
+  if (heroSection && floatingContact) {
+    const heroObserver = new IntersectionObserver(([entry]) => {
+      floatingContact.classList.toggle('is-over-hero', entry.isIntersecting);
+    }, {
+      threshold: 0.15
+    });
+
+    heroObserver.observe(heroSection);
+  }
+
   // ACTIVE NAV LINK (scroll spy)
   const sections = document.querySelectorAll('section[id], aside[id]');
   const navLinksList = document.querySelectorAll('.nav-links a');
