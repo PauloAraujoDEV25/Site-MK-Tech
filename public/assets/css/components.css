@@ -112,8 +112,20 @@
     width: min(760px, 100%);
 }
 
+.hero-impact {
+    margin-bottom: 1.35rem;
+}
+
+.hero-impact .hero-title {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+}
+
+.hero-impact .hero-lead {
+    margin-bottom: 0;
+}
+
 .hero-phrase-card {
-    min-height: 290px;
+    min-height: 230px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -126,13 +138,15 @@
     -webkit-backdrop-filter: blur(14px);
 }
 
-.hero-phrase {
-    min-height: 7.1em;
+.hero h1.hero-phrase {
+    min-height: 6.2em;
+    margin: 0;
     color: var(--text-on-primary);
-    font-size: clamp(1.35rem, 2.7vw, 2.15rem);
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
     font-weight: 700;
-    line-height: 1.42;
+    line-height: 1.5;
     text-wrap: balance;
+    animation: none;
     transition: opacity 0.45s ease, transform 0.45s ease;
 }
 
