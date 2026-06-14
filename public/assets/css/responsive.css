@@ -13,12 +13,20 @@
 
     .hero-media {
         max-width: 520px;
-        justify-self: start;
+        justify-self: center;
     }
 
     .hero-static-image {
         height: clamp(260px, 55vw, 360px);
         object-position: 66% 84%;
+    }
+
+    .hero-carousel {
+        width: 100%;
+    }
+
+    .hero-slide {
+        height: clamp(280px, 58vw, 390px);
     }
 }
 
@@ -113,6 +121,25 @@
     }
     .hero-inner { grid-template-columns: 1fr; gap: 1.75rem; }
     .hero-content { text-align: left; }
+    .hero-media {
+        max-width: 100%;
+    }
+    .hero-slide {
+        height: clamp(240px, 68vw, 330px);
+    }
+    .hero-carousel-caption {
+        left: 0.85rem;
+        bottom: 0.9rem;
+        font-size: 0.68rem;
+    }
+    .hero-carousel-controls {
+        right: 0.75rem;
+        bottom: 0.75rem;
+    }
+    .hero-carousel-button {
+        width: 34px;
+        height: 34px;
+    }
     .benefits-phrase-card {
         min-height: 285px;
         padding: 1.35rem;

@@ -177,6 +177,83 @@
   window.MKTech = window.MKTech || {};
   window.MKTech.showToast = showToast;
 
+  // CARROSSEL VISUAL DA HERO
+  const heroCarousel = document.getElementById('heroCarousel');
+  const heroCarouselTrack = document.getElementById('heroCarouselTrack');
+  const heroCarouselDots = document.getElementById('heroCarouselDots');
+  const heroSlides = heroCarouselTrack
+    ? Array.from(heroCarouselTrack.querySelectorAll('.hero-slide'))
+    : [];
+
+  if (heroCarousel && heroCarouselTrack && heroCarouselDots && heroSlides.length > 0) {
+    const previousButton = heroCarousel.querySelector('.hero-carousel-prev');
+    const nextButton = heroCarousel.querySelector('.hero-carousel-next');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let currentSlide = 0;
+    let autoPlay = null;
+
+    heroSlides.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'hero-carousel-dot' + (index === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Exibir imagem ${index + 1}`);
+      dot.addEventListener('click', () => {
+        showHeroSlide(index);
+        restartAutoPlay();
+      });
+      heroCarouselDots.appendChild(dot);
+    });
+
+    const dots = Array.from(heroCarouselDots.querySelectorAll('.hero-carousel-dot'));
+
+    function showHeroSlide(index, instant = false) {
+      currentSlide = (index + heroSlides.length) % heroSlides.length;
+      if (instant || reduceMotion) heroCarouselTrack.style.transition = 'none';
+      heroCarouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+      dots.forEach((dot, dotIndex) => dot.classList.toggle('active', dotIndex === currentSlide));
+
+      if (instant || reduceMotion) {
+        requestAnimationFrame(() => {
+          heroCarouselTrack.style.transition = '';
+        });
+      }
+    }
+
+    function stopAutoPlay() {
+      window.clearInterval(autoPlay);
+      autoPlay = null;
+    }
+
+    function startAutoPlay() {
+      if (reduceMotion) return;
+      stopAutoPlay();
+      autoPlay = window.setInterval(() => showHeroSlide(currentSlide + 1), 5500);
+    }
+
+    function restartAutoPlay() {
+      stopAutoPlay();
+      startAutoPlay();
+    }
+
+    previousButton?.addEventListener('click', () => {
+      showHeroSlide(currentSlide - 1);
+      restartAutoPlay();
+    });
+
+    nextButton?.addEventListener('click', () => {
+      showHeroSlide(currentSlide + 1);
+      restartAutoPlay();
+    });
+
+    heroCarousel.addEventListener('mouseenter', stopAutoPlay);
+    heroCarousel.addEventListener('mouseleave', startAutoPlay);
+    heroCarousel.addEventListener('focusin', stopAutoPlay);
+    heroCarousel.addEventListener('focusout', startAutoPlay);
+
+    showHeroSlide(0, true);
+    startAutoPlay();
+  }
+
   // CARROSSEL DE DEPOIMENTOS
   const testimonialsTrack = document.getElementById('testimonialsTrack');
   const testimonialCards = testimonialsTrack ? Array.from(testimonialsTrack.querySelectorAll('.testimonial-card')) : [];

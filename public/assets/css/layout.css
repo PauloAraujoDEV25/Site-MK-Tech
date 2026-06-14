@@ -213,10 +213,9 @@
     max-width: 1320px;
     width: 100%;
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0;
+    grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
+    gap: clamp(2rem, 5vw, 5rem);
     align-items: center;
-    justify-items: start;
 }
 
 .hero-media {
@@ -231,7 +230,9 @@
     border-radius: 28px;
     overflow: hidden;
     box-shadow: 0 32px 80px rgba(0,0,0,0.7);
-    border: 1px solid rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.16);
+    background: var(--bg-card);
+    isolation: isolate;
 }
 
 .hero-carousel-track {
@@ -241,8 +242,9 @@
 
 .hero-slide {
     min-width: 100%;
-    height: 360px;
+    height: clamp(330px, 34vw, 480px);
     position: relative;
+    margin: 0;
 }
 
 .hero-slide img {
@@ -250,6 +252,86 @@
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+.hero-slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 55%, rgba(5, 5, 16, 0.72));
+    pointer-events: none;
+}
+
+.hero-carousel-caption {
+    position: absolute;
+    left: 1.25rem;
+    bottom: 1.35rem;
+    z-index: 2;
+    padding: 0.45rem 0.85rem;
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: var(--radius-pill);
+    background: rgba(6, 6, 20, 0.62);
+    color: var(--text-on-primary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    backdrop-filter: blur(10px);
+}
+
+.hero-carousel-controls {
+    position: absolute;
+    right: 1.1rem;
+    bottom: 1.1rem;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+
+.hero-carousel-button {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 50%;
+    background: rgba(6, 6, 20, 0.68);
+    color: #fff;
+    font-size: 1.65rem;
+    line-height: 1;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+}
+
+.hero-carousel-button:hover {
+    border-color: var(--primary-light);
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.hero-carousel-dots {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.hero-carousel-dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.hero-carousel-dot.active {
+    width: 24px;
+    border-radius: var(--radius-pill);
+    background: linear-gradient(90deg, var(--primary-light), var(--accent));
 }
 
 .hero-static-image {
