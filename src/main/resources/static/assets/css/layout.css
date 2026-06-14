@@ -517,15 +517,82 @@
    ============================================ */
 .section {
     padding: 5.5rem 2rem;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 12% 18%, var(--primary-glow), transparent 30%),
+        radial-gradient(circle at 88% 82%, var(--accent-glow), transparent 28%),
+        var(--bg-primary);
+    border-top: 1px solid var(--border);
 }
 
 .section-alt {
-    background: var(--gradient-section-alt);
+    background:
+        radial-gradient(circle at 82% 15%, var(--primary-glow), transparent 32%),
+        radial-gradient(circle at 18% 88%, var(--accent-glow), transparent 26%),
+        var(--gradient-section-alt);
 }
 
-/* Aplicar o mesmo gradient da hero na seção de contato */
+.section::before,
+.section::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: clamp(220px, 32vw, 520px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.16;
+    pointer-events: none;
+}
+
+.section::before {
+    top: -20%;
+    left: -12%;
+    background: var(--primary);
+}
+
+.section::after {
+    right: -14%;
+    bottom: -26%;
+    background: var(--accent);
+}
+
+.section-alt::before {
+    left: auto;
+    right: -12%;
+}
+
+.section-alt::after {
+    right: auto;
+    left: -14%;
+}
+
+.section > .container {
+    position: relative;
+    z-index: 1;
+}
+
+#depoimentos {
+    background:
+        radial-gradient(circle at 76% 18%, var(--accent-glow), transparent 28%),
+        radial-gradient(circle at 20% 76%, var(--primary-glow), transparent 34%),
+        var(--bg-primary);
+}
+
+#faq {
+    background:
+        radial-gradient(circle at 8% 50%, var(--primary-glow), transparent 30%),
+        radial-gradient(circle at 92% 30%, var(--accent-glow), transparent 24%),
+        var(--bg-secondary);
+}
+
 #contato.section-alt {
-	background: var(--gradient-hero);
+    background:
+        radial-gradient(circle at 78% 18%, var(--primary-glow), transparent 34%),
+        radial-gradient(circle at 16% 82%, var(--accent-glow), transparent 28%),
+        linear-gradient(155deg, var(--bg-secondary), var(--bg-primary));
 }
 
 .container {
@@ -536,6 +603,18 @@
 .section-header {
     text-align: center;
     margin-bottom: 3.5rem;
+    position: relative;
+}
+
+.section-header::after {
+    content: "";
+    display: block;
+    width: 76px;
+    height: 3px;
+    margin: 1.25rem auto 0;
+    border-radius: var(--radius-pill);
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    box-shadow: 0 0 22px var(--primary-glow);
 }
 
 .section-header h2 {
@@ -543,6 +622,7 @@
     font-weight: 800;
     margin-bottom: 0.75rem;
     color: var(--text-primary);
+    letter-spacing: -0.025em;
 }
 
 .section-header h2 .highlight {
