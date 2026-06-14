@@ -107,272 +107,138 @@
 
 
 
-/* ============================================
-   BENEFÍCIOS
-   ============================================ */
-.benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1.5rem;
+/* Carrossel de frases da hero */
+.hero-story {
+    width: min(760px, 100%);
 }
 
-/* Carrossel de benefícios (substitui o grid na section) */
-.benefits-carousel {
-    overflow: hidden;
-    width: 100%;
-    margin: 0 auto;
-    max-width: 980px;
-}
-
-
-
-
-
-.benefits-track {
-    display: flex;
-    gap: 1.5rem;
-    transform: translateX(0);
-    transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
-}
-
-.benefits-slide {
-    flex: 0 0 100%;
-    min-width: 0;
-}
-
-.benefit-card {
-    background: var(--bg-card);
-    padding: 2rem;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    transition: var(--transition);
-    position: relative;
-    overflow: hidden;
-}
-
-.benefit-main {
-    min-width: 0;
-}
-
-.benefit-sidepanel {
-    margin-top: 0;
-    padding-top: 0;
-    border-top: 1px solid var(--border);
-    opacity: 0;
-    transform: translateY(10px);
-    pointer-events: none;
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.55s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, transform 0.55s cubic-bezier(0.4, 0, 0.2, 1), padding-top 0.55s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.benefit-card.topics-open .benefit-sidepanel {
-    max-height: 560px;
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-    margin-top: 1.15rem;
-    padding-top: 1.05rem;
-}
-
-.benefit-sidepanel-title {
-    font-weight: 800;
-    font-size: 0.92rem;
-    color: var(--text-primary);
-    margin-bottom: 0.75rem;
-}
-
-.benefit-topic-list {
+.hero-phrase-card {
+    min-height: 290px;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-}
-
-.benefit-topic {
-    width: 100%;
-    text-align: left;
-    cursor: pointer;
-    border: 1px solid var(--border);
-    background: var(--bg-input);
-    color: var(--text-secondary);
-    border-radius: 12px;
-    padding: 0.7rem 0.85rem;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: var(--transition);
-}
-
-.benefit-topic:hover {
-    border-color: var(--border-hover);
-    color: var(--text-primary);
-    background: rgba(147, 51, 234, 0.08);
-}
-
-.benefit-topic.active {
-    border-color: var(--border-hover);
-    color: var(--text-primary);
-    background: rgba(147, 51, 234, 0.12);
-}
-
-.benefit-panel {
-    margin-top: 0.85rem;
-    display: grid;
-    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-    gap: 0.95rem;
-    align-items: start;
-}
-
-.benefit-panel-left {
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
-}
-
-.benefit-detail-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-}
-
-.benefit-detail-media {
-    position: relative;
-    width: 100%;
-    height: 220px;
-    overflow: hidden;
-    background: var(--bg-card);
-}
-
-.benefit-detail-media::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 55%;
-    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(5,5,16,0.72) 100%);
-    pointer-events: none;
-}
-
-.benefit-detail-media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.benefit-detail-icon {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    display: inline-flex;
-    align-items: center;
     justify-content: center;
-    color: var(--accent);
-    border: 1px solid rgba(255,255,255,0.18);
-    background: rgba(6, 6, 20, 0.35);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    padding: clamp(1.5rem, 3vw, 2.35rem);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 28px 28px 12px 12px;
+    background: linear-gradient(145deg, rgba(17, 17, 37, 0.88), rgba(6, 6, 20, 0.72));
+    box-shadow: 0 24px 65px rgba(0, 0, 0, 0.52);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 }
 
-.benefit-detail-icon svg {
-    width: 20px;
-    height: 20px;
-    display: block;
-}
-
-.benefit-detail-body {
-    padding: 1.1rem 1.1rem 1.2rem;
-}
-
-.benefit-detail-body .benefit-topic-heading {
-    font-size: 1.15rem;
-    margin-bottom: 0.4rem;
-}
-
-.benefit-detail-body .benefit-topic-text {
-    font-size: 0.92rem;
-    margin-bottom: 0;
-}
-
-.benefit-panel-right {
-    min-width: 0;
-}
-
-.benefit-panel-detail {
-    border: 1px solid var(--border);
-    background: var(--bg-input);
-    border-radius: 14px;
-    padding: 0.85rem;
-}
-
-.benefit-topic-heading {
-    font-weight: 800;
-    font-size: 0.95rem;
-    color: var(--text-primary);
-    margin-bottom: 0.35rem;
-}
-
-.benefit-topic-text {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    line-height: 1.6;
-}
-
-
-
-.benefit-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
-    opacity: 0;
-    transition: var(--transition);
-}
-
-.benefit-card:hover {
-    border-color: var(--border-hover);
-    transform: translateY(-4px);
-    box-shadow: var(--shadow);
-}
-
-.benefit-card:hover::before {
-    opacity: 1;
-}
-
-.benefit-card .card-icon {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    display: block;
-    color: var(--accent);
-}
-
-.benefit-card .card-icon svg {
-    width: 34px;
-    height: 34px;
-    display: block;
-}
-
-.benefit-card h3 {
-    font-size: 1.15rem;
+.hero-phrase {
+    min-height: 7.1em;
+    color: var(--text-on-primary);
+    font-size: clamp(1.35rem, 2.7vw, 2.15rem);
     font-weight: 700;
-    margin-bottom: 0.6rem;
-    color: var(--text-primary);
+    line-height: 1.42;
+    text-wrap: balance;
+    transition: opacity 0.45s ease, transform 0.45s ease;
 }
 
-.benefit-card p {
-    color: var(--text-secondary);
-    font-size: 0.93rem;
-    line-height: 1.7;
+.hero-phrase.is-leaving {
+    opacity: 0;
+    transform: translateY(-8px);
+}
+
+.hero-word {
+    display: inline-block;
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(10px);
+    transition: opacity 0.42s ease, filter 0.42s ease, transform 0.42s ease;
+}
+
+.hero-word.visible {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
+
+.hero-phrase-dots {
+    display: flex;
+    gap: 0.55rem;
+    margin-top: 1.2rem;
+}
+
+.hero-phrase-dot {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.32);
+    cursor: pointer;
+    transition: width 0.3s ease, background 0.3s ease;
+}
+
+.hero-phrase-dot.active {
+    width: 34px;
+    border-radius: var(--radius-pill);
+    background: linear-gradient(90deg, var(--primary-light), var(--accent));
+}
+
+.hero-offer {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    overflow: hidden;
+    padding: 1.2rem 1.5rem 1.35rem;
+    border: 1px solid rgba(192, 132, 252, 0.32);
+    border-top: 0;
+    border-radius: 12px 12px 28px 28px;
+    background:
+        radial-gradient(circle at 12% 0%, rgba(251, 122, 42, 0.28), transparent 42%),
+        linear-gradient(135deg, rgba(109, 40, 217, 0.96), rgba(17, 17, 37, 0.98));
+    box-shadow: 0 22px 55px rgba(109, 40, 217, 0.32);
+    text-align: center;
+}
+
+.hero-offer::before,
+.hero-offer::after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border: 28px solid rgba(251, 122, 42, 0.15);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hero-offer::before { left: -125px; bottom: -135px; }
+.hero-offer::after { right: -130px; top: -140px; }
+
+.hero-offer-intro {
+    position: relative;
+    z-index: 1;
+    color: var(--text-on-primary);
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    font-weight: 800;
+}
+
+.hero-offer-price {
+    position: relative;
+    z-index: 1;
+    color: var(--accent-light);
+    font-size: clamp(2.3rem, 6vw, 4.25rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    text-shadow: 0 0 24px var(--accent-glow);
+}
+
+.hero-offer-price span {
+    color: var(--primary-light);
+    text-shadow: 0 0 26px var(--primary-glow);
+}
+
+.hero-offer-brand {
+    position: relative;
+    z-index: 1;
+    margin-top: 0.4rem;
+    color: var(--accent);
+    font-size: clamp(1.05rem, 2.4vw, 1.45rem);
+    font-weight: 900;
 }
 
 /* ============================================

@@ -239,257 +239,83 @@
     window.addEventListener('resize', () => updateCarousel(true), { passive: true });
   }
 
-  // CARROSSEL DE BENEFÍCIOS
-  const benefitsCarousel = document.getElementById('benefitsCarousel');
-  const benefitsTrack = document.getElementById('benefitsTrack');
-  const benefitSlides = benefitsTrack ? Array.from(benefitsTrack.querySelectorAll('.benefits-slide')) : [];
+  // CARROSSEL DE FRASES DA HERO
+  const heroPhrase = document.getElementById('heroPhrase');
+  const heroPhraseDots = Array.from(document.querySelectorAll('.hero-phrase-dot'));
 
-  if (benefitsCarousel && benefitsTrack && benefitSlides.length > 0) {
-    let currentIndex = 0;
-    let autoPlayId = null;
-    let resumeTimeoutId = null;
-    let topicsOpen = false;
+  if (heroPhrase && heroPhraseDots.length > 0) {
+    const phrases = [
+      'Imagine você acordando não com um alarme estridente, mas com as cortinas se abrindo suavemente e a luz do quarto simulando o nascer do sol, preparando seu corpo para o dia de forma natural.',
+      'Imagine entrar na cozinha com as mãos ocupadas pelas compras e a luz se acender automaticamente, iluminando seu caminho sem que você precise procurar por um interruptor.',
+      'Imagine a segurança de receber uma notificação em tempo real se houver qualquer movimento inesperado ou se uma porta for aberta enquanto você está viajando, podendo visualizar as câmeras de onde estiver.'
+    ];
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let currentPhrase = 0;
+    let wordTimer = null;
+    let phraseTimer = null;
+    let transitionTimer = null;
 
-    function getAssetsBasePath() {
-      return 'assets/images/';
+    function clearHeroTimers() {
+      window.clearInterval(wordTimer);
+      window.clearTimeout(phraseTimer);
+      window.clearTimeout(transitionTimer);
     }
 
-    const ASSETS_BASE = getAssetsBasePath();
-
-    function benefitImageForIndex(index) {
-      const slide = benefitSlides[index];
-      const title = slide ? getBenefitTitle(slide).toLowerCase() : '';
-
-      if (title.includes('instala')) return 'beneficios/instalacao-profissional.png';
-      if (title.includes('suporte')) return 'beneficios/suporte-dedicado.png';
-      if (title.includes('atualiza')) return 'beneficios/atualizacoes-gratuitas.png';
-      if (title.includes('formas')) return 'beneficios/formas-de-pagamento.png';
-      if (title.includes('tecnologia')) return 'beneficios/tecnologia-de-ponta.png';
-
-      return 'tranca-inteligente.png';
-    }
-
-    function getBenefitText(slideEl) {
-      const p = slideEl.querySelector('.benefit-main p');
-      return p ? p.textContent.trim() : '';
-    }
-
-    function getBenefitDetailText(slideEl) {
-      const title = getBenefitTitle(slideEl).toLowerCase();
-
-      if (title.includes('instala')) {
-        return 'Instalação limpa e organizada, com configuração completa, testes e orientação de uso. Tudo fica pronto para você começar a usar no mesmo dia, com acabamento de alto padrão.';
-      }
-
-      if (title.includes('suporte')) {
-        return 'Suporte rápido via WhatsApp, com diagnóstico e acompanhamento pós-instalação. Se precisar, agendamos ajustes e visitas técnicas para manter tudo funcionando perfeito.';
-      }
-
-      if (title.includes('atualiza')) {
-        return 'Seu sistema evolui com novas automações e melhorias de segurança. Fazemos ajustes finos e atualizações para você aproveitar mais recursos sem complicação.';
-      }
-
-      if (title.includes('formas')) {
-        return 'Opções flexíveis para caber no seu orçamento, com parcelamento e condições que facilitam a decisão. Você escolhe o melhor caminho sem abrir mão de qualidade.';
-      }
-
-      if (title.includes('tecnologia')) {
-        return 'Trabalhamos com dispositivos confiáveis, compatíveis com Alexa, Google e Siri, e integrações entre marcas. Mais estabilidade, performance e garantia para o seu projeto.';
-      }
-
-      return getBenefitText(slideEl);
-    }
-
-    function getBenefitIconMarkup(slideEl) {
-      const iconSvg = slideEl.querySelector('.benefit-main .card-icon svg');
-      return iconSvg ? iconSvg.outerHTML : '';
-    }
-
-    const benefitDetails = benefitSlides.map((slide, idx) => ({
-      title: getBenefitTitle(slide),
-      text: getBenefitDetailText(slide),
-      image: benefitImageForIndex(idx),
-      icon: getBenefitIconMarkup(slide)
-    }));
-
-    function updateBenefitsCarousel(instant = false) {
-      const target = benefitSlides[currentIndex];
-      if (!target) return;
-
-      if (instant) benefitsTrack.style.transition = 'none';
-      const offset = -target.offsetLeft;
-      benefitsTrack.style.transform = `translateX(${offset}px)`;
-      if (instant) {
-        requestAnimationFrame(() => {
-          benefitsTrack.style.transition = '';
-        });
-      }
-    }
-
-    function goToBenefit(index, instant = false) {
-      currentIndex = (index + benefitSlides.length) % benefitSlides.length;
-      updateBenefitsCarousel(instant);
-      if (topicsOpen) {
-        openTopicsForCurrent();
-      }
-    }
-
-    function getBenefitTitle(slideEl) {
-      const title = slideEl.querySelector('.benefit-card h3');
-      return title ? title.textContent.trim() : '';
-    }
-
-    function buildTopicsLists() {
-      const titles = benefitSlides.map(getBenefitTitle);
-      benefitSlides.forEach((slide, slideIndex) => {
-        const list = slide.querySelector('.benefit-topic-list');
-        if (!list) return;
-
-        list.innerHTML = '';
-        titles.forEach((t, idx) => {
-          const btn = document.createElement('button');
-          btn.type = 'button';
-          btn.className = 'benefit-topic' + (idx === currentIndex ? ' active' : '');
-          btn.textContent = t || `Benefício ${idx + 1}`;
-          btn.dataset.index = String(idx);
-          list.appendChild(btn);
-        });
+    function updateHeroDots(index) {
+      heroPhraseDots.forEach((dot, dotIndex) => {
+        const active = dotIndex === index;
+        dot.classList.toggle('active', active);
+        dot.setAttribute('aria-pressed', String(active));
       });
     }
 
-    function closeAllTopics() {
-      benefitSlides.forEach(slide => {
-        const card = slide.querySelector('.benefit-card');
-        if (card) card.classList.remove('topics-open');
+    function showPhrase(index) {
+      clearHeroTimers();
+      currentPhrase = (index + phrases.length) % phrases.length;
+      updateHeroDots(currentPhrase);
 
-        const panel = slide.querySelector('.benefit-panel');
-        if (panel instanceof HTMLElement) {
-          panel.hidden = true;
-          const img = panel.querySelector('.benefit-detail-media img');
-          if (img) img.removeAttribute('src');
-          const icon = panel.querySelector('.benefit-detail-icon');
-          if (icon) icon.innerHTML = '';
+      const words = phrases[currentPhrase].split(' ');
+      heroPhrase.replaceChildren();
+
+      words.forEach((word) => {
+        const wordElement = document.createElement('span');
+        wordElement.className = 'hero-word';
+        wordElement.textContent = word;
+        heroPhrase.appendChild(wordElement);
+        heroPhrase.appendChild(document.createTextNode(' '));
+      });
+
+      const wordElements = Array.from(heroPhrase.querySelectorAll('.hero-word'));
+      if (reduceMotion) {
+        wordElements.forEach((word) => word.classList.add('visible'));
+        phraseTimer = window.setTimeout(() => showPhrase(currentPhrase + 1), 6500);
+        return;
+      }
+
+      let wordIndex = 0;
+      wordTimer = window.setInterval(() => {
+        wordElements[wordIndex]?.classList.add('visible');
+        wordIndex += 1;
+
+        if (wordIndex >= wordElements.length) {
+          window.clearInterval(wordTimer);
+          phraseTimer = window.setTimeout(() => {
+            heroPhrase.classList.add('is-leaving');
+            transitionTimer = window.setTimeout(() => {
+              heroPhrase.classList.remove('is-leaving');
+              showPhrase(currentPhrase + 1);
+            }, 450);
+          }, 4000);
         }
-      });
+      }, 85);
     }
 
-    function syncActiveTopicButtons() {
-      benefitSlides.forEach(slide => {
-        slide.querySelectorAll('.benefit-topic').forEach(btn => {
-          const idx = Number(btn.dataset.index);
-          btn.classList.toggle('active', idx === currentIndex);
-        });
-      });
-    }
-
-    function renderBenefitDetail(slideEl, detailIndex) {
-      const panel = slideEl.querySelector('.benefit-panel');
-      if (!(panel instanceof HTMLElement)) return;
-
-      const data = benefitDetails[detailIndex];
-      if (!data) return;
-
-      const heading = panel.querySelector('.benefit-topic-heading');
-      const text = panel.querySelector('.benefit-topic-text');
-      const img = panel.querySelector('.benefit-detail-media img');
-      const icon = panel.querySelector('.benefit-detail-icon');
-
-      if (heading) heading.textContent = data.title;
-      if (text) text.textContent = data.text;
-      if (img) {
-        img.alt = data.title;
-        img.src = encodeURI(ASSETS_BASE + data.image);
-      }
-
-      if (icon) {
-        icon.innerHTML = data.icon || '';
-      }
-
-      panel.hidden = false;
-    }
-
-    function openTopicsForCurrent() {
-      closeAllTopics();
-      const slide = benefitSlides[currentIndex];
-      if (!slide) return;
-      const card = slide.querySelector('.benefit-card');
-      if (!card) return;
-      card.classList.add('topics-open');
-      syncActiveTopicButtons();
-      renderBenefitDetail(slide, currentIndex);
-    }
-
-    function stopBenefitsAutoplay() {
-      if (autoPlayId) {
-        clearInterval(autoPlayId);
-        autoPlayId = null;
-      }
-    }
-
-    function startBenefitsAutoplay() {
-      stopBenefitsAutoplay();
-      autoPlayId = setInterval(() => goToBenefit(currentIndex + 1), 3000);
-    }
-
-    function scheduleBenefitsResume() {
-      if (resumeTimeoutId) clearTimeout(resumeTimeoutId);
-      resumeTimeoutId = setTimeout(() => {
-        startBenefitsAutoplay();
-      }, 2000);
-    }
-
-    benefitsCarousel.addEventListener('mouseenter', () => {
-      stopBenefitsAutoplay();
-      if (resumeTimeoutId) {
-        clearTimeout(resumeTimeoutId);
-        resumeTimeoutId = null;
-      }
-      topicsOpen = true;
-      openTopicsForCurrent();
+    heroPhraseDots.forEach((dot) => {
+      dot.addEventListener('click', () => showPhrase(Number(dot.dataset.phraseIndex)));
     });
 
-    benefitsCarousel.addEventListener('mouseleave', () => {
-      topicsOpen = false;
-      closeAllTopics();
-      scheduleBenefitsResume();
-    });
-
-    benefitsCarousel.addEventListener('click', (event) => {
-      const target = event.target;
-      if (!(target instanceof HTMLElement)) return;
-      const btn = target.closest('.benefit-topic');
-      if (!btn) return;
-      const idx = Number(btn.dataset.index);
-      if (Number.isNaN(idx)) return;
-      goToBenefit(idx);
-    });
-
-    // Suporte a toque/mobile: tocar no card abre/fecha o painel de tópicos.
-    benefitsCarousel.addEventListener('click', (event) => {
-      const target = event.target;
-      if (!(target instanceof HTMLElement)) return;
-
-      if (target.closest('.benefit-topic')) return;
-
-      const card = target.closest('.benefit-card');
-      if (!card) return;
-
-      topicsOpen = !topicsOpen;
-      if (topicsOpen) {
-        stopBenefitsAutoplay();
-        openTopicsForCurrent();
-      } else {
-        closeAllTopics();
-        scheduleBenefitsResume();
-      }
-    });
-
-    window.addEventListener('resize', () => updateBenefitsCarousel(true), { passive: true });
-
-    // Ajuste inicial
-    updateBenefitsCarousel(true);
-    buildTopicsLists();
-    startBenefitsAutoplay();
+    showPhrase(0);
   }
+
 
 })();
