@@ -52,34 +52,35 @@
     <main>
     <!-- Hero -->
     <section class="hero">
+        <div class="hero-media" aria-label="Exemplos ilustrativos de ambientes inteligentes">
+            <div class="hero-carousel" id="heroCarousel">
+                <div class="hero-carousel-track" id="heroCarouselTrack">
+                    <figure class="hero-slide">
+                        <img th:src="@{/assets/images/hero-carousel/cozinha-inteligente-4k.jpg}" src="assets/images/hero-carousel/cozinha-inteligente-4k.jpg" alt="Cozinha moderna com recursos de automação residencial" fetchpriority="high">
+                    </figure>
+                    <figure class="hero-slide">
+                        <img th:src="@{/assets/images/hero-carousel/sala-inteligente-4k.jpg}" src="assets/images/hero-carousel/sala-inteligente-4k.jpg" alt="Sala moderna com iluminação e controles inteligentes" decoding="async">
+                    </figure>
+                    <figure class="hero-slide">
+                        <img th:src="@{/assets/images/hero-carousel/fachada-inteligente-4k.jpg}" src="assets/images/hero-carousel/fachada-inteligente-4k.jpg" alt="Fachada residencial com iluminação e segurança inteligentes" decoding="async">
+                    </figure>
+                    <figure class="hero-slide">
+                        <img th:src="@{/assets/images/hero-carousel/quarto-inteligente-4k.jpg}" src="assets/images/hero-carousel/quarto-inteligente-4k.jpg" alt="Quarto moderno com cortinas e iluminação automatizadas" decoding="async">
+                    </figure>
+                </div>
+                <div class="hero-carousel-controls">
+                    <button class="hero-carousel-button hero-carousel-prev" type="button" aria-label="Imagem anterior">‹</button>
+                    <div class="hero-carousel-dots" id="heroCarouselDots"></div>
+                    <button class="hero-carousel-button hero-carousel-next" type="button" aria-label="Próxima imagem">›</button>
+                </div>
+            </div>
+        </div>
         <div class="hero-particles" aria-hidden="true"></div>
         <div class="hero-inner">
             <div class="hero-content">
                 <div class="hero-overlay-card reveal">
                     <h1 class="hero-title">Transformamos sua casa em um <span class="accent">ambiente inteligente</span>, seguro e eficiente.</h1>
                     <p class="hero-lead">Tecnologia integrada com instalação profissional e acabamento de alto padrão.</p>
-                </div>
-            </div>
-
-            <div class="hero-media reveal" aria-label="Exemplos ilustrativos de ambientes inteligentes">
-                <div class="hero-carousel" id="heroCarousel">
-                    <div class="hero-carousel-track" id="heroCarouselTrack">
-                        <figure class="hero-slide">
-                            <img th:src="@{/assets/images/hero-carousel/sala-inteligente.png}" src="assets/images/hero-carousel/sala-inteligente.png" alt="Sala moderna com iluminação e controles inteligentes">
-                        </figure>
-                        <figure class="hero-slide">
-                            <img th:src="@{/assets/images/hero-carousel/fachada-inteligente.png}" src="assets/images/hero-carousel/fachada-inteligente.png" alt="Fachada residencial com iluminação e segurança inteligentes">
-                        </figure>
-                        <figure class="hero-slide">
-                            <img th:src="@{/assets/images/hero-carousel/quarto-inteligente.png}" src="assets/images/hero-carousel/quarto-inteligente.png" alt="Quarto moderno com cortinas e iluminação automatizadas">
-                        </figure>
-                    </div>
-                    <div class="hero-carousel-caption">Ambientes inteligentes</div>
-                    <div class="hero-carousel-controls">
-                        <button class="hero-carousel-button hero-carousel-prev" type="button" aria-label="Imagem anterior">‹</button>
-                        <div class="hero-carousel-dots" id="heroCarouselDots"></div>
-                        <button class="hero-carousel-button hero-carousel-next" type="button" aria-label="Próxima imagem">›</button>
-                    </div>
                 </div>
             </div>
         </div>
