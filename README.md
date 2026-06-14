@@ -1,147 +1,87 @@
-# 🏠 MK Tech - Automação Residencial Inteligente
+# MKTech - Automacao Residencial
 
-Site de automação residencial que resolve a dor de clientes que desejam automatizar suas casas com tecnologia inteligente.
+Landing page institucional da MKTech, com uma versao estatica para a Vercel e
+uma versao integrada ao projeto Java/Spring Boot.
 
-## 🎯 Problema Resolvido
+## Estrutura
 
-O MK Tech resolve frustrações comuns do dia a dia:
-- 😰 **Esqueceu a luz acesa?** - Controle remoto de iluminação
-- 🔑 **Perdeu as chaves?** - Trancas inteligentes com controle via app
-- 🌡️ **Conta de luz alta?** - Automação de temperatura com economia de energia
-- 👀 **Sem monitoramento?** - Câmeras inteligentes 24h
+```text
+public/
+|-- index.html
+`-- assets/
+    |-- css/
+    |   |-- reset.css
+    |   |-- variables.css
+    |   |-- base.css
+    |   |-- layout.css
+    |   |-- components.css
+    |   `-- responsive.css
+    |-- js/
+    |   |-- main.js
+    |   |-- modal.js
+    |   |-- form.js
+    |   `-- whatsapp.js
+    `-- images/
 
-## 📦 Pacotes Disponíveis
-
-### 🥈 Pacote Prata (Básico)
-- Lâmpadas Inteligentes
-- Trancas Inteligentes
-
-### 🥇 Pacote Ouro (Intermediário)
-- Tudo do Prata +
-- Controle de Temperatura
-- Câmeras Inteligentes
-
-### 💎 Pacote Platina (Premium)
-- Tudo do Ouro +
-- Cortinas Inteligentes
-- **Automação Completa!**
-
-## 🏗️ Arquitetura
-
-O projeto segue os princípios **SOLID**:
-
-- **S**ingle Responsibility Principle - Cada classe tem uma única responsabilidade
-- **O**pen/Closed Principle - Aberto para extensão, fechado para modificação
-- **L**iskov Substitution Principle - Abstrações podem ser substituídas
-- **I**nterface Segregation Principle - Interfaces específicas
-- **D**ependency Inversion Principle - Dependa de abstrações, não implementações
-
-### Estrutura do Projeto
-
-```
-br.com.mktech
-├── model              # Modelos de domínio
-│   ├── Service        # Classe abstrata de serviços
-│   ├── ServicePackage # Classe abstrata de pacotes
-│   ├── SmartLightService
-│   ├── SmartLockService
-│   ├── SmartCurtainService
-│   ├── SmartTemperatureService
-│   ├── SmartCameraService
-│   ├── SilverPackage
-│   ├── GoldPackage
-│   └── PlatinumPackage
-├── service            # Camada de negócio
-│   ├── IPackageService
-│   ├── PackageService
-│   ├── IWhatsAppService
-│   └── WhatsAppService
-├── controller         # Camada de apresentação
-│   ├── HomeController
-│   └── ContactController
-└── dto                # Data Transfer Objects
-    ├── ContactRequest
-    └── ContactResponse
+src/main/
+|-- java/br/com/mktech/       # Aplicacao Spring Boot
+`-- resources/
+    |-- templates/landing.html
+    `-- static/assets/         # Assets usados pela versao Spring
 ```
 
-## 🚀 Como Executar
+### Responsabilidades dos arquivos
 
-### Pré-requisitos
-- Java 21+
-- Maven 3.8+
+- `reset.css`: normalizacao basica dos elementos.
+- `variables.css`: cores, gradientes, espacamentos e temas claro/escuro.
+- `base.css`: tipografia, animacoes globais e estilos base.
+- `layout.css`: estrutura da navegacao, hero e secoes.
+- `components.css`: botoes, cards, formulario, carrosseis e demais componentes.
+- `responsive.css`: ajustes para celular, tablet e desktop.
+- `main.js`: tema, menu, navegacao, FAQ, animacoes e carrosseis.
+- `modal.js`: comportamento reutilizavel para modais.
+- `form.js`: validacao e eventos do formulario de contato.
+- `whatsapp.js`: URL do WhatsApp e mascara reutilizavel de telefone.
 
-### Configuração do WhatsApp
+## Deploy estatico na Vercel
 
-1. Obtenha suas credenciais da [WhatsApp Business API](https://developers.facebook.com/docs/whatsapp)
-2. Edite o arquivo `src/main/resources/application.properties`:
+O deploy estatico usa diretamente a pasta `public`.
 
-```properties
-whatsapp.api.token=SEU_TOKEN_AQUI
-whatsapp.phone.id=SEU_PHONE_ID_AQUI
-```
+1. Importe o repositorio na Vercel.
+2. Selecione **Other** em Framework Preset.
+3. Deixe o Build Command vazio.
+4. Defina **Output Directory** como `public`.
 
-### Executar o Projeto
+O arquivo `vercel.json` mantem o fallback de rotas para `public/index.html`.
+
+## Execucao local da landing page
+
+Sirva a pasta `public` com qualquer servidor HTTP estatico. Exemplo:
 
 ```bash
-# Baixar dependências
-mvn clean install
+npx serve public
+```
 
-# Executar a aplicação
+Depois, acesse o endereco exibido no terminal.
+
+## Execucao com Spring Boot
+
+Pre-requisitos:
+
+- Java 21 ou compativel com o projeto
+- Maven 3.8+
+
+```bash
+mvn clean install
 mvn spring-boot:run
 ```
 
-Acesse: `http://localhost:8080`
+A aplicacao fica disponivel em `http://localhost:8080`.
 
-## ▲ Deploy na Vercel (somente Landing Page)
+Os arquivos em `src/main/resources/static/assets` espelham os assets da landing
+estatica para preservar a versao Spring Boot.
 
-Se a ideia por enquanto é **apenas a landing page de captação**, este repositório já inclui uma versão estática em `public/` para deploy direto na Vercel, **sem backend Java**.
+## Contato pelo WhatsApp
 
-- Entrada: `public/index.html`
-- Assets: `public/static/*`
-
-### Como publicar
-
-1. Importe o repositório na Vercel
-2. Em **Framework Preset**, escolha **Other**
-3. Em **Build Command**, deixe vazio
-4. Em **Output Directory**, use `public`
-
-Pronto: a Vercel vai servir o HTML/CSS/JS e o formulário continuará abrindo o WhatsApp via `wa.me` (client-side).
-
-## 💬 Integração WhatsApp
-
-O sistema integra com a WhatsApp Business API para:
-- Envio automático de mensagens personalizadas
-- Contato humanizado com os clientes
-- **Negociação de valores direto no WhatsApp**
-
-**Importante:** Os valores dos pacotes são negociados diretamente via WhatsApp para melhor atendimento personalizado!
-
-## 🛠️ Tecnologias Utilizadas
-
-- **Spring Boot 3.2.1** - Framework web
-- **Thymeleaf** - Template engine para HTML
-- **OkHttp** - Client HTTP para WhatsApp API
-- **Gson** - Processamento JSON
-- **Lombok** - Redução de boilerplate
-- **Maven** - Gerenciamento de dependências
-
-## 📱 Funcionalidades
-
-- ✅ Landing page responsiva
-- ✅ Destaque das dores dos clientes
-- ✅ Apresentação dos pacotes de serviços
-- ✅ Modal de contato interativo
-- ✅ Integração com WhatsApp API
-- ✅ Validação de formulários
-- ✅ Máscara de telefone automática
-- ✅ Alertas de sucesso/erro
-
-## 📄 Licença
-
-Este projeto é propriedade da MK Tech © 2026
-
----
-
-**Desenvolvido com ❤️ seguindo princípios SOLID e boas práticas de POO**
-
+O formulario valida os campos no navegador e abre uma conversa no WhatsApp com
+a mensagem preenchida. Nenhum framework JavaScript e necessario.

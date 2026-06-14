@@ -1,0 +1,608 @@
+/* ============================================
+   NAVEGAÇÃO
+   ============================================ */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: var(--bg-nav);
+    backdrop-filter: blur(14px) saturate(145%);
+    -webkit-backdrop-filter: blur(14px) saturate(145%);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    transition: var(--transition);
+    isolation: isolate;
+    transform: translateY(0);
+    will-change: transform;
+}
+
+.navbar.navbar-hidden {
+    transform: translateY(-110%);
+}
+
+/* Tint suave para harmonizar com a hero (sem adicionar novas cores) */
+.navbar::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, var(--accent-glow), var(--primary-glow));
+    opacity: 0.14;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* No tema claro, o nav segue o mesmo fundo da section (.section) */
+[data-theme="light"] .navbar::after {
+    background: var(--gradient-section-alt);
+    opacity: 0.78;
+}
+
+[data-theme="light"] .navbar {
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .navbar .nav-links a {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+[data-theme="light"] .navbar .nav-links a:hover,
+[data-theme="light"] .navbar .nav-links a.active {
+    color: var(--text-primary);
+    background: var(--bg-input-focus);
+}
+
+.navbar.scrolled {
+    box-shadow: var(--shadow);
+}
+
+.nav-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    position: relative;
+    z-index: 1;
+}
+
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-primary);
+}
+
+.nav-logo img {
+    height: 32px;
+    width: auto;
+    display: block;
+}
+
+.nav-logo span {
+    background: linear-gradient(135deg, var(--primary-light), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.nav-links a {
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--primary-light);
+    background: rgba(147, 51, 234, 0.08);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Toggle Dark/Light */
+.theme-toggle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    background: var(--bg-card);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: var(--transition);
+    color: var(--text-primary);
+}
+
+.theme-toggle:hover {
+    border-color: var(--primary-light);
+    background: rgba(147, 51, 234, 0.1);
+    transform: rotate(20deg);
+}
+
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: inline; }
+[data-theme="light"] .theme-toggle .icon-sun { display: inline; }
+[data-theme="light"] .theme-toggle .icon-moon { display: none; }
+
+/* Hamburger */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+    border: none;
+    background: transparent;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 24px;
+    height: 2.5px;
+    background: var(--text-primary);
+    border-radius: 4px;
+    transition: var(--transition);
+    display: block;
+}
+
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-body);
+    --hero-scrim: linear-gradient(90deg, rgba(5,5,16,0.92) 0%, rgba(5,5,16,0.7) 42%, rgba(5,5,16,0.18) 72%, rgba(5,5,16,0) 100%);
+    --hero-bg-selected: var(--hero-bg-url, url('../images/Cozinha%20moderna%20com%20toque%20aconchegante@2x.png?v=20260219'));
+    background-image:
+        var(--hero-scrim),
+        var(--hero-bg-selected);
+    /* Preenche 100% da hero (evita faixas vazias) */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: clamp(6.75rem, 10vh, 7.75rem) 3rem clamp(4.5rem, 7vh, 5.5rem) 3rem;
+    position: relative;
+    overflow: hidden;
+    color: var(--text-on-primary);
+}
+
+.hero-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.18;
+    background-image:
+        radial-gradient(circle at 12% 18%, rgba(226,232,240,0.35) 0, transparent 45%),
+        radial-gradient(circle at 38% 72%, rgba(226,232,240,0.35) 0, transparent 50%),
+        radial-gradient(circle at 76% 28%, rgba(226,232,240,0.25) 0, transparent 45%),
+        radial-gradient(circle at 92% 82%, rgba(226,232,240,0.3) 0, transparent 55%);
+    mix-blend-mode: screen;
+}
+
+.hero-inner {
+    max-width: 1320px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    align-items: center;
+    justify-items: start;
+}
+
+.hero-media {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    justify-self: end;
+}
+
+.hero-carousel {
+    position: relative;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.7);
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+.hero-carousel-track {
+    display: flex;
+    transition: transform 0.6s ease;
+}
+
+.hero-slide {
+    min-width: 100%;
+    height: 360px;
+    position: relative;
+}
+
+.hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.hero-static-image {
+    width: 100%;
+    max-width: 680px;
+    height: clamp(320px, 36vw, 440px);
+    display: block;
+    margin: 0;
+    border-radius: 24px;
+    box-shadow: 0 28px 70px rgba(0,0,0,0.8);
+    object-fit: cover;
+    /* Ajuste para destacar o “aparelho digital” na imagem */
+    object-position: 66% 86%;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    margin: 0;
+    text-align: left;
+}
+
+.hero-overlay-card {
+    max-width: 760px;
+    background: transparent;
+    border: none;
+    border-radius: 24px;
+    box-shadow: none;
+    padding: 0;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    margin: 0;
+}
+
+
+
+.hero-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-bottom: 1.25rem;
+}
+
+.hero-brand-logo {
+    width: 26px;
+    height: 26px;
+    display: block;
+}
+
+.hero-brand-name {
+    font-weight: 900;
+    font-size: 1.45rem;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.hero-brand-name .mk {
+    color: var(--accent);
+}
+
+.hero-brand-sub {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.72);
+}
+
+.hero-kicker {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 0.55rem;
+}
+
+.hero-kicker .accent {
+    color: var(--accent);
+    font-weight: 800;
+}
+
+.hero-title {
+    font-size: clamp(2.1rem, 4.4vw, 3.4rem);
+    font-weight: 900;
+    line-height: 1.06;
+    margin-bottom: 1rem;
+    color: var(--text-on-primary);
+}
+
+.hero-title .accent {
+    color: var(--accent);
+}
+
+.hero-lead {
+    color: rgba(255,255,255,0.78);
+    max-width: 520px;
+    font-size: 0.98rem;
+    line-height: 1.7;
+    margin-bottom: 1.35rem;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+    flex-wrap: wrap;
+}
+
+.btn-hero-secondary {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: rgba(255,255,255,0.92);
+}
+
+.btn-hero-secondary:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.28);
+    transform: translateY(-2px);
+}
+
+.hero-meta {
+    margin-top: 1.15rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    padding: 0;
+    list-style: none;
+}
+
+.hero-meta li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.65);
+}
+
+.hero-meta li::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: 900;
+}
+
+.hero-feature-list {
+    display: grid;
+    gap: 0.55rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.hero-feature-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.8);
+}
+
+.hero-feature-list li::before {
+    content: '✓';
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(249, 115, 22, 0.16);
+    color: var(--accent);
+    font-weight: 900;
+    flex-shrink: 0;
+}
+
+.hero-copy {
+    color: var(--text-on-primary);
+    opacity: 0.88;
+    font-size: 0.98rem;
+    line-height: 1.75;
+    margin-top: 1rem;
+}
+
+.hero h1:not(.hero-title),
+.hero .subtitle,
+.hero-copy {
+    text-shadow: 0 8px 28px rgba(0,0,0,0.55);
+}
+
+.hero .subtitle {
+    color: var(--text-on-primary);
+    opacity: 0.92;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(147, 51, 234, 0.12);
+    border: 1px solid rgba(147, 51, 234, 0.25);
+    padding: 0.45rem 1.1rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary-light);
+    margin-bottom: 1.25rem;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.hero h1:not(.hero-title) {
+    font-size: clamp(1.85rem, 3.6vw, 3rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1.1rem;
+    color: var(--text-on-primary);
+    animation: fadeInDown 0.8s ease-out 0.1s both;
+}
+
+.hero h1 .highlight {
+    background: linear-gradient(135deg, var(--primary), var(--accent-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero .subtitle {
+    font-size: clamp(0.98rem, 2vw, 1.12rem);
+    color: var(--text-on-primary);
+    margin-bottom: 1.85rem;
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeInUp 0.8s ease-out 0.25s both;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.hero-highlights {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.75rem;
+    padding: 0;
+    list-style: none;
+    justify-content: center;
+}
+
+.hero-highlights li {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.86rem;
+    color: var(--text-muted);
+}
+
+.hero-highlights li span {
+    font-size: 0.9rem;
+    color: var(--accent);
+}
+
+/* ============================================
+   SEÇÕES GERAIS
+   ============================================ */
+.section {
+    padding: 5.5rem 2rem;
+}
+
+.section-alt {
+    background: var(--gradient-section-alt);
+}
+
+/* Aplicar o mesmo gradient da hero na seção de contato */
+#contato.section-alt {
+	background: var(--gradient-hero);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+
+.section-header h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.section-header h2 .highlight {
+    background: linear-gradient(135deg, var(--primary), var(--accent-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-header p {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   QUICK FEATURES (stats strip)
+   ============================================ */
+.quick-features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.feature-item {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+}
+
+.feature-item:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glow);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+.feature-item h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: var(--accent);
+}
+
+.feature-item p {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    line-height: 1.6;
+}

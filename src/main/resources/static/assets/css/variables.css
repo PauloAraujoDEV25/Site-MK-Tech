@@ -1,0 +1,86 @@
+﻿/* ============================================
+   VARIÁVEIS - DARK MODE (padrão)
+   ============================================ */
+:root {
+    --primary: #8b5cf6;
+    --primary-light: #c084fc;
+    --primary-dark: #6d28d9;
+    --primary-glow: rgba(139, 92, 246, 0.58);
+    --accent: #fb7a2a;
+    --accent-light: #ffb38a;
+    --accent-dark: #f97316;
+    --accent-glow: rgba(251, 122, 42, 0.42);
+
+    --bg-body: #050510;
+    --bg-primary: #060614;
+    --bg-secondary: #0b0b1a;
+    --bg-card: #111125;
+    --bg-card-hover: #181832;
+    --bg-nav: rgba(6, 6, 20, 0.58);
+    --bg-input: rgba(255,255,255,0.06);
+    --bg-input-focus: rgba(255,255,255,0.1);
+
+    --text-primary: #f0f0f5;
+    --text-secondary: #9e9eb8;
+    --text-muted: #adadc0;
+    --text-on-accent: #0a0a0f;
+    --text-on-primary: #ffffff;
+
+    --border: rgba(255,255,255,0.07);
+    --border-hover: rgba(147, 51, 234, 0.4);
+
+    --radius: 16px;
+    --radius-sm: 10px;
+    --radius-pill: 50px;
+    --shadow: 0 4px 20px rgba(0,0,0,0.45);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,0.6);
+    --shadow-glow: 0 0 40px var(--primary-glow);
+    --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --gradient-cta: linear-gradient(160deg, #22114a 0%, #140b33 45%, #060618 100%);
+    --gradient-hero: var(--gradient-cta);
+    --gradient-section-alt: linear-gradient(160deg, #0b0b1a 0%, #050510 100%);
+}
+
+/* ============================================
+   VARIÁVEIS - LIGHT MODE
+   ============================================ */
+[data-theme="light"] {
+    --primary: #6366f1;
+    --primary-light: #818cf8;
+    --primary-dark: #4f46e5;
+    --primary-glow: rgba(99, 102, 241, 0.18);
+    --accent: #f97316;
+    --accent-light: #fdba74;
+    --accent-dark: #ea580c;
+    --accent-glow: rgba(249, 115, 22, 0.16);
+
+    --bg-body: #f3f4f6;        /* cinza bem claro */
+    --bg-primary: #ffffff;     /* cards e blocos principais */
+    --bg-secondary: #e5e7eb;   /* faixas alternadas */
+    --bg-card: #ffffff;
+    --bg-card-hover: #f9fafb;
+    /* Navbar no tema claro igual à section Serviços (azul bebê + cinza claro) */
+    --bg-nav: rgba(255,255,255,0.62);
+    --bg-input: rgba(15, 23, 42, 0.03);
+    --bg-input-focus: rgba(15, 23, 42, 0.08);
+
+    --text-primary: #111827;
+    --text-secondary: #4b5563;
+    --text-muted: #9ca3af;
+    --text-on-accent: #ffffff;
+    --text-on-primary: #ffffff;
+
+    --border: rgba(17, 24, 39, 0.08);
+    --border-hover: rgba(99, 102, 241, 0.3);
+
+    --shadow: 0 6px 22px rgba(15, 23, 42, 0.04);
+    --shadow-lg: 0 18px 60px rgba(15, 23, 42, 0.08);
+    --shadow-glow: 0 0 32px var(--primary-glow);
+
+    /* Gradientes mais suaves no tema claro */
+    --gradient-hero: linear-gradient(160deg, #eef2ff 0%, #e0e7ff 40%, #e0f2fe 100%);
+    --gradient-section-alt: linear-gradient(160deg, #e5e7eb 0%, #eef2ff 45%, #ffffff 100%);
+    --gradient-cta: linear-gradient(160deg, #ffffff 0%, #eef2ff 40%, #e0f2fe 100%);
+}
+
