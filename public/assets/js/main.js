@@ -227,7 +227,7 @@
     function startAutoPlay() {
       if (reduceMotion) return;
       stopAutoPlay();
-      autoPlay = window.setInterval(() => showHeroSlide(currentSlide + 1), 5500);
+      autoPlay = window.setInterval(() => showHeroSlide(currentSlide + 1), 3000);
     }
 
     function restartAutoPlay() {
