@@ -96,8 +96,9 @@
 
   if (heroSection && floatingContact) {
     function updateFloatingContact() {
-      const heroBottom = heroSection.getBoundingClientRect().bottom;
-      floatingContact.classList.toggle('is-over-hero', heroBottom > 1);
+      const heroEnd = heroSection.offsetTop + heroSection.offsetHeight;
+      const isInsideHero = window.scrollY < heroEnd - 1;
+      floatingContact.classList.toggle('is-over-hero', isInsideHero);
     }
 
     updateFloatingContact();
