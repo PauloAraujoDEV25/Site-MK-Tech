@@ -65,7 +65,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.95rem 1.2rem;
+    width: 190px;
+    height: 52px;
+    padding: 0 1.2rem;
     border-radius: 999px;
     border: 1px solid rgba(255,255,255,0.18);
     background: linear-gradient(135deg, var(--primary-light), var(--accent));
@@ -73,12 +75,22 @@
     font-weight: 700;
     font-size: 0.95rem;
     box-shadow: 0 14px 34px rgba(0,0,0,0.25);
-    transition: var(--transition);
+    overflow: hidden;
+    transition:
+        width 0.35s ease,
+        height 0.35s ease,
+        padding 0.35s ease,
+        right 0.35s ease,
+        bottom 0.35s ease,
+        border-radius 0.35s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease,
+        filter 0.3s ease;
     white-space: nowrap;
 }
 
 .floating-contact-icon {
-    display: none;
+    position: absolute;
     width: 24px;
     height: 24px;
     fill: none;
@@ -86,6 +98,15 @@
     stroke-width: 1.8;
     stroke-linecap: round;
     stroke-linejoin: round;
+    opacity: 0;
+    transform: scale(0.65);
+    transition: opacity 0.2s ease, transform 0.35s ease;
+}
+
+.floating-contact-text {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.2s ease 0.12s, transform 0.35s ease;
 }
 
 .floating-contact.is-over-hero {
@@ -99,12 +120,14 @@
 }
 
 .floating-contact.is-over-hero .floating-contact-icon {
-    display: block;
+    opacity: 1;
+    transform: scale(1);
 }
 
-.floating-contact.is-over-hero .floating-contact-text,
-.floating-contact.is-over-hero::after {
-    display: none;
+.floating-contact.is-over-hero .floating-contact-text {
+    opacity: 0;
+    transform: translateX(12px);
+    transition-delay: 0s;
 }
 
 .floating-contact::after {
@@ -118,6 +141,12 @@
     transform: rotate(45deg);
     border-radius: 2px;
     filter: drop-shadow(0 6px 10px rgba(0,0,0,0.18));
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.floating-contact.is-over-hero::after {
+    opacity: 0;
 }
 
 .floating-contact:hover {

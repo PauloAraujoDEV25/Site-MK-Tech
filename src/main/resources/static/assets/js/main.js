@@ -98,7 +98,7 @@
     const heroObserver = new IntersectionObserver(([entry]) => {
       floatingContact.classList.toggle('is-over-hero', entry.isIntersecting);
     }, {
-      threshold: 0.15
+      threshold: 0
     });
 
     heroObserver.observe(heroSection);
