@@ -406,6 +406,26 @@
     color: var(--accent);
 }
 
+.hero-cost {
+    max-width: 560px;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    border-left: 3px solid var(--accent);
+}
+
+.hero-cost h2 {
+    margin-bottom: 0.35rem;
+    color: var(--text-on-primary);
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    font-weight: 800;
+}
+
+.hero-cost p {
+    color: rgba(255,255,255,0.82);
+    font-size: 0.92rem;
+    line-height: 1.55;
+}
+
 .hero-lead {
     color: rgba(255,255,255,0.78);
     max-width: 520px;
