@@ -264,9 +264,9 @@
 
 .hero-carousel-controls {
     position: absolute;
-    left: clamp(1rem, 3vw, 3rem);
+    right: clamp(1rem, 3vw, 3rem);
     bottom: clamp(1rem, 3vw, 2rem);
-    z-index: 3;
+    z-index: 4;
     display: flex;
     align-items: center;
     gap: 0.55rem;
@@ -277,20 +277,22 @@
     height: 38px;
     display: grid;
     place-items: center;
-    border: 1px solid rgba(255,255,255,0.18);
+    border: 2px solid rgba(255,255,255,0.9);
     border-radius: 50%;
-    background: rgba(6, 6, 20, 0.68);
+    background: linear-gradient(135deg, var(--primary-light), var(--accent));
     color: #fff;
     font-size: 1.65rem;
+    font-weight: 900;
     line-height: 1;
     cursor: pointer;
     backdrop-filter: blur(10px);
+    box-shadow: 0 5px 18px rgba(0,0,0,0.45);
     transition: var(--transition);
 }
 
 .hero-carousel-button:hover {
-    border-color: var(--primary-light);
-    background: var(--primary-dark);
+    border-color: #fff;
+    background: var(--accent-dark);
     transform: translateY(-2px);
 }
 

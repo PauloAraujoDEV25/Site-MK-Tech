@@ -40,8 +40,8 @@
     }
 
     .floating-contact.is-over-hero {
-        left: 0.75rem;
-        right: auto;
+        right: 0.75rem;
+        left: auto;
         bottom: 3.75rem;
         width: 44px;
         height: 44px;
@@ -136,7 +136,7 @@
         height: 100%;
     }
     .hero-carousel-controls {
-        left: 0.75rem;
+        right: 0.75rem;
         bottom: 0.75rem;
     }
     .hero-carousel-button {
