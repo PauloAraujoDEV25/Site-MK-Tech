@@ -365,7 +365,7 @@
       const wordElements = Array.from(benefitsPhrase.querySelectorAll('.benefits-word'));
       if (reduceMotion) {
         wordElements.forEach((word) => word.classList.add('visible'));
-        phraseTimer = window.setTimeout(() => showPhrase(currentPhrase + 1), 6500);
+        phraseTimer = window.setTimeout(() => showPhrase(currentPhrase + 1), 9500);
         return;
       }
 
@@ -382,7 +382,7 @@
               benefitsPhrase.classList.remove('is-leaving');
               showPhrase(currentPhrase + 1);
             }, 450);
-          }, 4000);
+          }, 7000);
         }
       }, 85);
     }
