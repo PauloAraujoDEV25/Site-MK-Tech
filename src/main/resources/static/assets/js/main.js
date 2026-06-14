@@ -245,8 +245,6 @@
       restartAutoPlay();
     });
 
-    heroCarousel.addEventListener('mouseenter', stopAutoPlay);
-    heroCarousel.addEventListener('mouseleave', startAutoPlay);
     heroCarousel.addEventListener('focusin', stopAutoPlay);
     heroCarousel.addEventListener('focusout', startAutoPlay);
 
