@@ -95,13 +95,14 @@
   const floatingContact = document.querySelector('.floating-contact');
 
   if (heroSection && floatingContact) {
-    const heroObserver = new IntersectionObserver(([entry]) => {
-      floatingContact.classList.toggle('is-over-hero', entry.isIntersecting);
-    }, {
-      threshold: 0
-    });
+    function updateFloatingContact() {
+      const heroBottom = heroSection.getBoundingClientRect().bottom;
+      floatingContact.classList.toggle('is-over-hero', heroBottom > 1);
+    }
 
-    heroObserver.observe(heroSection);
+    updateFloatingContact();
+    window.addEventListener('scroll', updateFloatingContact, { passive: true });
+    window.addEventListener('resize', updateFloatingContact);
   }
 
   // ACTIVE NAV LINK (scroll spy)

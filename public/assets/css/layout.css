@@ -277,22 +277,22 @@
     height: 38px;
     display: grid;
     place-items: center;
-    border: 2px solid rgba(255,255,255,0.9);
+    border: 0;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-light), var(--accent));
+    background: transparent;
     color: #fff;
     font-size: 1.65rem;
     font-weight: 900;
     line-height: 1;
     cursor: pointer;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 5px 18px rgba(0,0,0,0.45);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.8));
     transition: var(--transition);
 }
 
 .hero-carousel-button:hover {
-    border-color: #fff;
-    background: var(--accent-dark);
+    background: transparent;
+    color: var(--accent);
     transform: translateY(-2px);
 }
 
